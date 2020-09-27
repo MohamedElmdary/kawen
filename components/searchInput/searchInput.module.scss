@@ -1,0 +1,23 @@
+.search {
+    flex-grow: 1;
+    position: relative;
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+    }
+
+    &__input {
+        padding-left: 40px;
+        padding-right: 15px;
+        background-color: var(--it-2);
+        height: 40px;
+        border-radius: var(--border-r-2);
+        display: block;
+        width: 100%;
+        outline: none;
+        border: none;
+    }
+}
