@@ -5,7 +5,7 @@ import InputControl from '../components/inputControl';
 const LandingPage: React.FC = () => {
     const [value, setValue] = useState('');
     return (
-        <Layout>
+        <Layout title="Kawen | LandingPage">
             <h1>h1</h1>
             <h2>h2</h2>
             <h3>h3</h3>
