@@ -1,0 +1,12 @@
+.grid {
+    display: flex;
+    justify-content: space-between;
+
+    &__col {
+        flex-basis: calc(100% / 3 - 10px);
+    }
+
+    &__item {
+        margin-bottom: 20px;
+    }
+}
