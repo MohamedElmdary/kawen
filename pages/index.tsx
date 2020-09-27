@@ -7,6 +7,7 @@ const LandingPage: React.FC = () => {
             <div>
                 <h1>init commit</h1>
             </div>
+            <p className="h5 h5-regular">should have h5 styles</p>
         </Layout>
     );
 };
