@@ -1,0 +1,122 @@
+@import '../../shared/global';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary: #d94141;
+    --primary-light: #ed4e4e;
+    --primary-dark: #dd4242;
+    --secondary: #034aa6;
+    --highlight: #005fff;
+    --feedback: #09cacb;
+    --it-1: #0b1726;
+    --it-2: #f2f2f2;
+    --border-r-1: 5px;
+    --border-r-2: 100px;
+    --white: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: var(--it-1);
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
+// prettier-ignore
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 64px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+h3 {
+    font-size: 40px;
+}
+
+h4 {
+    font-size: 32px;
+}
+
+h5 {
+    font-size: 24px;
+
+    &.h5-regular {
+        font-weight: 400;
+    }
+}
+
+button {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    font-size: 14px;
+}
+
+.btn {
+    @extend %center;
+    padding: 12px 40px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-r-1);
+    cursor: pointer;
+    outline: none;
+    min-width: 136px;
+    height: 45px;
+    @extend %transition;
+    transition-property: background-color, color;
+
+    &:hover {
+        background-color: var(--primary-light);
+    }
+
+    &:active {
+        background-color: var(--primary-dark);
+    }
+
+    &-round {
+        border-radius: var(--border-r-2);
+        padding: 10px 30px;
+        min-width: 120px;
+        height: 40px;
+        border: 1px solid var(--primary);
+
+        &:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        &:active {
+            background-color: var(--it-2);
+        }
+    }
+
+    &-outline {
+        background-color: var(--white);
+        color: var(--primary);
+
+        &:hover {
+            color: var(--white);
+            background-color: var(--primary-light);
+        }
+
+        &:active {
+            background-color: var(--primary-dark);
+        }
+    }
+}
