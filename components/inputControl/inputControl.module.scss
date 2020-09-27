@@ -1,0 +1,47 @@
+@import '../../shared/global';
+
+.control {
+    $this: &;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background-color: var(--white);
+    border: 1px solid #acacac;
+    border-radius: var(--border-r-1);
+
+    &__input {
+        height: 40px;
+        width: 100%;
+        outline: none;
+        @extend %center;
+        padding: 0 15px;
+        position: relative;
+        z-index: 9;
+        background: none;
+        border: none;
+
+        &:focus,
+        &:active,
+        &:not(:placeholder-shown) {
+            + #{$this} {
+                &__label {
+                    transform: translateY(calc(-50% - 21px));
+                }
+            }
+        }
+    }
+
+    &__label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        z-index: 2;
+        transform: translateY(-50%);
+        font-size: 14px;
+        padding: 0 5px;
+        background-color: var(--white);
+        color: var(--it-1-opacity-5);
+        @extend %transition;
+        transition-property: transform;
+    }
+}
