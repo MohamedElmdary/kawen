@@ -10,7 +10,14 @@ const LandingPage: React.FC = () => {
                 <h1>init commit</h1>
             </div>
             <p className="h5 h5-regular">should have h5 styles</p>
-            <div style={{ margin: '50px' }}>
+            <div style={{ margin: '50px', padding: '20px' }}>
+                <InputControl
+                    label="Full Name"
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                />
+            </div>
+            <div style={{ margin: '50px', padding: '20px' }}>
                 <InputControl
                     label="Full Name"
                     value={value}
