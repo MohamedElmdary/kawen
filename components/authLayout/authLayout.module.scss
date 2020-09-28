@@ -1,0 +1,76 @@
+@import '../../shared/global';
+
+.auth {
+    margin: 50px auto;
+    max-width: 600px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.13);
+    border-radius: var(--border-r-1);
+
+    &__routes {
+        display: flex;
+
+        > div {
+            flex-basis: 50%;
+            position: relative;
+
+            &:first-of-type {
+                &::after {
+                    content: '';
+                    height: 100%;
+                    width: 100%;
+                    background-color: var(--it-2);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    transform-origin: left;
+                    transform: translateX(0);
+                    @extend %transition;
+                    transition-property: transform;
+                }
+
+                > button {
+                    color: var(--it-1-opacity-7);
+                }
+
+                + div > button {
+                    color: var(--primary);
+                }
+
+                &.active {
+                    &::after {
+                        transform: translateX(100%);
+                    }
+
+                    > button {
+                        color: var(--primary);
+                    }
+
+                    + div > button {
+                        color: var(--it-1-opacity-7);
+                    }
+                }
+            }
+
+            > button {
+                display: block;
+                width: 100%;
+                height: 70px;
+                background: none;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: 500;
+                position: relative;
+                z-index: 3;
+                @extend %transition;
+                transition-property: color;
+            }
+        }
+    }
+
+    &__container {
+        padding: 30px;
+    }
+}

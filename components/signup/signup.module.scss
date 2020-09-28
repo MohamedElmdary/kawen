@@ -1,0 +1,36 @@
+.register {
+    &__header {
+        text-align: center;
+        margin-bottom: 45px;
+
+        p {
+            max-width: 340px;
+            color: var(--it-1-opacity-6);
+            font-size: 18px;
+            margin: 0 auto;
+        }
+    }
+
+    &__forminput {
+        margin-bottom: 30px;
+    }
+
+    &__terms {
+        margin-bottom: 10px;
+
+        > p {
+            font-size: 14px;
+            font-weight: 500;
+
+            span {
+                color: var(--primary);
+            }
+        }
+    }
+
+    &__submit {
+        > button {
+            width: 100%;
+        }
+    }
+}

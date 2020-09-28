@@ -44,4 +44,21 @@
         @extend %transition;
         transition-property: transform;
     }
+
+    &__error {
+        position: absolute;
+        top: 100%;
+        left: 15px;
+        font-size: 13px;
+        transform: translateY(-15px);
+        opacity: 0;
+        color: var(--primary);
+        @extend %transition;
+        transition-property: transform, opacity;
+
+        &.active {
+            transform: translateY(1px);
+            opacity: 1;
+        }
+    }
 }

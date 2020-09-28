@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './navbar.module.scss';
 import SearchInput from '../searchInput';
+import Link from 'next/link';
 
 interface Props {
     logoOnly: boolean;
@@ -19,10 +20,16 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
                 <>
                     <SearchInput />
                     <div className={classes.navbar__actions}>
-                        <button className="btn btn-round btn-outline">
-                            Login
-                        </button>
-                        <button className="btn btn-round">Get Started</button>
+                        <Link href="/auth/[auth]" as="/auth/login">
+                            <button className="btn btn-round btn-outline">
+                                Login
+                            </button>
+                        </Link>
+                        <Link href="/auth/[auth]" as="/auth/signup">
+                            <button className="btn btn-round">
+                                Get Started
+                            </button>
+                        </Link>
                     </div>
                 </>
             )}
