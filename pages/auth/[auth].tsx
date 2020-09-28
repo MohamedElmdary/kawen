@@ -1,5 +1,7 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import AuthLayout from '../../components/authLayout';
+import Layout from '../../components/layout';
 
 interface Props {
     auth: 'login' | 'signup';
@@ -7,9 +9,13 @@ interface Props {
 
 const Auth: React.FC<Props> = ({ auth }) => {
     return (
-        <div>
-            <p>auth working - {auth}</p>
-        </div>
+        <Layout title={'Kawen | ' + auth} logoOnly>
+            <AuthLayout {...{ auth }}>
+                <div>
+                    <p>auth working - {auth}</p>
+                </div>
+            </AuthLayout>
+        </Layout>
     );
 };
 
