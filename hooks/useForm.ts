@@ -20,8 +20,8 @@ interface UseFormReturn {
     name: string;
     error: string;
     label: string;
-    onFocus?(e: FocusEvent<HTMLInputElement>): void;
     onChange(e: ChangeEvent<HTMLInputElement>): void;
+    onBlur?(e: FocusEvent<HTMLInputElement>): void;
     ref: RefObject<HTMLInputElement>;
     value: string;
 }
@@ -30,7 +30,7 @@ function useForm(inputs: UseFormOptions[]): UseFormReturn[] {
     const length = inputs.length;
     const refs = Array.from({ length }, () => useRef(null));
     const values = Array.from({ length }, () => useState(''));
-    const touched = Array.from({ length }, () => useRef(false));
+    const errors = Array.from({ length }, () => useState(''));
 
     const inputsValues = values.map(([value], index) => {
         const { name } = inputs[index];
@@ -39,27 +39,34 @@ function useForm(inputs: UseFormOptions[]): UseFormReturn[] {
 
     return inputs.map((input, i) => {
         const { type, label, name, validates } = input;
-        let error = '';
-        if (touched[i].current) {
+        const [value, setValue] = values[i];
+        const [error, setError] = errors[i];
+
+        const onBlur = (e: ChangeEvent<HTMLInputElement>) => {
             for (let x = 0; x < validates.length; x++) {
                 const validate = validates[x];
-                if (!validate.validate(values[i][0], inputsValues)) {
-                    error = validate.error;
-                    break;
+                if (!validate.validate(e.target.value, inputsValues)) {
+                    if (error !== validate.error) {
+                        setError(validate.error);
+                    }
+                    return;
                 }
             }
-        }
+            setError('');
+        };
+
         return {
             type,
             label,
             name,
             ref: refs[i],
-            onFocus: touched[i].current
-                ? undefined
-                : () => (touched[i].current = true),
-            onChange: (e) => values[i][1](e.target.value),
+            onBlur,
+            onChange: (e) => {
+                setValue(e.target.value);
+                onBlur(e);
+            },
             error,
-            value: values[i][0],
+            value,
         };
     });
 }

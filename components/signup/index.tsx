@@ -30,10 +30,64 @@ const SignUp: React.FC = () => {
                 },
             ],
         },
+        {
+            name: 'username1',
+            label: 'Full Name',
+            type: 'text',
+            validates: [
+                {
+                    validate(value) {
+                        return value.trim().length > 0;
+                    },
+                    error: 'Full Name is Required',
+                },
+                {
+                    validate(value) {
+                        return value.trim().length >= 3;
+                    },
+                    error: 'Full Name min length is 3 chars.',
+                },
+                {
+                    validate(value) {
+                        return value.trim().length <= 50;
+                    },
+                    error: 'Full Name max length is 50 chars.',
+                },
+            ],
+        },
+        {
+            name: 'username2',
+            label: 'Full Name',
+            type: 'text',
+            validates: [
+                {
+                    validate(value) {
+                        return value.trim().length === 0;
+                    },
+                    error: 'Full Name is Required',
+                },
+                {
+                    validate(value) {
+                        return value.trim().length < 3;
+                    },
+                    error: 'Full Name min length is 3 chars.',
+                },
+                {
+                    validate(value) {
+                        return value.trim().length > 50;
+                    },
+                    error: 'Full Name max length is 50 chars.',
+                },
+            ],
+        },
     ]);
 
     const signupFormCmp = signUpForm.map((inp) => {
-        return <InputControl key={inp.name} {...inp} />;
+        return (
+            <div key={inp.name} className={classes.register__forminput}>
+                <InputControl {...inp} />
+            </div>
+        );
     });
 
     return (
@@ -46,7 +100,10 @@ const SignUp: React.FC = () => {
                 </p>
             </div>
             <div className={classes.register__container}>
-                <form onFocus={(e) => {}}>{signupFormCmp}</form>
+                <form>
+                    {/* \n */}
+                    {signupFormCmp}
+                </form>
             </div>
         </section>
     );
