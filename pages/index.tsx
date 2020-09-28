@@ -15,7 +15,7 @@ const LandingPage: React.FC = () => {
             <p>body</p>
             <InputControl
                 {...{ value }}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e: any) => setValue(e.target.value)}
                 label="Full Name"
             />
             <p className="button">button style</p>
