@@ -2,8 +2,7 @@ import React, { FormEvent } from 'react';
 import classes from './signup.module.scss';
 import InputControl from '../inputControl';
 import useForm, { requiredValidate, getFormValue } from '../../hooks/useForm';
-
-const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+import { EMAIL_REGEX } from '../../constants/regex';
 
 const SignUp: React.FC = () => {
     const signUpForm = useForm([

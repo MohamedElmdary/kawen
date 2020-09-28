@@ -29,7 +29,7 @@ function _InputControl(
             <label className={classes.control__label}>{label}</label>
             <div
                 className={[
-                    error.length > 0 ? classes.active : '',
+                    error?.length > 0 ? classes.active : '',
                     classes.control__error,
                 ].join(' ')}
             >
