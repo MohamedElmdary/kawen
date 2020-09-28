@@ -10,11 +10,12 @@ interface Props {
 }
 
 const InputControl: React.FC<Props> = ({ children, label, ...inputProps }) => {
-    const { type = 'text', ...props } = inputProps;
+    const { type = 'text', ref, error, ...props } = inputProps;
 
     return (
         <div className={classes.control}>
             <input
+                ref={ref}
                 className={classes.control__input}
                 placeholder=" "
                 {...{ type, ...props }}

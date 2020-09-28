@@ -1,8 +1,41 @@
 import React from 'react';
 import classes from './signup.module.scss';
 import InputControl from '../inputControl';
+import useForm from '../../hooks/useForm';
 
 const SignUp: React.FC = () => {
+    const signUpForm = useForm([
+        {
+            name: 'username',
+            label: 'Full Name',
+            type: 'text',
+            validates: [
+                {
+                    validate(value) {
+                        return value.trim().length > 0;
+                    },
+                    error: 'Full Name is Required',
+                },
+                {
+                    validate(value) {
+                        return value.trim().length >= 3;
+                    },
+                    error: 'Full Name min length is 3 chars.',
+                },
+                {
+                    validate(value) {
+                        return value.trim().length <= 50;
+                    },
+                    error: 'Full Name max length is 50 chars.',
+                },
+            ],
+        },
+    ]);
+
+    const signupFormCmp = signUpForm.map((inp) => {
+        return <InputControl key={inp.name} {...inp} />;
+    });
+
     return (
         <section className={classes.register}>
             <div className={classes.register__header}>
@@ -13,26 +46,7 @@ const SignUp: React.FC = () => {
                 </p>
             </div>
             <div className={classes.register__container}>
-                <form>
-                    <InputControl
-                        label="Full Name"
-                        type="text"
-                        value=""
-                        onChange={() => {}}
-                    />
-                    <InputControl
-                        label="Full Name"
-                        type="text"
-                        value=""
-                        onChange={() => {}}
-                    />
-                    <InputControl
-                        label="Full Name"
-                        type="text"
-                        value=""
-                        onChange={() => {}}
-                    />
-                </form>
+                <form onFocus={(e) => {}}>{signupFormCmp}</form>
             </div>
         </section>
     );

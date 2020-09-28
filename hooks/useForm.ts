@@ -9,15 +9,14 @@ interface Validate {
 }
 
 interface UseFormOptions {
-    type: string;
+    type: 'text' | 'email' | 'number' | 'password';
     name: string;
     validates: Validate[];
     label: string;
-    required: boolean;
 }
 
 interface UseFormReturn {
-    type: string;
+    type: 'text' | 'email' | 'number' | 'password';
     name: string;
     error: string;
     label: string;
