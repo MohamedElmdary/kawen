@@ -1,0 +1,50 @@
+interface LearnPath {
+    id: number;
+    title: string;
+    description: string;
+    progress: number;
+    image: string;
+}
+
+interface Experience {
+    gained: number;
+    total: number;
+}
+
+interface Medal {
+    title: string;
+    image: string;
+}
+
+interface Productivity {
+    date: Date;
+    quizzes: number;
+    finalTest: number;
+}
+
+interface Certification {
+    title: string;
+    image: string;
+}
+
+export interface User {
+    id: number;
+    name: string;
+    learnPaths: LearnPath[];
+    level: number;
+    experience: Experience;
+    medals: Medal[];
+    productivities: Productivity[];
+    certifications: Certification[];
+}
+
+export interface AuthState {
+    currentUser: User | null;
+}
+
+interface SetCurrentUser {
+    type: '[Auth] SET_CURRENT_USER';
+    payload: User;
+}
+
+export type AuthActions = SetCurrentUser;
