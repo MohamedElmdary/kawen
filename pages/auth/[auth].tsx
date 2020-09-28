@@ -1,19 +1,30 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 
 interface Props {
     auth: 'login' | 'signup';
 }
 
-const Auth: React.FC<Props> = (props) => {
-    console.log(props);
-
+const Auth: React.FC<Props> = ({ auth }) => {
     return (
         <div>
-            <p>auth working - {props.auth}</p>
+            <p>auth working - {auth}</p>
         </div>
     );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [
+            {
+                params: { auth: 'login' },
+            },
+            {
+                params: { auth: 'signup' },
+            },
+        ],
+        fallback: false,
+    };
 };
 
 export const getStaticProps: GetStaticProps<any, any> = async (ctx) => {
@@ -25,24 +36,6 @@ export const getStaticProps: GetStaticProps<any, any> = async (ctx) => {
         props: {
             auth,
         },
-    };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [
-            {
-                params: {
-                    auth: 'login',
-                },
-            },
-            {
-                params: {
-                    auth: 'signup',
-                },
-            },
-        ],
-        fallback: true,
     };
 };
 
