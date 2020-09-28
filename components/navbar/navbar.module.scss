@@ -11,8 +11,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @supports (backdrop-filter: blur(7px)) {
-        backdrop-filter: blur(7px);
+    @supports (backdrop-filter: blur(5px)) {
+        backdrop-filter: blur(5px);
         background-color: var(--white-opacity-8);
     }
 
