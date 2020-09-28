@@ -9,7 +9,7 @@ interface Props {
 const App: React.FC<Props> = ({ Component, pageProps }) => {
     return (
         <>
-            <Component {...{ pageProps }} />
+            <Component {...pageProps} />
         </>
     );
 };
