@@ -1,17 +1,7 @@
-// @import '../../shared/global';
-
 .user {
     padding: 30px 20px;
 
     &__container {
         padding: 0 20px;
-    }
-
-    &__navbar {
-        height: 64px;
-        width: 100%;
-        border-radius: var(--border-r-1);
-        background-color: var(--it-2);
-        padding: 0 15px;
     }
 }
