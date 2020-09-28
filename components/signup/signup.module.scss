@@ -12,6 +12,25 @@
     }
 
     &__forminput {
-        margin-bottom: 25px;
+        margin-bottom: 30px;
+    }
+
+    &__terms {
+        margin-bottom: 10px;
+
+        > p {
+            font-size: 14px;
+            font-weight: 500;
+
+            span {
+                color: var(--primary);
+            }
+        }
+    }
+
+    &__submit {
+        > button {
+            width: 100%;
+        }
     }
 }

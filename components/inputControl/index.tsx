@@ -14,8 +14,7 @@ function _InputControl(
     { children, label, ...inputProps }: Props,
     ref: Ref<HTMLInputElement>
 ) {
-    const { type = 'text', ref: _, error, ...props } = inputProps;
-    console.log(props);
+    const { type = 'text', ref: _, touch: __, error, ...props } = inputProps;
 
     return (
         <div className={classes.control}>

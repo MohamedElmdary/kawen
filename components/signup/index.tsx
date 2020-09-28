@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import classes from './signup.module.scss';
 import InputControl from '../inputControl';
-import useForm from '../../hooks/useForm';
+import useForm, { requiredValidate, getFormValue } from '../../hooks/useForm';
+
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const SignUp: React.FC = () => {
     const signUpForm = useForm([
@@ -10,73 +12,63 @@ const SignUp: React.FC = () => {
             label: 'Full Name',
             type: 'text',
             validates: [
+                requiredValidate('Full Name'),
                 {
                     validate(value) {
-                        return value.trim().length > 0;
-                    },
-                    error: 'Full Name is Required',
-                },
-                {
-                    validate(value) {
-                        return value.trim().length >= 3;
+                        return value.length >= 3;
                     },
                     error: 'Full Name min length is 3 chars.',
                 },
                 {
                     validate(value) {
-                        return value.trim().length <= 50;
+                        return value.length <= 50;
                     },
                     error: 'Full Name max length is 50 chars.',
                 },
             ],
         },
         {
-            name: 'username1',
-            label: 'Full Name',
-            type: 'text',
+            name: 'email',
+            label: 'Email Address',
+            type: 'email',
             validates: [
+                requiredValidate('Email Address'),
                 {
                     validate(value) {
-                        return value.trim().length > 0;
+                        return EMAIL_REGEX.test(value);
                     },
-                    error: 'Full Name is Required',
-                },
-                {
-                    validate(value) {
-                        return value.trim().length >= 3;
-                    },
-                    error: 'Full Name min length is 3 chars.',
-                },
-                {
-                    validate(value) {
-                        return value.trim().length <= 50;
-                    },
-                    error: 'Full Name max length is 50 chars.',
+                    error: 'Invalid Email Adress.',
                 },
             ],
         },
         {
-            name: 'username2',
-            label: 'Full Name',
-            type: 'text',
+            name: 'password',
+            label: 'Password',
+            type: 'password',
             validates: [
+                requiredValidate('Password'),
                 {
                     validate(value) {
-                        return value.trim().length === 0;
+                        return value.length > 5;
                     },
-                    error: 'Full Name is Required',
+                    error: 'Password min length is 6.',
                 },
+            ],
+        },
+        {
+            name: 'confirm_password',
+            label: 'Confirm password',
+            type: 'password',
+            validates: [
+                requiredValidate('Confirm Password'),
                 {
-                    validate(value) {
-                        return value.trim().length < 3;
+                    validate(value, values) {
+                        const password = values.find(
+                            (input) => input.name === 'password'
+                        );
+                        return value === password?.value;
                     },
-                    error: 'Full Name min length is 3 chars.',
-                },
-                {
-                    validate(value) {
-                        return value.trim().length > 50;
-                    },
-                    error: 'Full Name max length is 50 chars.',
+                    error: 'Passwords does not match.',
                 },
             ],
         },
@@ -90,6 +82,17 @@ const SignUp: React.FC = () => {
         );
     });
 
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const { valid, values, input } = getFormValue(signUpForm);
+        if (valid) {
+            // submit form
+            console.log(values);
+            return;
+        }
+        input?.focus();
+    };
+
     return (
         <section className={classes.register}>
             <div className={classes.register__header}>
@@ -100,9 +103,21 @@ const SignUp: React.FC = () => {
                 </p>
             </div>
             <div className={classes.register__container}>
-                <form>
+                <form {...{ onSubmit }}>
                     {/* \n */}
                     {signupFormCmp}
+                    <div className={classes.register__terms}>
+                        <p>
+                            By clicking Sign Up, you agree to our{' '}
+                            <span>Terms of Use</span> and our{' '}
+                            <span>Privacy Policy.</span>
+                        </p>
+                    </div>
+                    <div className={classes.register__submit}>
+                        <button className="btn" type="submit">
+                            Sign Up
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>
