@@ -9,6 +9,12 @@
     transition-timing-function: ease;
 }
 
+%bg {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
 @mixin nice-scroll {
     &::-webkit-scrollbar {
         width: 6px;

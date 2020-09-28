@@ -17,7 +17,7 @@ interface Medal {
 }
 
 interface Productivity {
-    date: Date;
+    date: number;
     quizzes: number;
     finalTest: number;
 }
@@ -36,6 +36,8 @@ export interface User {
     medals: Medal[];
     productivities: Productivity[];
     certifications: Certification[];
+    cover: string;
+    image: string;
 }
 
 export interface AuthState {
