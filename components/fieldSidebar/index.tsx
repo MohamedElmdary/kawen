@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import classes from "./fieldSidBar.module.scss";
+import classes from "./fieldSidbar.module.scss";
 
 export interface IFieldSidebar {
     field: string;
