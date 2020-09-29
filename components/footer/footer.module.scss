@@ -31,4 +31,10 @@
             margin: 0 15px;
         }
     }
+
+    @media (max-width: 667px) {
+        p {
+            display: none;
+        }
+    }
 }
