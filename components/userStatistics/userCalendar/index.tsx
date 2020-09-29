@@ -15,7 +15,7 @@ interface Props {
 
 const UserCalendar: React.FC<Props> = ({ productivities }) => {
     const pRef = useRef<HTMLParagraphElement>(null);
-    const [width, setWidth] = useState<string | undefined>(undefined);
+    const [height, setHeight] = useState<string | undefined>(undefined);
     const { offset, setOffset, ...date } = useDate(0);
 
     const { startDayIndex } = date.current;
@@ -50,7 +50,7 @@ const UserCalendar: React.FC<Props> = ({ productivities }) => {
                         classes.calendar__day__prev,
                         isToday(thisDay, date.today) ? classes.today : '',
                     ].join(' ')}
-                    style={{ width }}
+                    style={{ height }}
                 >
                     {thisDay.day}
                 </p>
@@ -73,7 +73,7 @@ const UserCalendar: React.FC<Props> = ({ productivities }) => {
         return (
             <div {...{ key }} style={{ position: 'relative' }}>
                 <p
-                    style={{ width }}
+                    style={{ height }}
                     className={[
                         classes.calendar__day__current,
                         !today && activity ? classes.active : '',
@@ -105,7 +105,7 @@ const UserCalendar: React.FC<Props> = ({ productivities }) => {
         return (
             <div {...{ key }}>
                 <p
-                    style={{ width }}
+                    style={{ height }}
                     className={[
                         classes.calendar__day__next,
                         isToday(thisDay, date.today) ? classes.today : '',
@@ -118,8 +118,13 @@ const UserCalendar: React.FC<Props> = ({ productivities }) => {
     });
 
     useEffect(() => {
-        setWidth(pRef.current?.offsetHeight + 'px');
-    }, []);
+        const _onResize = () => setHeight(pRef.current?.offsetWidth + 'px');
+        _onResize();
+        window?.addEventListener('resize', _onResize);
+        return () => {
+            window?.removeEventListener('resize', _onResize);
+        };
+    }, [pRef.current?.offsetWidth]);
 
     return (
         <section className={classes.calendar}>
