@@ -13,7 +13,11 @@ export interface IFieldSidebar {
     };
 }
 
-const FieldSidebar: React.FC<{ data: IFieldSidebar }> = ({ data }) => {
+const FieldSidebar: React.FC<{
+    data: IFieldSidebar;
+    currentLevel: string;
+    changeLevel: (level: string) => void;
+}> = ({ data, changeLevel, currentLevel }) => {
     const { field, image, learning_path } = data;
 
     return (
@@ -31,14 +35,18 @@ const FieldSidebar: React.FC<{ data: IFieldSidebar }> = ({ data }) => {
             </header>
             <div className={classes.levels}>
                 {Object.keys(learning_path).map((level) => (
-                    <button key={level}>
+                    <button
+                        key={level}
+                        onClick={() => changeLevel(level)}
+                        className={currentLevel === level ? classes.active : ""}
+                    >
                         {`${level} level (${learning_path[level].nick_name})`}
                         <span>
-                            {learning_path[level].progress === 100
-                                ? '<img src="/images/correct.svg" alt="End path" />'
-                                : learning_path[level].progress
-                                ? `${learning_path[level].progress}%`
-                                : null}
+                            {learning_path[level].progress === 100 ? (
+                                <img src="/images/correct.svg" alt="End path" />
+                            ) : learning_path[level].progress ? (
+                                `${learning_path[level].progress}%`
+                            ) : null}
                         </span>
                     </button>
                 ))}
