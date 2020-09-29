@@ -25,12 +25,18 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
     // const me = currentUser?.id === user.id;
 
     return (
-        <Layout title="kawen | User Profile">
+        <Layout title={'kawen | User ' + NAVITEMS[active]}>
             <section className={classes.user}>
                 <ProfileHeader {...{ user }} />
                 <div className={classes.user__container}>
                     <ProfileNavbar {...{ active, setActive }} />
-                    <UserStatistics {...{ user }} />
+                    {active === 0 ? (
+                        <UserStatistics {...{ user }} />
+                    ) : active === 1 ? (
+                        <p>contacts</p>
+                    ) : (
+                        <p>Challenge groups</p>
+                    )}
                 </div>
             </section>
         </Layout>
