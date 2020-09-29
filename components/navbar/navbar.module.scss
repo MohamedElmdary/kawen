@@ -1,3 +1,5 @@
+@import '../../shared/global';
+
 .navbar {
     height: 64px;
     position: fixed;
@@ -23,9 +25,32 @@
 
     &__actions {
         display: flex;
+        overflow: hidden;
+        @extend %transition;
+        transition-property: width;
 
-        > button:first-of-type {
-            margin: 0 15px;
+        > button {
+            &:first-of-type {
+                margin: 0 15px;
+            }
+
+            @media (max-width: 667px) {
+                min-width: auto;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        &__focus {
+            width: 0;
         }
     }
 }
+
+// @media (max-width: 667px) {
+//     .navbar {
+//         > div:nth-of-type(2) {
+
+//         }
+//     }
+// }

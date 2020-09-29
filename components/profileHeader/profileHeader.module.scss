@@ -1,0 +1,48 @@
+@import '../../shared/global';
+
+.user {
+    &__header {
+        margin-bottom: 30px;
+    }
+
+    &__cover {
+        position: relative;
+        height: 370px;
+        border-radius: calc(var(--border-r-1) * 2);
+        width: 100%;
+        @extend %bg;
+    }
+
+    &__image {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, 30px);
+        border: 5px solid var(--white);
+        @extend %bg;
+    }
+
+    &__level {
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        top: 5px;
+        right: 20px;
+        background-color: var(--white);
+        border: 2px solid var(--primary);
+        @extend %center;
+
+        > span {
+            font-weight: 600;
+        }
+    }
+
+    &__head {
+        margin-top: 40px;
+        text-align: center;
+    }
+}

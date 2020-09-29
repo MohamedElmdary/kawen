@@ -1,0 +1,9 @@
+.productivity {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    > h3 {
+        margin-bottom: 15px;
+    }
+}

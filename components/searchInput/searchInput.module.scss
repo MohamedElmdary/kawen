@@ -1,23 +1,42 @@
+@import '../../shared/global';
+
 .search {
     flex-grow: 1;
     position: relative;
+    @extend %transition;
+    transition-property: width;
+    background-color: var(--it-2);
+    border-radius: var(--border-r-2);
 
     &__icon {
         position: absolute;
         top: 50%;
         left: 15px;
         transform: translateY(-50%);
+        z-index: 1;
     }
 
     &__input {
         padding-left: 40px;
         padding-right: 15px;
-        background-color: var(--it-2);
+        background: none;
         height: 40px;
         border-radius: var(--border-r-2);
         display: block;
         width: 100%;
         outline: none;
         border: none;
+        position: relative;
+        z-index: 2;
+    }
+
+    @media (max-width: 667px) {
+        width: 46px;
+        margin-right: auto;
+        flex-grow: initial;
+    }
+
+    &__focus {
+        width: 100%;
     }
 }

@@ -1,0 +1,64 @@
+@import '../../shared/global';
+
+.navbar {
+    height: 64px;
+    width: 100%;
+    border-radius: var(--border-r-1);
+    background-color: var(--it-2);
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__list {
+        display: flex;
+        height: 100%;
+        position: relative;
+    }
+
+    &__item {
+        height: 100%;
+        padding: 0 15px;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        @extend %transition;
+        transition-property: color;
+
+        &.active {
+            color: var(--primary);
+        }
+    }
+
+    &__indicator {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 1px;
+        height: 3px;
+        background-color: var(--primary);
+        transform-origin: left;
+        @extend %transition;
+        transition-property: transform;
+    }
+
+    &__actions {
+        > button {
+            height: 32px;
+
+            > img {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.md__btn {
+    min-width: auto;
+    padding: 0 15px;
+
+    img {
+        margin: 0 !important;
+    }
+}

@@ -9,6 +9,19 @@
     transition-timing-function: ease;
 }
 
+%bg {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+%clip-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
 @mixin nice-scroll {
     &::-webkit-scrollbar {
         width: 6px;
