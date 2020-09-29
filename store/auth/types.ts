@@ -27,6 +27,16 @@ interface Certification {
     image: string;
 }
 
+interface Contact {
+    id: string /* related User Id */;
+    image: string;
+    title: string /* user name */;
+}
+
+interface Challenge extends Contact {
+    subTitle: string;
+}
+
 export interface User {
     id: number;
     name: string;
@@ -38,6 +48,8 @@ export interface User {
     certifications: Certification[];
     cover: string;
     image: string;
+    contacts: Contact[];
+    challenges: Challenge[];
 }
 
 export interface AuthState {

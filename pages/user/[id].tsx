@@ -12,6 +12,8 @@ import ProfileNavbar from '../../components/profileNavbar';
 import { useRouter } from 'next/router';
 import { NAVITEMS } from '../../constants/data';
 import UserStatistics from '../../components/userStatistics';
+import ContactItem from '../../components/contactItem';
+import UserContacts from '../../components/userContacts';
 
 interface Props {
     user: User;
@@ -33,9 +35,9 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
                     {active === 0 ? (
                         <UserStatistics {...{ user }} />
                     ) : active === 1 ? (
-                        <p>contacts</p>
+                        <UserContacts contacts={user.contacts} />
                     ) : (
-                        <p>Challenge groups</p>
+                        <UserContacts contacts={user.challenges} />
                     )}
                 </div>
             </section>

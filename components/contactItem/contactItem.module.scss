@@ -1,0 +1,30 @@
+@import '../../shared/global';
+
+.contact {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &__image {
+        margin-right: 8px;
+        height: 56px;
+        width: 56px;
+        border-radius: 50%;
+        @extend %bg;
+    }
+
+    &__details {
+        h5 {
+            @extend %clip-text;
+            -webkit-line-clamp: 1;
+        }
+
+        p {
+            margin-top: -3px;
+            color: var(--it-1-opacity-7);
+            @extend %clip-text;
+            -webkit-line-clamp: 1;
+        }
+    }
+}

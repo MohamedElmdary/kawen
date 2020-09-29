@@ -105,6 +105,21 @@ const users: User[] = [
                 image: 'http://placehold.it/50x50',
             },
         ],
+        contacts: Array.from({ length: 50 }, (_, id) => {
+            return {
+                id,
+                image: `http://placehold.it/${50 + id}/${50 + id}`,
+                title: `Hassan M. Elmansy - ${id}`,
+            } as any;
+        }),
+        challenges: Array.from({ length: 50 }, (_, id) => {
+            return {
+                id,
+                image: `http://placehold.it/${100 + id}/${100 + id}`,
+                title: `Hassan M. Elmansy - ${id}`,
+                subTitle: 'Front End Team Leader',
+            } as any;
+        }),
     },
     {
         id: 1,
@@ -166,6 +181,21 @@ const users: User[] = [
                 image: 'http://placehold.it/50x50',
             },
         ],
+        contacts: Array.from({ length: 50 }, (_, id) => {
+            return {
+                id,
+                image: `http://placehold.it/${50 + id}/${50 + id}`,
+                title: `Hassan M. Elmansy - ${id}`,
+            } as any;
+        }),
+        challenges: Array.from({ length: 50 }, (_, id) => {
+            return {
+                id,
+                image: `http://placehold.it/${100 + id}/${100 + id}`,
+                title: `Hassan M. Elmansy - ${id}`,
+                subTitle: 'Front End Team Leader',
+            } as any;
+        }),
     },
 ];
 
