@@ -58,19 +58,21 @@ const FieldOverview: React.FC<Props> = ({ field, description, field_overview, le
                         </React.Fragment>
                     ))}
                 </section>
-                <section className={`${classes.enroll_features}`}>
-                    <h3 className="h5 h5-regular">Enrollment features</h3>
-                    <ul>
-                        <li>Take quizzes</li>
-                        <li>Take Tasks</li>
-                        <li>Submit projects</li>
-                        <li>Join your classmates chat</li>
-                        <li>Follow your progress</li>
-                        <li>Challenge your friends</li>
-                    </ul>
-                    <Link href="/">
-                        <button className="btn">Enroll now</button>
-                    </Link>
+                <section>
+                    <section className={`${classes.enroll_features}`}>
+                        <h3 className="h5 h5-regular">Enrollment features</h3>
+                        <ul>
+                            <li>Take quizzes</li>
+                            <li>Take Tasks</li>
+                            <li>Submit projects</li>
+                            <li>Join your classmates chat</li>
+                            <li>Follow your progress</li>
+                            <li>Challenge your friends</li>
+                        </ul>
+                        <Link href="/">
+                            <button className="btn">Enroll now</button>
+                        </Link>
+                    </section>
                 </section>
             </section>
         </Layout>
