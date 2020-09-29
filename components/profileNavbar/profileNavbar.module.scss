@@ -53,3 +53,16 @@
         }
     }
 }
+
+.md__btn {
+    min-width: auto;
+    padding: 0 15px;
+
+    img {
+        margin: 0 !important;
+    }
+
+    span {
+        display: none;
+    }
+}

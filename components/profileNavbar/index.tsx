@@ -3,6 +3,7 @@ import classes from './profileNavbar.module.scss';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { NAVITEMS } from '../../constants/data';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
 interface Props {
     active: number;
@@ -12,6 +13,7 @@ interface Props {
 const length = NAVITEMS.length;
 
 const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
+    const isMd = useMediaQuery('(max-width: 667px)');
     const router = useRouter();
     const refs = Array.from({ length }, () => useRef<HTMLButtonElement>(null));
     const [[left, width], setLeftWidth] = useState([0, 0]);
@@ -61,7 +63,9 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
                 />
             </div>
             <div className={classes.navbar__actions}>
-                <button className="btn">
+                <button
+                    className={['btn', isMd ? classes.md__btn : ''].join(' ')}
+                >
                     <img src="/images/icons/edit.svg" alt="edit icon" />
                     <span>Edit Profile</span>
                 </button>
