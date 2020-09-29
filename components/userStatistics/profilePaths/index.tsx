@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './profilePaths.module.scss';
-import { User } from '../../store/auth';
+import { User } from '../../../store/auth';
 
 interface Props {
     paths: User['learnPaths'];
