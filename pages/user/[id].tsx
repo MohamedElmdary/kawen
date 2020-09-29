@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../../components/layout';
-import { useSelector } from 'react-redux';
-import { AppState } from '../../store';
+// import { useSelector } from 'react-redux';
+// import { AppState } from '../../store';
 import classes from './user.module.scss';
 import { GetServerSideProps } from 'next';
 import { User } from '../../store/auth';
@@ -9,10 +9,8 @@ import { User } from '../../store/auth';
 import users from '../../data/users';
 import ProfileHeader from '../../components/profileHeader';
 import ProfileNavbar from '../../components/profileNavbar';
-import { useRouter } from 'next/router';
 import { NAVITEMS } from '../../constants/data';
 import UserStatistics from '../../components/userStatistics';
-import ContactItem from '../../components/contactItem';
 import UserContacts from '../../components/userContacts';
 
 interface Props {
@@ -21,9 +19,8 @@ interface Props {
 }
 
 const UserProfile: React.FC<Props> = ({ user, activePage }) => {
-    const router = useRouter();
     const [active, setActive] = useState(activePage);
-    const currentUser = useSelector(({ auth }: AppState) => auth.currentUser);
+    // const currentUser = useSelector(({ auth }: AppState) => auth.currentUser);
     // const me = currentUser?.id === user.id;
 
     return (
