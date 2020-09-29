@@ -1,4 +1,8 @@
 .progression {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
     h3 {
         margin-bottom: 16px;
     }
@@ -9,7 +13,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         width: 100%;
+        flex-grow: 1;
     }
 
     &__exp {

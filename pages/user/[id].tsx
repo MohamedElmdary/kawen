@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import { NAVITEMS } from '../../constants/data';
 import ProfilePaths from '../../components/profilePaths';
 import UserProgression from '../../components/userProgression';
+import UserProductivity from '../../components/userProductivity';
 
 interface Props {
     user: User;
@@ -32,12 +33,27 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
                 <div className={classes.user__container}>
                     <ProfileNavbar {...{ active, setActive }} />
                     <ProfilePaths paths={user.learnPaths} />
-                    <div style={{ width: 'calc(100% / 3)' }}>
-                        <UserProgression
-                            level={user.level}
-                            experience={user.experience}
-                            medals={user.medals}
-                        />
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <div style={{ width: 'calc(100% / 3 - 20px)' }}>
+                            <UserProgression
+                                level={user.level}
+                                experience={user.experience}
+                                medals={user.medals}
+                            />
+                        </div>
+                        <div style={{ width: 'calc(100% / 3 - 20px)' }}>
+                            <UserProductivity
+                                productivities={user.productivities}
+                            />
+                        </div>
+                        <div style={{ width: 'calc(100% / 3 - 20px)' }}>
+                            later
+                        </div>
                     </div>
                 </div>
             </section>

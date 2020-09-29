@@ -28,7 +28,37 @@ const users: User[] = [
         ],
         productivities: [
             {
-                date: new Date().getTime(),
+                date: new Date(2020, 8, 5).getTime(),
+                finalTest: 1,
+                quizzes: 6,
+            },
+            {
+                date: new Date(2020, 8, 19).getTime(),
+                finalTest: 1,
+                quizzes: 6,
+            },
+            {
+                date: new Date(2020, 8, 5).getTime(),
+                finalTest: 1,
+                quizzes: 6,
+            },
+            {
+                date: new Date(2020, 8, 13).getTime(),
+                finalTest: 1,
+                quizzes: 6,
+            },
+            {
+                date: new Date(2020, 8, 16).getTime(),
+                finalTest: 1,
+                quizzes: 6,
+            },
+            {
+                date: new Date(2020, 8, 14).getTime(),
+                finalTest: 1,
+                quizzes: 6,
+            },
+            {
+                date: new Date(2020, 8, 18).getTime(),
                 finalTest: 1,
                 quizzes: 6,
             },
@@ -89,7 +119,7 @@ const users: User[] = [
         ],
         productivities: [
             {
-                date: new Date().getTime(),
+                date: new Date(2020, 8, 18).getTime(),
                 finalTest: 1,
                 quizzes: 6,
             },
