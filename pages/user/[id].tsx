@@ -14,6 +14,7 @@ import { NAVITEMS } from '../../constants/data';
 import ProfilePaths from '../../components/profilePaths';
 import UserProgression from '../../components/userProgression';
 import UserProductivity from '../../components/userProductivity';
+import UserCertifications from '../../components/userCertifications';
 
 interface Props {
     user: User;
@@ -37,22 +38,33 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
                         style={{
                             display: 'flex',
                             justifyContent: 'space-between',
+                            alignItems: 'flex-start',
                         }}
                     >
-                        <div style={{ width: 'calc(100% / 3 - 20px)' }}>
-                            <UserProgression
-                                level={user.level}
-                                experience={user.experience}
-                                medals={user.medals}
-                            />
+                        <div
+                            style={{
+                                width: 'calc((100% / 3) * 2)',
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <div style={{ width: 'calc(100% / 2 - 20px)' }}>
+                                <UserProgression
+                                    level={user.level}
+                                    experience={user.experience}
+                                    medals={user.medals}
+                                />
+                            </div>
+                            <div style={{ width: 'calc(100% / 2 - 20px)' }}>
+                                <UserProductivity
+                                    productivities={user.productivities}
+                                />
+                            </div>
                         </div>
                         <div style={{ width: 'calc(100% / 3 - 20px)' }}>
-                            <UserProductivity
-                                productivities={user.productivities}
+                            <UserCertifications
+                                certifications={user.certifications}
                             />
-                        </div>
-                        <div style={{ width: 'calc(100% / 3 - 20px)' }}>
-                            later
                         </div>
                     </div>
                 </div>

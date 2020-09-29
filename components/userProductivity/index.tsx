@@ -10,7 +10,7 @@ interface Props {
 const UserProductivity: React.FC<Props> = ({ productivities }) => {
     return (
         <section className={classes.productivity}>
-            <h3 className="h5">Progression</h3>
+            <h3 className="h5">Productivity</h3>
             <UserCalendar {...{ productivities }} />
         </section>
     );

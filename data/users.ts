@@ -25,6 +25,34 @@ const users: User[] = [
                 title: 'Front End Development Track',
                 image: 'http://placehold.it/30x30',
             },
+            {
+                title: 'Front End Development Track 1',
+                image: 'http://placehold.it/30x30',
+            },
+            {
+                title: 'Front End Development Track 2',
+                image: 'http://placehold.it/30x30',
+            },
+            {
+                title: 'Front End Development Track 3',
+                image: 'http://placehold.it/30x30',
+            },
+            {
+                title: 'Front End Development Track 4',
+                image: 'http://placehold.it/30x30',
+            },
+            {
+                title: 'Front End Development Track 5',
+                image: 'http://placehold.it/30x30',
+            },
+            {
+                title: 'Front End Development Track 6',
+                image: 'http://placehold.it/30x30',
+            },
+            {
+                title: 'Front End Development Track 7',
+                image: 'http://placehold.it/30x30',
+            },
         ],
         productivities: [
             {
