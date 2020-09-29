@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import classes from './userCalendar.module.scss';
-import { User } from '../../store/auth';
-import { DAYS } from '../../constants/data';
-import useDate from '../../hooks/useDate';
-import toArray from '../../shared/utils/toArray';
-import getDateDetails, {
+import { User } from '../../../store/auth';
+import { DAYS } from '../../../constants/data';
+import useDate from '../../../hooks/useDate';
+import toArray from '../../../shared/utils/toArray';
+import {
     isToday,
     getTodayProductivity,
-} from '../../shared/utils/getDateDetails';
+} from '../../../shared/utils/getDateDetails';
 
 interface Props {
     productivities: User['productivities'];

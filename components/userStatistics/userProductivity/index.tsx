@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './userProductivity.module.scss';
 import UserCalendar from '../userCalendar';
-import { User } from '../../store/auth';
+import { User } from '../../../store/auth';
 
 interface Props {
     productivities: User['productivities'];

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './userProgression.module.scss';
-import { User } from '../../store/auth';
-import SvgCircle from '../svgCircle';
+import { User } from '../../../store/auth';
+import SvgCircle from '../../svgCircle';
 
 interface Props {
     level: User['level'];

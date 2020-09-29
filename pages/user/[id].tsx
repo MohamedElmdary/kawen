@@ -11,10 +11,7 @@ import ProfileHeader from '../../components/profileHeader';
 import ProfileNavbar from '../../components/profileNavbar';
 import { useRouter } from 'next/router';
 import { NAVITEMS } from '../../constants/data';
-import ProfilePaths from '../../components/profilePaths';
-import UserProgression from '../../components/userProgression';
-import UserProductivity from '../../components/userProductivity';
-import UserCertifications from '../../components/userCertifications';
+import UserStatistics from '../../components/userStatistics';
 
 interface Props {
     user: User;
@@ -33,40 +30,7 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
                 <ProfileHeader {...{ user }} />
                 <div className={classes.user__container}>
                     <ProfileNavbar {...{ active, setActive }} />
-                    <ProfilePaths paths={user.learnPaths} />
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'flex-start',
-                        }}
-                    >
-                        <div
-                            style={{
-                                width: 'calc((100% / 3) * 2)',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                            }}
-                        >
-                            <div style={{ width: 'calc(100% / 2 - 20px)' }}>
-                                <UserProgression
-                                    level={user.level}
-                                    experience={user.experience}
-                                    medals={user.medals}
-                                />
-                            </div>
-                            <div style={{ width: 'calc(100% / 2 - 20px)' }}>
-                                <UserProductivity
-                                    productivities={user.productivities}
-                                />
-                            </div>
-                        </div>
-                        <div style={{ width: 'calc(100% / 3 - 20px)' }}>
-                            <UserCertifications
-                                certifications={user.certifications}
-                            />
-                        </div>
-                    </div>
+                    <UserStatistics {...{ user }} />
                 </div>
             </section>
         </Layout>
