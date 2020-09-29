@@ -1,0 +1,87 @@
+@import '../../shared/global';
+
+.paths {
+    margin: 40px 0;
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    &__path {
+        box-shadow: 0px 1px 5px 1px rgba(74, 74, 74, 0.09);
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    &__details {
+        padding: 20px;
+        width: 70%;
+    }
+
+    &__title {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    &__description {
+        line-height: 24px;
+        color: var(--it-1-opacity-7);
+        margin-bottom: 16px;
+    }
+
+    &__progress {
+        margin-bottom: 20px;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+
+            p {
+                font-size: 14px;
+                color: var(--it-1-opacity-7);
+            }
+        }
+
+        &__progressbar {
+            height: 3px;
+            width: 100%;
+            background: #c4c4c4;
+            position: relative;
+
+            &__bar {
+                position: absolute;
+                height: 3px;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background-color: var(--feedback);
+                transform-origin: left;
+                transform: scaleX(1);
+                @extend %transition;
+                transition-property: transform;
+            }
+
+            &__indicator {
+                position: absolute;
+                height: 10px;
+                width: 10px;
+                left: 0;
+                top: calc(50% - 5px);
+                background-color: var(--feedback);
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &__image {
+        width: 30%;
+
+        > div {
+            height: 100%;
+            width: 100%;
+            @extend %bg;
+        }
+    }
+}

@@ -34,7 +34,8 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
         };
         const className = [
             classes.navbar__item,
-            active === i ? classes.active : 'h5-regular',
+            'h5-regular',
+            active === i ? classes.active : '',
         ].join(' ');
 
         const as = '/user/' + router.query.id + (i === 0 ? '' : '?page=' + key);

@@ -11,6 +11,7 @@ import ProfileHeader from '../../components/profileHeader';
 import ProfileNavbar from '../../components/profileNavbar';
 import { useRouter } from 'next/router';
 import { NAVITEMS } from '../../constants/data';
+import ProfilePaths from '../../components/profilePaths';
 
 interface Props {
     user: User;
@@ -29,6 +30,7 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
                 <ProfileHeader {...{ user }} />
                 <div className={classes.user__container}>
                     <ProfileNavbar {...{ active, setActive }} />
+                    <ProfilePaths paths={user.learnPaths} />
                 </div>
             </section>
         </Layout>
