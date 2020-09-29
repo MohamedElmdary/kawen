@@ -12,6 +12,7 @@ import ProfileNavbar from '../../components/profileNavbar';
 import { useRouter } from 'next/router';
 import { NAVITEMS } from '../../constants/data';
 import ProfilePaths from '../../components/profilePaths';
+import SvgCircle from '../../components/svgCircle';
 
 interface Props {
     user: User;
@@ -31,6 +32,9 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
                 <div className={classes.user__container}>
                     <ProfileNavbar {...{ active, setActive }} />
                     <ProfilePaths paths={user.learnPaths} />
+                    <div style={{ width: '100px' }}>
+                        <SvgCircle progress={0.8} />
+                    </div>
                 </div>
             </section>
         </Layout>
