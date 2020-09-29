@@ -16,6 +16,10 @@
     &__details {
         padding: 20px;
         width: 70%;
+
+        @media (max-width: 1024px) {
+            width: 60%;
+        }
     }
 
     &__title {
@@ -27,12 +31,16 @@
         line-height: 24px;
         color: var(--it-1-opacity-7);
         margin-bottom: 16px;
+        @extend %clip-text;
+        -webkit-line-clamp: 6;
 
-        /* overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical; */
+        @media (max-width: 667px) {
+            -webkit-line-clamp: 3;
+        }
+
+        @media (max-width: 500px) {
+            -webkit-line-clamp: 1;
+        }
     }
 
     &__progress {
@@ -83,6 +91,10 @@
 
     &__image {
         width: 30%;
+
+        @media (max-width: 1024px) {
+            width: 40%;
+        }
 
         > div {
             height: 100%;
