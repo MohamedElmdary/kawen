@@ -67,7 +67,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
                     className={['btn', isMd ? classes.md__btn : ''].join(' ')}
                 >
                     <img src="/images/icons/edit.svg" alt="edit icon" />
-                    <span>Edit Profile</span>
+                    {!isMd && <span>Edit Profile</span>}
                 </button>
             </div>
         </div>

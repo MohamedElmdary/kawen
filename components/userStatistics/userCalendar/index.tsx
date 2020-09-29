@@ -8,12 +8,16 @@ import {
     isToday,
     getTodayProductivity,
 } from '../../../shared/utils/getDateDetails';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
 interface Props {
     productivities: User['productivities'];
 }
 
 const UserCalendar: React.FC<Props> = ({ productivities }) => {
+    const isLaptop = useMediaQuery(
+        '(max-width: 1024px) and (min-width: 667px)'
+    );
     const pRef = useRef<HTMLParagraphElement>(null);
     const [height, setHeight] = useState<string | undefined>(undefined);
     const { offset, setOffset, ...date } = useDate(0);
@@ -124,7 +128,7 @@ const UserCalendar: React.FC<Props> = ({ productivities }) => {
         return () => {
             window?.removeEventListener('resize', _onResize);
         };
-    }, [pRef.current?.offsetWidth]);
+    }, [pRef.current?.offsetWidth, isLaptop]);
 
     return (
         <section className={classes.calendar}>
