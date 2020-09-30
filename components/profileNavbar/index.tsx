@@ -24,7 +24,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
 
     useEffect(() => {
         setIndicator(refs[active].current as HTMLElement);
-    }, []);
+    }, [active]);
 
     const links = NAVITEMS.map((key, i) => {
         const ref = refs[i];
