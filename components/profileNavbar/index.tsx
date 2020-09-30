@@ -14,6 +14,7 @@ const length = NAVITEMS.length;
 
 const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
     const isMd = useMediaQuery('(max-width: 667px)');
+    const isSm = useMediaQuery('(max-width: 500px)');
     const router = useRouter();
     const refs = Array.from({ length }, () => useRef<HTMLButtonElement>(null));
     const [[left, width], setLeftWidth] = useState([0, 0]);
@@ -24,7 +25,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
 
     useEffect(() => {
         setIndicator(refs[active].current as HTMLElement);
-    }, []);
+    }, [isSm]);
 
     const links = NAVITEMS.map((key, i) => {
         const ref = refs[i];
@@ -38,6 +39,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
             classes.navbar__item,
             'h5-regular',
             active === i ? classes.active : '',
+            isSm ? classes.is__sm : ''
         ].join(' ');
 
         const as = '/user/' + router.query.id + (i === 0 ? '' : '?page=' + key);
@@ -45,7 +47,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
             <Link href="/user/[id]" {...{ key, as }} scroll={false}>
                 <button {...{ ref, className, onClick }}>
                     {/* \n */}
-                    {key}
+                    {isSm ? key.split(" ").pop() : key}
                 </button>
             </Link>
         );
@@ -64,7 +66,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
             </div>
             <div className={classes.navbar__actions}>
                 <button
-                    className={['btn', isMd ? classes.md__btn : ''].join(' ')}
+                    className={['btn', isMd ? classes.md__btn : '', isSm ? classes.sm__btn : ''].join(' ')}
                 >
                     <img src="/images/icons/edit.svg" alt="edit icon" />
                     {!isMd && <span>Edit Profile</span>}
