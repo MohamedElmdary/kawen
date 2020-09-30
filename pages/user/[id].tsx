@@ -22,6 +22,7 @@ interface Props {
 const UserProfile: React.FC<Props> = ({ user, activePage }) => {
     const router = useRouter();
     const [active, setActive] = useState(activePage);
+    const [edit, setEdit] = useState(false);
     const currentUser = useSelector(({ auth }: AppState) => auth.currentUser);
     const me = currentUser?.id === user.id;
 
@@ -34,21 +35,36 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
         }
     }, [router.query.page, router.query.id]);
 
+    useEffect(() => {
+        if (edit) {
+            window.scroll({
+                top: 0,
+                behavior: 'smooth',
+            });
+        }
+    }, [edit]);
+
     return (
-        <Layout title={'kawen | User ' + NAVITEMS[active]}>
+        <Layout title={'kawen | User ' + NAVITEMS[active]} {...{ edit }}>
+            {edit && <div className={classes.navbar__overlay} />}
             <section className={classes.user}>
                 <ProfileHeader {...{ user }} />
                 <div className={classes.user__container}>
-                    <ProfileNavbar {...{ active, setActive, me }} />
-                    {active === 0 ? (
-                        <UserStatistics {...{ user }} />
-                    ) : active === 1 ? (
-                        <UserContacts contacts={user.contacts} />
-                    ) : (
-                        <UserContacts contacts={user.challenges} />
-                    )}
+                    <ProfileNavbar
+                        {...{ active, setActive, me, setEdit, edit }}
+                    />
+                    <div className={edit ? classes.edit : undefined}>
+                        {active === 0 ? (
+                            <UserStatistics {...{ user }} />
+                        ) : active === 1 ? (
+                            <UserContacts contacts={user.contacts} />
+                        ) : (
+                            <UserContacts contacts={user.challenges} />
+                        )}
+                    </div>
                 </div>
             </section>
+            {/* {edit && <div className={classes.bottom__overlay} />} */}
         </Layout>
     );
 };

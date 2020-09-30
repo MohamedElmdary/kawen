@@ -25,7 +25,11 @@ const socialLinks: SocialLink[] = [
     },
 ];
 
-const Footer: React.FC = () => {
+interface Props {
+    edit?: boolean;
+}
+
+const Footer: React.FC<Props> = ({ edit = false }) => {
     const socialIcons = socialLinks.map(({ name, icon, url }) => {
         return (
             <a key={name} href={url} target="_blank">
@@ -35,7 +39,9 @@ const Footer: React.FC = () => {
     });
 
     return (
-        <footer className={classes.footer}>
+        <footer
+            className={[edit ? classes.edit : '', classes.footer].join(' ')}
+        >
             <div className={classes.footer__logo}>
                 <div>
                     <img src="/images/cat-logo.svg" alt="cat logo" />

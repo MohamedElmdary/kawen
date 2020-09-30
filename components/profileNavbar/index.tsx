@@ -8,12 +8,15 @@ import useMediaQuery from '../../hooks/useMediaQuery';
 interface Props {
     active: number;
     setActive: Dispatch<React.SetStateAction<number>>;
+    setEdit: Dispatch<React.SetStateAction<boolean>>;
+    edit: boolean;
     me: boolean;
 }
 
 const length = NAVITEMS.length;
 
-const ProfileNavbar: React.FC<Props> = ({ active, setActive, me }) => {
+const ProfileNavbar: React.FC<Props> = (props) => {
+    const { active, setActive, me, setEdit, edit } = props;
     const isMd = useMediaQuery('(max-width: 667px)');
     const isSm = useMediaQuery('(max-width: 500px)');
     const router = useRouter();
@@ -78,6 +81,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive, me }) => {
                             isMd ? classes.md__btn : '',
                             isSm ? classes.sm__btn : '',
                         ].join(' ')}
+                        onClick={() => setEdit(!edit)}
                     >
                         <img src="/images/icons/edit.svg" alt="edit icon" />
                         {!isMd && <span>Edit Profile</span>}

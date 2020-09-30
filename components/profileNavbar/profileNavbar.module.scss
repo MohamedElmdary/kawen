@@ -62,20 +62,22 @@
             > img {
                 margin-right: 10px;
             }
-
-            &:last-of-type {
-                background-color: var(--white);
-                border: 1px solid var(--primary);
-                color: var(--primary);
-
-                &:hover {
-                    color: var(--white);
-                    background-color: var(--primary);
-                }
-            }
         }
 
         &__other {
+            > button {
+                &:last-of-type {
+                    background-color: var(--white);
+                    border: 1px solid var(--primary);
+                    color: var(--primary);
+
+                    &:hover {
+                        color: var(--white);
+                        background-color: var(--primary);
+                    }
+                }
+            }
+
             @media (max-width: 800px) {
                 > button {
                     min-width: auto;
@@ -116,7 +118,4 @@
 
 .sm__btn {
     padding: 0 10px;
-}
-
-.reversed__btn {
 }

@@ -9,3 +9,37 @@
         }
     }
 }
+
+.bottom__overlay,
+.navbar__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 64px;
+    width: 100%;
+    z-index: 9999999;
+    background-color: rgba(white, 0.9);
+    animation: fadeIn 200ms ease 1 forwards;
+}
+
+.bottom__overlay {
+    position: absolute;
+    top: 645px;
+    // height: calc(100vh - 645px);
+    height: 100%;
+    animation: fadeIn 200ms ease 1 forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.edit {
+    opacity: 0.1;
+    pointer-events: none;
+}

@@ -14,10 +14,12 @@ interface Props {
     title?: string;
     metas?: Meta[];
     footer?: boolean;
+    edit?: boolean;
 }
 
 const Layout: React.FC<Props> = (props) => {
-    const { children, logoOnly = false, title = '', metas = [], footer = true } = props;
+    /* prettier-ignore */
+    const { children, logoOnly = false, title = '', metas = [], footer = true, edit} = props;
 
     const metaTags = metas.map((meta) => {
         return <meta key={meta.name} {...meta} />;
@@ -31,7 +33,7 @@ const Layout: React.FC<Props> = (props) => {
             </Head>
             <Navbar {...{ logoOnly }} />
             <main>{children}</main>
-            {!logoOnly && footer && <Footer />}
+            {!logoOnly && footer && <Footer {...{ edit }} />}
         </section>
     );
 };
