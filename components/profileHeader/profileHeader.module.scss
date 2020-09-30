@@ -44,6 +44,7 @@
     &__head {
         margin-top: 40px;
         text-align: center;
+        position: relative;
     }
 }
 
@@ -71,6 +72,7 @@
     }
 }
 
+.edit__name,
 .edit__image {
     position: absolute;
     height: 40px;
@@ -81,4 +83,10 @@
     padding: 0;
     border-radius: 50%;
     background-color: rgba(white, 0.7);
+}
+
+.edit__name {
+    top: 20px;
+    right: -20px;
+    box-shadow: 0px 1px 5px 1px rgba(74, 74, 74, 0.09);
 }

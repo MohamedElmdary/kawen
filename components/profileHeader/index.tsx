@@ -64,9 +64,24 @@ const ProfileHeader: React.FC<Props> = ({ user, edit }) => {
                     </>
                 )}
             </div>
-            <h1 className={['h4', classes.user__head].join(' ')}>
-                {user.name}
-            </h1>
+            <div style={{ textAlign: 'center' }}>
+                <div style={{ position: 'relative', display: 'inline-block' }}>
+                    {edit && (
+                        <button
+                            className={['btn', classes.edit__name].join(' ')}
+                            onClick={() => console.log('edit name', user.name)}
+                        >
+                            <img
+                                src="/images/icons/edit-icon.svg"
+                                alt="edit icon"
+                            />
+                        </button>
+                    )}
+                    <h1 className={['h4', classes.user__head].join(' ')}>
+                        {user.name}
+                    </h1>
+                </div>
+            </div>
         </div>
     );
 };
