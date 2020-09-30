@@ -50,11 +50,56 @@
     }
 
     &__actions {
+        display: flex;
+
         > button {
             height: 32px;
 
+            > span {
+                @extend %clip-text;
+            }
+
             > img {
                 margin-right: 10px;
+            }
+
+            &:last-of-type {
+                background-color: var(--white);
+                border: 1px solid var(--primary);
+                color: var(--primary);
+
+                &:hover {
+                    color: var(--white);
+                    background-color: var(--primary);
+                }
+            }
+        }
+
+        &__other {
+            @media (max-width: 800px) {
+                > button {
+                    min-width: auto;
+                    padding-left: 10px;
+                    padding-right: 10px;
+
+                    > span {
+                        -webkit-line-clamp: 1;
+                        white-space: nowrap;
+                    }
+                }
+            }
+
+            @media (max-width: 700px) and (min-width: 667px) {
+                > button {
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+
+            @media (max-width: 400px) {
+                > button:first-of-type {
+                    display: none;
+                }
             }
         }
     }
@@ -71,4 +116,7 @@
 
 .sm__btn {
     padding: 0 10px;
+}
+
+.reversed__btn {
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/layout';
-// import { useSelector } from 'react-redux';
-// import { AppState } from '../../store';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../store';
 import classes from './user.module.scss';
 import { GetServerSideProps } from 'next';
 import { User } from '../../store/auth';
@@ -22,14 +22,13 @@ interface Props {
 const UserProfile: React.FC<Props> = ({ user, activePage }) => {
     const router = useRouter();
     const [active, setActive] = useState(activePage);
-    // const currentUser = useSelector(({ auth }: AppState) => auth.currentUser);
-    // const me = currentUser?.id === user.id;
+    const currentUser = useSelector(({ auth }: AppState) => auth.currentUser);
+    const me = currentUser?.id === user.id;
 
     useEffect(() => {
         const page = router.query.page;
         const activePage = NAVITEMS.findIndex((item) => item === page);
         const newActive = activePage > -1 ? activePage : 0;
-        console.table({ page, active, activePage, newActive });
         if (active !== newActive) {
             setActive(newActive);
         }
@@ -40,7 +39,7 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
             <section className={classes.user}>
                 <ProfileHeader {...{ user }} />
                 <div className={classes.user__container}>
-                    <ProfileNavbar {...{ active, setActive }} />
+                    <ProfileNavbar {...{ active, setActive, me }} />
                     {active === 0 ? (
                         <UserStatistics {...{ user }} />
                     ) : active === 1 ? (

@@ -8,11 +8,12 @@ import useMediaQuery from '../../hooks/useMediaQuery';
 interface Props {
     active: number;
     setActive: Dispatch<React.SetStateAction<number>>;
+    me: boolean;
 }
 
 const length = NAVITEMS.length;
 
-const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
+const ProfileNavbar: React.FC<Props> = ({ active, setActive, me }) => {
     const isMd = useMediaQuery('(max-width: 667px)');
     const isSm = useMediaQuery('(max-width: 500px)');
     const router = useRouter();
@@ -25,7 +26,7 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
 
     useEffect(() => {
         setIndicator(refs[active].current as HTMLElement);
-    }, [isSm]);
+    }, [active, isSm]);
 
     const links = NAVITEMS.map((key, i) => {
         const ref = refs[i];
@@ -64,17 +65,47 @@ const ProfileNavbar: React.FC<Props> = ({ active, setActive }) => {
                     }}
                 />
             </div>
-            <div className={classes.navbar__actions}>
-                <button
-                    className={[
-                        'btn',
-                        isMd ? classes.md__btn : '',
-                        isSm ? classes.sm__btn : '',
-                    ].join(' ')}
-                >
-                    <img src="/images/icons/edit.svg" alt="edit icon" />
-                    {!isMd && <span>Edit Profile</span>}
-                </button>
+            <div
+                className={[
+                    classes.navbar__actions,
+                    me ? '' : classes.navbar__actions__other,
+                ].join(' ')}
+            >
+                {me ? (
+                    <button
+                        className={[
+                            'btn',
+                            isMd ? classes.md__btn : '',
+                            isSm ? classes.sm__btn : '',
+                        ].join(' ')}
+                    >
+                        <img src="/images/icons/edit.svg" alt="edit icon" />
+                        {!isMd && <span>Edit Profile</span>}
+                    </button>
+                ) : (
+                    <>
+                        <button
+                            style={{ marginRight: isMd ? '5px' : '8px' }}
+                            className={[
+                                'btn',
+                                isMd ? classes.md__btn : '',
+                                isSm ? classes.sm__btn : '',
+                            ].join(' ')}
+                        >
+                            <span>{isMd ? 'Msg' : 'Send Message'}</span>
+                        </button>
+                        <button
+                            className={[
+                                'btn',
+                                isMd ? classes.md__btn : '',
+                                isSm ? classes.sm__btn : '',
+                                classes.reversed__btn,
+                            ].join(' ')}
+                        >
+                            <span>Add{isMd ? '' : ' to contacts'}</span>
+                        </button>
+                    </>
+                )}
             </div>
         </div>
     );
