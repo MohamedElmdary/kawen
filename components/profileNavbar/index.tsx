@@ -83,8 +83,17 @@ const ProfileNavbar: React.FC<Props> = (props) => {
                         ].join(' ')}
                         onClick={() => setEdit(!edit)}
                     >
-                        <img src="/images/icons/edit.svg" alt="edit icon" />
-                        {!isMd && <span>Edit Profile</span>}
+                        {edit ? (
+                            <span>{isMd ? 'Save' : 'Save Changes'}</span>
+                        ) : (
+                            <>
+                                <img
+                                    src="/images/icons/edit.svg"
+                                    alt="edit icon"
+                                />
+                                {!isMd && <span>Edit Profile</span>}
+                            </>
+                        )}
                     </button>
                 ) : (
                     <>

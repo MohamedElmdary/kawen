@@ -46,3 +46,39 @@
         text-align: center;
     }
 }
+
+.edit__cover {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    box-shadow: 0px 1px 5px 1px rgba(74, 74, 74, 0.09);
+    background-color: rgba(white, 0.7);
+    height: 32px;
+    color: var(--it-1-opacity-5);
+
+    &:hover {
+        color: var(--white);
+    }
+
+    &__md {
+        min-width: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        > img {
+            margin: 0 !important;
+        }
+    }
+}
+
+.edit__image {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    bottom: 5px;
+    right: 20px;
+    min-width: auto;
+    padding: 0;
+    border-radius: 50%;
+    background-color: rgba(white, 0.7);
+}

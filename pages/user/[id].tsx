@@ -48,7 +48,7 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
         <Layout title={'kawen | User ' + NAVITEMS[active]} {...{ edit }}>
             {edit && <div className={classes.navbar__overlay} />}
             <section className={classes.user}>
-                <ProfileHeader {...{ user }} />
+                <ProfileHeader {...{ user, edit }} />
                 <div className={classes.user__container}>
                     <ProfileNavbar
                         {...{ active, setActive, me, setEdit, edit }}
@@ -64,7 +64,6 @@ const UserProfile: React.FC<Props> = ({ user, activePage }) => {
                     </div>
                 </div>
             </section>
-            {/* {edit && <div className={classes.bottom__overlay} />} */}
         </Layout>
     );
 };
