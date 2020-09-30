@@ -30,6 +30,9 @@
         transition-property: width;
 
         > button {
+            @extend %clip-text;
+            white-space: nowrap;
+
             &:first-of-type {
                 margin: 0 15px;
             }
@@ -39,6 +42,12 @@
                 padding-left: 15px;
                 padding-right: 15px;
             }
+
+            @media (max-width: 500px) {
+                padding-left: 10px;
+                padding-right: 10px;
+                -webkit-line-clamp: 1;
+            }
         }
 
         &__focus {
@@ -46,11 +55,3 @@
         }
     }
 }
-
-// @media (max-width: 667px) {
-//     .navbar {
-//         > div:nth-of-type(2) {
-
-//         }
-//     }
-// }

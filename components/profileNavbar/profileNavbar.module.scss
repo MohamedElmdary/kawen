@@ -23,11 +23,17 @@
         border: none;
         outline: none;
         cursor: pointer;
+        @extend %clip-text;
+        white-space: nowrap;
         @extend %transition;
         transition-property: color;
 
         &.active {
             color: var(--primary);
+        }
+
+        &.is__sm {
+            padding: 0 5px;
         }
     }
 
@@ -61,4 +67,8 @@
     img {
         margin: 0 !important;
     }
+}
+
+.sm__btn {
+    padding: 0 10px;
 }
