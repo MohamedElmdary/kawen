@@ -9,11 +9,11 @@ interface Props {
     todos: TodoListModel[];
 }
 
-const TodoList: React.FC<Props> = ({ todos }) => {
+const TodoList: React.FC<Props> = ({ todos: data }) => {
     return (
         <Layout title="Kawen | Todo List">
             <GridLayout
-                data={todos}
+                {...{ data }}
                 id={({ id }) => id}
                 Component={TodoListItem}
             />
@@ -22,13 +22,6 @@ const TodoList: React.FC<Props> = ({ todos }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    console.log(
-        ctx.req?.headers?.['user-agent'],
-        ctx.req?.headers?.['user-agent']?.match(
-            /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-        )
-    );
-
     return {
         props: { todos },
     };
