@@ -21,7 +21,7 @@ const TodoList: React.FC<Props> = ({ todos: data }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
     return {
         props: { todos },
     };
