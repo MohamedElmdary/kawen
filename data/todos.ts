@@ -277,6 +277,36 @@ const todos: TodoListModel[] = [
             },
         ],
     },
+    {
+        id: 9,
+        title: 'Front End Tasks 9',
+        tasks: [
+            {
+                id: 0,
+                title: 'Javascript Task',
+                date: new Date().getTime(),
+                completed: true,
+            },
+            {
+                id: 1,
+                title: 'React Task',
+                date: new Date().getTime(),
+                completed: true,
+            },
+            {
+                id: 2,
+                title: 'JQuery Task',
+                date: new Date().getTime(),
+                completed: true,
+            },
+            {
+                id: 3,
+                title: 'Angular Task',
+                date: new Date().getTime(),
+                completed: true,
+            },
+        ],
+    },
 ];
 
 export default todos;

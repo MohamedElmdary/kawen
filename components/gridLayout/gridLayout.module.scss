@@ -2,9 +2,10 @@
     $this: &;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     flex-wrap: wrap;
 
-    &__col {
+    &__item {
         flex-basis: calc(100% / 3);
 
         @media (max-width: 991px) {
@@ -16,7 +17,19 @@
         }
     }
 
-    &__item {
-        margin-bottom: 20px;
-    }
+    // &__col {
+    //     flex-basis: calc(100% / 3);
+
+    //     @media (max-width: 991px) {
+    //         flex-basis: 50%;
+    //     }
+
+    //     @media (max-width: 768px) {
+    //         flex-basis: 100%;
+    //     }
+    // }
+
+    // &__item {
+    //     margin-bottom: 20px;
+    // }
 }
