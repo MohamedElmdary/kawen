@@ -15,7 +15,7 @@ function GridLayout<T>(props: Props<T>): JSX.Element {
         const items = col.map((item, i) => {
             return (
                 <div className={classes.grid__item} key={id(item, i)}>
-                    <Component {...item} />
+                    <Component {...{ item }} />
                 </div>
             );
         });
