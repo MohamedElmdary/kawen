@@ -1,0 +1,61 @@
+@import '../../shared/global';
+
+.dropdown {
+    position: relative;
+
+    &__menu {
+        box-shadow: 0px 1px 5px 1px rgba(74, 74, 74, 0.09);
+        border-radius: var(--border-r-1);
+        padding: 5px 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 150px;
+        background-color: var(--white);
+        z-index: 99;
+        transform-origin: top right;
+
+        &.left {
+            right: auto;
+            left: 0;
+            transform-origin: top left;
+        }
+
+        animation: fadeIn 200ms ease forwards;
+    }
+
+    &__item {
+        padding: 10px 15px;
+        @extend %transition;
+        transition-property: background-color;
+
+        > div > p {
+            font-size: 14px;
+            color: var(--it-1);
+        }
+
+        &:hover {
+            background-color: rgba(74, 74, 74, 0.05);
+            cursor: pointer;
+        }
+    }
+
+    &__divider {
+        height: 1px;
+        width: 100%;
+        background-color: rgba(74, 74, 74, 0.1);
+        margin: 5px 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Task, TodoListModel } from '../../../data/todos';
 import classes from './taskItem.module.scss';
 import getDateDetails from '../../../shared/utils/getDateDetails';
 import CheckInput from '../../checkInput';
+import { TodoListModel, Task } from '../../../store/todos';
 
 interface Props {
-    task: Task & { edit?: boolean };
+    task: Task;
     updateTitle(id: TodoListModel['id'], title: TodoListModel['title']): void;
     updateCompleted(id: TodoListModel['id'], completed: boolean): void;
     deleteTask(id: TodoListModel['id']): void;

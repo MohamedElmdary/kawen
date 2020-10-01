@@ -39,6 +39,6 @@ function _InputControl(
     );
 }
 
-const InputControl = forwardRef(_InputControl);
+const InputControl: React.FC<Props> = forwardRef(_InputControl);
 
 export default InputControl;
