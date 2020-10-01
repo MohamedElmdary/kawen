@@ -5,6 +5,7 @@ function getDateDetails(date: Date, date2?: Date) {
         day: date.getDate(),
         monthLong: date.getDate() /* won't be correct for today */,
         monthName: date.toLocaleString('default', { month: 'long' }),
+        monthNameShort: date.toLocaleString('default', { month: 'short' }),
         startDayIndex: date2?.getDay(),
     };
 }
