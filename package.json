@@ -8,7 +8,6 @@
         "type-check": "tsc"
     },
     "dependencies": {
-        "device": "^0.3.11",
         "next": "latest",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
