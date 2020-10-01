@@ -1,8 +1,9 @@
-import React, { useState, useCallback, Dispatch } from 'react';
+import React, { useCallback, Dispatch } from 'react';
 import classes from './todoListItem.module.scss';
 import TaskItem from './taskItem';
-import { TodoListModel, Task, TodosActions } from '../../store/todos';
+import { TodoListModel, TodosActions } from '../../store/todos';
 import { useDispatch } from 'react-redux';
+import DropDown, { DropDownItem, DropDownDivider } from '../dropDownMenu';
 
 interface props {
     item: TodoListModel;
@@ -68,12 +69,37 @@ const TodoListItem: React.FC<props> = ({ item }) => {
         );
     });
 
+    const actionClass = classes.list__header__action;
+    const actionElement = (
+        <img src="/images/icons/dots-menu.svg" alt="dots menu icon" />
+    );
+
     return (
         <section className={classes.container}>
             <section className={classes.list}>
                 <div className={classes.list__header}>
-                    <h3>{title}</h3>
-                    <p>{tasks.length} Tasks</p>
+                    <div>
+                        <h3>{title}</h3>
+                        <p>{tasks.length} Tasks</p>
+                    </div>
+                    <DropDown left {...{ actionElement, actionClass }}>
+                        <DropDownItem>
+                            <p>hello world</p>
+                        </DropDownItem>
+                        <DropDownItem>
+                            <p>hello world</p>
+                        </DropDownItem>
+                        <DropDownItem>
+                            <p>hello world</p>
+                        </DropDownItem>
+                        <DropDownDivider />
+                        <DropDownItem>
+                            <p>hello world</p>
+                        </DropDownItem>
+                        <DropDownItem>
+                            <p>hello world</p>
+                        </DropDownItem>
+                    </DropDown>
                     <div
                         className={classes.list__header__additem}
                         onClick={addTask}
