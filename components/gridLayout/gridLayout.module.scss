@@ -1,35 +1,59 @@
 .grid {
-    $this: &;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-
-    &__col {
-        flex-basis: calc(100% / 3);
-
-        @media (max-width: 991px) and (min-width: 767px) {
-            flex-basis: 50%;
-
-            &:nth-of-type(3) {
-                display: flex;
-                flex-wrap: wrap;
-                flex-basis: 100%;
-
-                > #{$this} {
-                    &__item {
-                        flex-basis: 50%;
-                    }
-                }
-            }
-        }
-
-        @media (max-width: 768px) {
-            flex-basis: 100%;
-        }
-    }
+    column-count: 2;
+    column-gap: 1em;
+    height: 100%;
+    margin: 0;
+    page-break-inside: avoid;
+    position: relative;
 
     &__item {
-        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        column-break-inside: avoid; /* Chrome, Safari */
+        // page-break-inside: avoid; /* Theoretically FF 20+ */
+        // break-inside: avoid-column; /* IE 11 */
+        // display: table; /* Actually FF 20+ */
+        page-break-inside: avoid;
+        background-color: #eee;
+        display: inline-block;
+        margin: 0 0 1em;
+        width: 100%;
     }
 }
+
+// .grid {
+//     $this: &;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: flex-start;
+//     flex-wrap: wrap;
+
+//     &__col {
+//         flex-basis: calc(100% / 3);
+
+//         @media (max-width: 991px) and (min-width: 767px) {
+//             flex-basis: 50%;
+
+//             &:nth-of-type(3) {
+//                 display: flex;
+//                 flex-wrap: wrap;
+//                 flex-basis: 100%;
+
+//                 > #{$this} {
+//                     &__item {
+//                         flex-basis: 50%;
+//                     }
+//                 }
+//             }
+//         }
+
+//         @media (max-width: 768px) {
+//             flex-basis: 100%;
+//         }
+//     }
+
+//     &__item {
+//         margin-bottom: 20px;
+//     }
+// }

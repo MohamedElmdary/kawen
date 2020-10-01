@@ -1,0 +1,59 @@
+@import '../../shared/global';
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 9999999;
+    background-color: rgba(black, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 200ms ease forwards;
+
+    &__container {
+        max-height: 90%;
+        max-width: 90%;
+        overflow: auto;
+        @include nice-scroll();
+        animation: slideIn 150ms ease 50ms forwards;
+    }
+
+    &.animate__out {
+        animation: fadeOut 200ms ease forwards;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

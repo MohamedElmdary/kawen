@@ -65,6 +65,11 @@ interface RemoveTodo {
     payload: string | number;
 }
 
+interface AddTodo {
+    type: '[Todos] ADD_TODO';
+    payload: string;
+}
+
 export type TodosActions =
     | InitTodos
     | UpdateTaskTitle
@@ -72,4 +77,5 @@ export type TodosActions =
     | DeleteTask
     | AddTask
     | UpdateTodoTitle
-    | RemoveTodo;
+    | RemoveTodo
+    | AddTodo;
