@@ -7,6 +7,7 @@ import TodoListItem from '../../components/todoListItem';
 import { TodoListModel, TodosActions } from '../../store/todos';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../store';
+import SvgCircle from '../../components/svgCircle';
 
 interface Props {
     todos: TodoListModel[];

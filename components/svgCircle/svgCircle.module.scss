@@ -1,0 +1,21 @@
+.animate {
+    animation: animate-circle 2000ms ease infinite;
+}
+
+@keyframes animate-circle {
+    0% {
+        stroke-dashoffset: 314;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    90% {
+        stroke-dashoffset: -314;
+    }
+
+    100% {
+        stroke-dashoffset: -314;
+    }
+}

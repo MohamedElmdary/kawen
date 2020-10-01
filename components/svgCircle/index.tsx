@@ -1,13 +1,16 @@
 import React from 'react';
+import classes from './svgCircle.module.scss';
 
 interface Props {
-    progress: number;
     stroke?: string;
+    progress?: number;
+    animate?: boolean;
 }
 
 const SvgCircle: React.FC<Props> = ({
     progress,
     stroke = 'var(--feedback)',
+    animate = false,
 }) => {
     const r = 50;
     const strokelength = 2 * Math.PI * r;
@@ -29,13 +32,16 @@ const SvgCircle: React.FC<Props> = ({
                 cy="52"
                 fill="none"
                 r="50"
+                className={animate ? classes.animate : undefined}
                 style={{
                     transformOrigin: 'center center',
                     transform: 'rotate(-90deg)',
                     stroke,
                     strokeWidth: '4',
                     strokeDasharray: strokelength,
-                    strokeDashoffset: strokelength * (1 - progress),
+                    strokeDashoffset: progress
+                        ? strokelength * (1 - progress)
+                        : undefined,
                 }}
             />
         </svg>
