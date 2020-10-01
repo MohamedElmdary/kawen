@@ -1,4 +1,4 @@
-import React, { useCallback, Dispatch } from 'react';
+import React, { useCallback, Dispatch, useState } from 'react';
 import classes from './todoListItem.module.scss';
 import TaskItem from './taskItem';
 import { TodoListModel, TodosActions } from '../../store/todos';
@@ -12,6 +12,22 @@ interface props {
 const TodoListItem: React.FC<props> = ({ item }) => {
     const dispatch: Dispatch<TodosActions> = useDispatch();
     const { id, title, tasks } = item;
+    const [update, setUpdate] = useState(false);
+    const [value, setValue] = useState(item.title);
+
+    const updateTodoTitle = (title: string) => {
+        dispatch({
+            type: '[Todos] UPDATE_TODO_TITLE',
+            payload: { id, title },
+        });
+    };
+
+    const removeTodo = () => {
+        dispatch({
+            type: '[Todos] REMOVE_TODO',
+            payload: id,
+        });
+    };
 
     const updateTitle = useCallback(
         (id: TodoListModel['id'], title: TodoListModel['title']) => {
@@ -74,30 +90,42 @@ const TodoListItem: React.FC<props> = ({ item }) => {
         <img src="/images/icons/dots-menu.svg" alt="dots menu icon" />
     );
 
+    const onBlur = () => {
+        const val = value.trim();
+        setUpdate(false);
+        if (!val) {
+            return setValue(item.title);
+        }
+        updateTodoTitle(val);
+    };
+
     return (
         <section className={classes.container}>
             <section className={classes.list}>
                 <div className={classes.list__header}>
                     <div>
-                        <h3>{title}</h3>
+                        {update ? (
+                            <input
+                                type="text"
+                                onChange={(e) => setValue(e.target.value)}
+                                {...{ value, onBlur }}
+                            />
+                        ) : (
+                            <h3>{title}</h3>
+                        )}
                         <p>{tasks.length} Tasks</p>
                     </div>
-                    <DropDown left {...{ actionElement, actionClass }}>
-                        <DropDownItem>
-                            <p>hello world</p>
-                        </DropDownItem>
-                        <DropDownItem>
-                            <p>hello world</p>
-                        </DropDownItem>
-                        <DropDownItem>
-                            <p>hello world</p>
+                    <DropDown {...{ actionElement, actionClass }}>
+                        <DropDownItem onClick={() => setUpdate(true)}>
+                            <div role="button">
+                                <p>Update Title</p>
+                            </div>
                         </DropDownItem>
                         <DropDownDivider />
-                        <DropDownItem>
-                            <p>hello world</p>
-                        </DropDownItem>
-                        <DropDownItem>
-                            <p>hello world</p>
+                        <DropDownItem onClick={removeTodo}>
+                            <div role="button">
+                                <p>Remove</p>
+                            </div>
                         </DropDownItem>
                     </DropDown>
                     <div
