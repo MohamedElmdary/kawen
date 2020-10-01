@@ -100,46 +100,44 @@ const TodoListItem: React.FC<props> = ({ item }) => {
     };
 
     return (
-        <section className={classes.container}>
-            <section className={classes.list}>
-                <div className={classes.list__header}>
-                    <div>
-                        {update ? (
-                            <input
-                                type="text"
-                                onChange={(e) => setValue(e.target.value)}
-                                {...{ value, onBlur }}
-                            />
-                        ) : (
-                            <h3>{title}</h3>
-                        )}
-                        <p>{tasks.length} Tasks</p>
-                    </div>
-                    <DropDown {...{ actionElement, actionClass }}>
-                        <DropDownItem onClick={() => setUpdate(true)}>
-                            <div role="button">
-                                <p>Update Title</p>
-                            </div>
-                        </DropDownItem>
-                        <DropDownDivider />
-                        <DropDownItem onClick={removeTodo}>
-                            <div role="button">
-                                <p>Remove</p>
-                            </div>
-                        </DropDownItem>
-                    </DropDown>
-                    <div
-                        className={classes.list__header__additem}
-                        onClick={addTask}
-                    >
-                        <button>+</button>
-                    </div>
+        <section className={classes.list}>
+            <div className={classes.list__header}>
+                <div>
+                    {update ? (
+                        <input
+                            type="text"
+                            onChange={(e) => setValue(e.target.value)}
+                            {...{ value, onBlur }}
+                        />
+                    ) : (
+                        <h3>{title}</h3>
+                    )}
+                    <p>{tasks.length} Tasks</p>
                 </div>
-                <div className={classes.list__container}>
-                    {/* prettier-ignore */}
-                    {tasksCmp}
+                <DropDown {...{ actionElement, actionClass }}>
+                    <DropDownItem onClick={() => setUpdate(true)}>
+                        <div role="button">
+                            <p>Update Title</p>
+                        </div>
+                    </DropDownItem>
+                    <DropDownDivider />
+                    <DropDownItem onClick={removeTodo}>
+                        <div role="button">
+                            <p>Remove</p>
+                        </div>
+                    </DropDownItem>
+                </DropDown>
+                <div
+                    className={classes.list__header__additem}
+                    onClick={addTask}
+                >
+                    <button>+</button>
                 </div>
-            </section>
+            </div>
+            <div className={classes.list__container}>
+                {/* prettier-ignore */}
+                {tasksCmp}
+            </div>
         </section>
     );
 };
