@@ -5,11 +5,23 @@
     align-items: flex-start;
     flex-wrap: wrap;
 
-    &__item {
+    &__col {
         flex-basis: calc(100% / 3);
 
-        @media (max-width: 991px) {
+        @media (max-width: 991px) and (min-width: 767px) {
             flex-basis: 50%;
+
+            &:nth-of-type(3) {
+                display: flex;
+                flex-wrap: wrap;
+                flex-basis: 100%;
+
+                > #{$this} {
+                    &__item {
+                        flex-basis: 50%;
+                    }
+                }
+            }
         }
 
         @media (max-width: 768px) {
@@ -17,19 +29,7 @@
         }
     }
 
-    // &__col {
-    //     flex-basis: calc(100% / 3);
-
-    //     @media (max-width: 991px) {
-    //         flex-basis: 50%;
-    //     }
-
-    //     @media (max-width: 768px) {
-    //         flex-basis: 100%;
-    //     }
-    // }
-
-    // &__item {
-    //     margin-bottom: 20px;
-    // }
+    &__item {
+        margin-bottom: 20px;
+    }
 }
