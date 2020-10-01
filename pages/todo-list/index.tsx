@@ -12,7 +12,6 @@ interface Props {
 const TodoList: React.FC<Props> = ({ todos }) => {
     return (
         <Layout title="Kawen | Todo List">
-            {/* prettier-ignore */}
             <GridLayout
                 data={todos}
                 id={({ id }) => id}
