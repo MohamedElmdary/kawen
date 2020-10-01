@@ -29,6 +29,11 @@
         @extend %transition;
         transition-property: background-color;
 
+        > div > p {
+            font-size: 14px;
+            color: var(--it-1);
+        }
+
         &:hover {
             background-color: rgba(74, 74, 74, 0.05);
             cursor: pointer;

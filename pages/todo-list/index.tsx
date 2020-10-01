@@ -44,7 +44,6 @@ const TodoList: React.FC<Props> = ({ todos }) => {
                 <div className={classes.todo__modal}>
                     <div className={classes.todo__modal__input}>
                         <InputControl
-                            autofocus={true}
                             label="Task Title"
                             onChange={(e) => setValue(e.target.value)}
                             {...{ error: '', type: 'text', value }}
