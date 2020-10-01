@@ -1,15 +1,4 @@
-export interface Task {
-    id: number | string;
-    title: string;
-    date: Date | number;
-    completed: boolean;
-}
-
-export interface TodoListModel {
-    id: number | string;
-    title: string;
-    tasks: Task[];
-}
+import { TodoListModel } from '../store/todos/types';
 
 const todos: TodoListModel[] = [
     {
