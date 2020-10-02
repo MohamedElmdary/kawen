@@ -10,7 +10,7 @@ interface Props {
 
 const Navbar: React.FC<Props> = ({ logoOnly }) => {
     const [focus, setFocus] = useState(false);
-    const isMobile = useMediaQuery('(max-width: 667px)');
+    const isMobile = useMediaQuery('(max-width: 768px)');
 
     return (
         <nav
@@ -33,12 +33,28 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
                     >
                         <Link href="/auth/[auth]" as="/auth/login">
                             <button className="btn btn-round btn-outline">
-                                Login
+                                {isMobile ? (
+                                    <img
+                                        src="/images/icons/login.svg"
+                                        width={16}
+                                        alt="login icon"
+                                    />
+                                ) : (
+                                    'Login'
+                                )}
                             </button>
                         </Link>
                         <Link href="/auth/[auth]" as="/auth/signup">
                             <button className="btn btn-round">
-                                Get Started
+                                {isMobile ? (
+                                    <img
+                                        src="/images/icons/register.svg"
+                                        width={16}
+                                        alt="register icon"
+                                    />
+                                ) : (
+                                    'Get Started'
+                                )}
                             </button>
                         </Link>
                     </div>
