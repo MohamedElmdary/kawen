@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, Dispatch } from 'react';
 import classes from './noteItem.module.scss';
-import { Note } from '../../store/notes';
+import { Note, NotesActions } from '../../store/notes';
 import getDateDetails from '../../shared/utils/getDateDetails';
+import { useDispatch } from 'react-redux';
+import DropDown, { DropDownItem, DropDownDivider } from '../dropDownMenu';
 
 interface Props {
     item: Note;
 }
 
 const NoteItem: React.FC<Props> = (props) => {
+    const dispatch: Dispatch<NotesActions> = useDispatch();
     const {
-        item: { title, body, date, edit: _e },
+        item: { id, title, body, date, edit: _e },
     } = props;
     const [edit, setEdit] = useState(_e);
     const [value, setValue] = useState(body);
@@ -26,13 +29,27 @@ const NoteItem: React.FC<Props> = (props) => {
                     </span>
                 </div>
                 <div className={classes.note__header__actions}>
-                    <button>
-                        <img
-                            src="/images/icons/edit-square.svg"
-                            alt="edit icon"
-                        />
-                    </button>
-                    <button>
+                    <DropDown
+                        actionClass={classes.note__header__actions__button}
+                        actionElement={
+                            <img
+                                src="/images/icons/edit-square.svg"
+                                alt="edit icon"
+                            />
+                        }
+                    >
+                        <DropDownItem>Update Title</DropDownItem>
+                        <DropDownDivider />
+                        <DropDownItem>Update Note</DropDownItem>
+                    </DropDown>
+                    <button
+                        onClick={() => {
+                            dispatch({
+                                type: '[Notes] REMOVE_NOTE',
+                                payload: id,
+                            });
+                        }}
+                    >
                         <img src="/images/icons/remove.svg" alt="remove icon" />
                     </button>
                 </div>

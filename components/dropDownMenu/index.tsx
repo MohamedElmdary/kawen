@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState, useEffect } from 'react';
+import React, { MouseEvent, useState, useEffect, useContext } from 'react';
 import classes from './dropDownMenu.module.scss';
 
 interface MenuProps {
@@ -10,7 +10,7 @@ export const DropDownMenu: React.FC<MenuProps> = (props) => {
     const { children, left, dropdownClass } = props;
     return (
         /* prettier-ignore */
-        <section className={[
+        <section onClick={e => e.stopPropagation()} className={[
             classes.dropdown__menu,
             left ? classes.left : '',
             dropdownClass ?? '',
@@ -27,6 +27,7 @@ interface Props {
     dropdownClass?: string;
 }
 
+const dropDownContext = React.createContext({ closeMenu: () => {} });
 const DropDown: React.FC<Props> = (props) => {
     /* prettier-ignore */
     const { dropdownClass, children, actionClass, actionElement, left = false } = props;
@@ -44,16 +45,18 @@ const DropDown: React.FC<Props> = (props) => {
 
     return (
         /* prettier-ignore */
-        <section className={classes.dropdown}>
-            <div className={classes.dropdown__action}>
-                <button onClick={() => setOpen(!open)} className={actionClass}>
-                    {actionElement}
-                </button>
-            </div>
-            {open && <DropDownMenu {...{ left, dropdownClass }}>
-                {children}
-            </DropDownMenu>}
-        </section>
+        <dropDownContext.Provider value={{closeMenu: () => setOpen(false)}}>
+            <section className={classes.dropdown}>
+                <div className={classes.dropdown__action}>
+                    <button onClick={() => setOpen(!open)} className={actionClass}>
+                        {actionElement}
+                    </button>
+                </div>
+                {open && <DropDownMenu {...{ left, dropdownClass}}>
+                    {children}
+                </DropDownMenu>}
+            </section>
+        </dropDownContext.Provider>
     );
 };
 
@@ -62,8 +65,17 @@ interface ItemProps {
 }
 
 export const DropDownItem: React.FC<ItemProps> = ({ children, onClick }) => {
+    const { closeMenu } = useContext(dropDownContext);
+
     return (
-        <div {...{ onClick }} className={classes.dropdown__item} role="button">
+        <div
+            onClick={(e) => {
+                onClick?.(e);
+                closeMenu();
+            }}
+            className={classes.dropdown__item}
+            role="button"
+        >
             {children}
         </div>
     );
