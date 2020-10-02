@@ -1,0 +1,23 @@
+.project {
+    padding: 40px;
+    min-height: calc(100vh - 109px);
+    display: flex;
+    flex-direction: column;
+
+    p {
+        margin: 16px 0 24px;
+    }
+
+    button { 
+        width: 200px;
+        padding: 12px 0;
+    }
+
+    footer {
+        margin-top: auto;
+        margin-left: auto;
+        button {
+            border: 1px solid var(--primary);
+        }
+    }
+}

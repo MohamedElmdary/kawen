@@ -1,7 +1,27 @@
+@import '../../shared/global';
+
 .field_sidebar {
     width: 344px;
     color: var(--white);
     position: fixed;
+    transition: all 0.3s ease-in-out;
+    top: 64px;
+    bottom: 0%;
+    @media screen and (max-width: 1092px) {
+        transform: translateX(-344px);
+        &.active {
+            transform: translateX(0);
+            z-index: 2;
+            top: 113px;
+        }
+    }
+
+    >div {
+        overflow-y: scroll;
+        height: 100%;
+        background-color: var(--it-1);
+        @include nice-scroll();
+    }
 
     header {
         background-color: var(--it-1);
