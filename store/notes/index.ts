@@ -1,5 +1,4 @@
 import { NotesState, NotesActions } from './types';
-import { notStrictEqual } from 'assert';
 
 const initState: NotesState = {
     notes: null,

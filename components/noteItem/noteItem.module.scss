@@ -43,10 +43,6 @@
                 &:active {
                     background-color: rgba(212, 211, 211, 0.5);
                 }
-
-                &__button {
-                    margin-right: 8px;
-                }
             }
         }
     }
@@ -58,4 +54,19 @@
             white-space: pre-line;
         }
     }
+}
+
+.edit__input {
+    resize: none;
+    display: block;
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--primary);
+    padding: 10px 15px;
+}
+
+textarea.edit__input {
+    @include nice-scroll();
 }

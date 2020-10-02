@@ -1,9 +1,8 @@
-import React, { useState, Dispatch } from 'react';
+import React, { useState, Dispatch, cloneElement } from 'react';
 import classes from './noteItem.module.scss';
 import { Note, NotesActions } from '../../store/notes';
 import getDateDetails from '../../shared/utils/getDateDetails';
 import { useDispatch } from 'react-redux';
-import DropDown, { DropDownItem, DropDownDivider } from '../dropDownMenu';
 
 interface Props {
     item: Note;
@@ -12,59 +11,100 @@ interface Props {
 const NoteItem: React.FC<Props> = (props) => {
     const dispatch: Dispatch<NotesActions> = useDispatch();
     const {
-        item: { id, title, body, date, edit: _e },
+        item: { id, title: _t, body: _b, date },
     } = props;
-    const [edit, setEdit] = useState(_e);
-    const [value, setValue] = useState(body);
+
+    /* edits */
+    // - title
+    const [title, setTitle] = useState(_t);
+    const [editTitle, setEditTitle] = useState(false);
+    // - body
+    const [body, setBody] = useState(_b);
+    const [editBody, setEditBody] = useState(false);
 
     const d = getDateDetails(new Date(date));
 
     return (
         <section className={classes.note}>
             <div className={classes.note__header}>
-                <div>
-                    <p>{title}</p>
+                <div style={{ flexGrow: editTitle ? 1 : undefined }}>
+                    {editTitle ? (
+                        <input
+                            className={classes.edit__input}
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            autoFocus
+                            onBlur={() => {
+                                const val = title.trim();
+                                if (val) {
+                                    dispatch({
+                                        type: '[Notes] UPDATE_TITLE',
+                                        payload: { id, title },
+                                    });
+                                } else {
+                                    setTitle(_t);
+                                }
+                                setEditTitle(false);
+                            }}
+                        />
+                    ) : (
+                        <p>{_t}</p>
+                    )}
                     <span>
                         {d.monthNameShort} {d.day}, {d.year}
                     </span>
                 </div>
-                <div className={classes.note__header__actions}>
-                    <DropDown
-                        actionClass={classes.note__header__actions__button}
-                        actionElement={
+                {editTitle ? null : (
+                    <div className={classes.note__header__actions}>
+                        <button onClick={() => setEditTitle(true)}>
                             <img
                                 src="/images/icons/edit-square.svg"
                                 alt="edit icon"
                             />
-                        }
-                    >
-                        <DropDownItem>Update Title</DropDownItem>
-                        <DropDownDivider />
-                        <DropDownItem>Update Note</DropDownItem>
-                    </DropDown>
-                    <button
-                        onClick={() => {
-                            dispatch({
-                                type: '[Notes] REMOVE_NOTE',
-                                payload: id,
-                            });
-                        }}
-                    >
-                        <img src="/images/icons/remove.svg" alt="remove icon" />
-                    </button>
-                </div>
+                        </button>
+                        <button
+                            onClick={() => {
+                                dispatch({
+                                    type: '[Notes] REMOVE_NOTE',
+                                    payload: id,
+                                });
+                            }}
+                        >
+                            <img
+                                src="/images/icons/remove.svg"
+                                alt="remove icon"
+                            />
+                        </button>
+                    </div>
+                )}
             </div>
             <div className={classes.note__container}>
-                {edit ? (
+                {editBody ? (
                     <textarea
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
+                        rows={10}
+                        className={classes.edit__input}
+                        autoFocus
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
                         onBlur={() => {
-                            setEdit(false);
+                            const val = body.trim();
+                            if (val) {
+                                dispatch({
+                                    type: '[Notes] UPDATE_BODY',
+                                    payload: { id, body },
+                                });
+                            } else {
+                                dispatch({
+                                    type: '[Notes] REMOVE_NOTE',
+                                    payload: id,
+                                });
+                            }
+                            setEditBody(false);
                         }}
                     />
                 ) : (
-                    <p>{body}</p>
+                    <p onClick={() => setEditBody(true)}>{_b}</p>
                 )}
             </div>
         </section>

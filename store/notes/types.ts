@@ -3,7 +3,6 @@ export interface Note {
     title: string;
     body: string;
     date: Date | number;
-    edit?: boolean;
 }
 
 export interface NotesState {
