@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, cloneElement } from 'react';
+import React, { useState, Dispatch } from 'react';
 import classes from './noteItem.module.scss';
 import { Note, NotesActions } from '../../store/notes';
 import getDateDetails from '../../shared/utils/getDateDetails';
