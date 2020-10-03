@@ -295,6 +295,7 @@ export const quizzesData: Props.quizzesProps = {
 
 export const quizData: Props.quizProps = {
     name: "What is the HTML?",
+    quizzes_progress: 30,
     progress: 70,
     questions: [
         {
@@ -330,29 +331,29 @@ export const quizData: Props.quizProps = {
         },
         {
             qs:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+                "Lorem ipsum ",
             status: true,
             ans: [
                 {
-                    text: "Answer 1",
+                    text: "Answer 111",
                     correct: false,
                     reason:
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
                 },
                 {
-                    text: "Answer 2",
+                    text: "Answer 222",
                     correct: true,
                     reason:
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
                 },
                 {
-                    text: "Answer 3",
+                    text: "Answer 333",
                     correct: false,
                     reason:
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
                 },
                 {
-                    text: "Answer 4",
+                    text: "Answer 444",
                     correct: false,
                     reason:
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",

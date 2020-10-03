@@ -48,6 +48,7 @@ interface FixedLengthArray<T extends any, L extends number> extends Array<T> {
 
 export interface quizProps {
     name: string;
+    quizzes_progress: number,
     progress: number;
     questions: {
         qs: string;

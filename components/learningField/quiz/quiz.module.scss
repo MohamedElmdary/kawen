@@ -1,0 +1,116 @@
+.quiz {
+    .quiz_name {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba($color: #0b1726, $alpha: 0.1);
+
+        h3 {
+            color: var(--it-1-opacity-7);
+        }
+
+        > div {
+            width: 308px;
+            margin: 0;
+        }
+    }
+
+    > section {
+        box-shadow: 0px 1px 5px 1px #4a4a4a17;
+        background-color: var(--white);
+        overflow: hidden;
+        color: var(--it-1-opacity-7);
+        margin: 32px 40px 40px;
+
+        > p {
+            margin: 24px;
+        }
+
+        hr {
+            margin: 0;
+            border-color: rgba($color: #0b1726, $alpha: 0.1);
+        }
+
+        ul {
+            margin: 24px;
+            list-style: none;
+
+            li:not(:last-of-type) {
+                margin-bottom: 4px;
+            }
+
+            label {
+                display: flex;
+                align-items: center;
+
+                span {
+                    position: relative;
+                    margin-right: 8px;
+                    width: 16px;
+                    height: 16px;
+                    background-color: var(--it-2);
+                    border-radius: 8px;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        transition: all 0.4s ease-in-out;
+                    }
+                }
+            }
+
+            input:checked + label span::after {
+                width: 8px;
+                height: 8px;
+                background-color: var(--primary);
+                border-radius: 4px;
+                top: 4px;
+                left: 4px;
+            }
+        }
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 24px 24px;
+            align-items: center;
+        }
+    }
+}
+
+.submit_answer {
+    max-width: 600px;
+    background-color: var(--white);
+    padding: 32px;
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .tryagain, .welldone {
+        font-weight: 600;
+        color: var(--primary);
+        text-align: center;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba($color: #0b1726, $alpha: 0.1);
+    }
+
+    .welldone {
+        color: var(--feedback);
+    }
+
+    .reason {
+        margin: 16px 0;
+        color: var(--it-1-opacity-7);
+        text-align: center;
+    }
+
+    button {
+        margin: 0 auto;
+        width: 200px;
+    }
+}

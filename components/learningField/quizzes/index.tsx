@@ -22,7 +22,7 @@ const Quizzes: React.FC<quizzesProps> = ({ progress, quizzes }) => {
                                 </span>
                             )
                         ) : (
-                            <Link href="/learning/quizzes?quiz_id=1">
+                            <Link href="/learning/quiz">
                                 <button className="btn">Take the quiz</button>
                             </Link>
                         )}

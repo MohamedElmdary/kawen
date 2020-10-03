@@ -10,14 +10,15 @@ import Quizzes from "../../components/learningField/quizzes";
 import * as props from "./props";
 import * as data from "./data";
 import FinalTest from "../../components/learningField/final-test";
+import Quiz from "../../components/learningField/quiz";
 
 type Props = props.DefaultProps & any;
 // (props.ProjectProps | props.LearningProps | props.quizzesProps);
 
-const FieldLearningPath: React.FC<{ data: Props; page?: string }> = ({
-    data: { field, image, learning_path, ...data },
-    page,
-}) => {
+const FieldLearningPath: React.FC<{
+    data: Props;
+    page: string;
+}> = ({ data: { field, image, learning_path, ...data }, page }) => {
     const router = useRouter();
     const [closeOverlay, setCloseOverlay] = useState<boolean>(true);
     const [showSidebar, setShowSidebar] = useState<boolean>(false);
@@ -87,6 +88,13 @@ const FieldLearningPath: React.FC<{ data: Props; page?: string }> = ({
                             projectName={data.projectName}
                             projectDescription={data.projectDescription}
                         />
+                    ) : page === "quiz" ? (
+                        <Quiz
+                            name={data.name}
+                            progress={data.progress}
+                            questions={data.questions}
+                            quizzes_progress={data.quizzes_progress}
+                        />
                     ) : page === "quizzes" ? (
                         <Quizzes
                             progress={data.progress}
@@ -123,6 +131,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
             {
                 params: { page: "final-test" },
             },
+            {
+                params: { page: "quiz" },
+            },
         ],
         fallback: false,
     };
@@ -130,13 +141,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<any, any> = async ({
     params,
-    query,
 }: {
     params?: { page: string };
-    query?: { quiz_id: string };
 }) => {
     const { page } = params || { page: "" };
-    const { quiz_id } = query || { quiz_id: "-1" };
 
     if (page === "project") {
         return {
@@ -146,20 +154,19 @@ export const getStaticProps: GetStaticProps<any, any> = async ({
             },
         };
     } else if (page === "quizzes") {
-        if (quiz_id == "-1")
-            return {
-                props: {
-                    data: { ...data.defaultData, ...data.quizzesData },
-                    page,
-                },
-            };
-        else
-            return {
-                props: {
-                    data: { ...data.defaultData, ...data.quizData },
-                    page,
-                },
-            };
+        return {
+            props: {
+                data: { ...data.defaultData, ...data.quizzesData },
+                page,
+            },
+        };
+    } else if (page === "quiz") {
+        return {
+            props: {
+                data: { ...data.defaultData, ...data.quizData },
+                page,
+            },
+        };
     } else if (page === "field") {
         return {
             props: {
