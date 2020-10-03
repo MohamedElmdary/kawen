@@ -25,7 +25,6 @@
 
     &__actions {
         display: flex;
-        overflow: hidden;
         @extend %transition;
         transition-property: width;
 
@@ -51,7 +50,43 @@
         }
 
         &__focus {
+            overflow: hidden;
             width: 0;
+        }
+    }
+}
+
+.auth {
+    &__actions {
+        display: flex;
+        align-items: center;
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            margin-left: 15px;
+            outline: none;
+        }
+    }
+
+    &__img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    &__notification {
+        width: 500px;
+        max-width: calc(100vw - 90px);
+        max-height: 80vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        @include nice-scroll();
+
+        &__header {
+            padding: 20px;
         }
     }
 }

@@ -1,0 +1,29 @@
+.ntf {
+    display: flex;
+
+    &__img {
+        margin-right: 8px;
+
+        img {
+            height: 80px;
+            width: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    &__details {
+        &__normal {
+            color: var(--it-1-opacity-6);
+        }
+
+        &__group {
+            color: var(--highlight);
+        }
+
+        > span {
+            font-size: 12px;
+            color: var(--it-1-opacity-5);
+        }
+    }
+}

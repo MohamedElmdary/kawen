@@ -9,12 +9,14 @@ interface MenuProps {
 export const DropDownMenu: React.FC<MenuProps> = (props) => {
     const { children, left, dropdownClass } = props;
     return (
-        /* prettier-ignore */
-        <section onClick={e => e.stopPropagation()} className={[
-            classes.dropdown__menu,
-            left ? classes.left : '',
-            dropdownClass ?? '',
-        ].join(' ')}>
+        <section
+            onClick={(e) => e.stopPropagation()}
+            className={[
+                classes.dropdown__menu,
+                left ? classes.left : '',
+                dropdownClass ?? '',
+            ].join(' ')}
+        >
             {children}
         </section>
     );
@@ -62,13 +64,16 @@ const DropDown: React.FC<Props> = (props) => {
 
 interface ItemProps {
     onClick?(e: MouseEvent<HTMLDivElement>): void;
+    style?: React.CSSProperties;
 }
 
-export const DropDownItem: React.FC<ItemProps> = ({ children, onClick }) => {
+export const DropDownItem: React.FC<ItemProps> = (props) => {
+    const { children, onClick, style } = props;
     const { closeMenu } = useContext(dropDownContext);
 
     return (
         <div
+            style={style}
             onClick={(e) => {
                 onClick?.(e);
                 closeMenu();

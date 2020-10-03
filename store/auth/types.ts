@@ -58,7 +58,7 @@ export interface AuthState {
 
 interface SetCurrentUser {
     type: '[Auth] SET_CURRENT_USER';
-    payload: User;
+    payload: User | null;
 }
 
 export type AuthActions = SetCurrentUser;
