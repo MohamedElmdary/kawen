@@ -1,32 +1,26 @@
-import React, { useState } from "react";
-import { GetServerSideProps } from "next";
-import Layout from "../../components/layout";
-import FieldSidebar, { IFieldSidebar } from "../../components/fieldSidebar";
-import classes from "./learningPath.module.scss";
-import FieldPath from "../../components/learningField/fieldPath";
-import { Icourse } from "../../components/learningField/fieldPath/dropdown";
-import Project from "../../components/learningField/project";
+import * as Props from "./props";
 
-interface Props {
-    field: string;
-    image: string;
-    learning_path: {
-        [key: string]: {
-            nick_name: string;
-            progress: number;
-            courses: Icourse[];
-            project: {
-                name: string;
-                description: string;
-                status: "Done" | "not started";
-            };
-        };
-    };
-}
-
-const data: Props = {
+export const defaultData: Props.DefaultProps = {
     field: "Front end development",
     image: "/images/learning_path__aside.png",
+    learning_path: {
+        Entry: {
+            nick_name: "Front end basics",
+            progress: 100,
+        },
+        Intermediate: {
+            nick_name: "Welcome to Js",
+            progress: 50,
+        },
+        Advanced: {
+            nick_name: "Welcome to Js Frameworks",
+            progress: 0,
+        },
+    },
+};
+
+export const learningData: Props.LearningProps = {
+    field: "Front end development",
     learning_path: {
         Entry: {
             nick_name: "Front end basics",
@@ -265,95 +259,36 @@ const data: Props = {
     },
 };
 
-const FieldLearningPath: React.FC<{ data: Props; page?: string }> = ({
-    data: { field, image, learning_path },
-    page,
-}) => {
-    const [closeOverlay, setCloseOverlay] = useState<boolean>(true);
-    const [showSidebar, setShowSidebar] = useState<boolean>(true);
-    const [activeLevel, setActiveLevel] = useState({
-        ...learning_path.Entry,
-        level: "Entry",
-    });
-
-    let sideBar: IFieldSidebar = {
-        field,
-        image,
-        learning_path: {},
-    };
-
-    Object.keys(learning_path).map((level) => {
-        sideBar.learning_path[level] = {
-            nick_name: learning_path[level].nick_name,
-            progress: learning_path[level].progress,
-        };
-    });
-
-    const changeLevel = (level: string): void => {
-        setActiveLevel({
-            ...learning_path[level],
-            level,
-        });
-    };
-
-    return (
-        <Layout title={`${field} learning path`} footer={false}>
-            <section
-                style={{ display: "flex" }}
-                onClick={() => setCloseOverlay(true)}
-            >
-                <FieldSidebar
-                    data={sideBar}
-                    changeLevel={changeLevel}
-                    currentLevel={activeLevel.level}
-                    showSidebar={showSidebar}
-                />
-                <section className={classes.level}>
-                    <header>
-                        <button
-                            className={`${classes.collapse_menu} ${
-                                showSidebar && classes.active
-                            }`}
-                            onClick={() => setShowSidebar(!showSidebar)}
-                        >
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                        <h2 className="h5-regular">{`${activeLevel.level} level (${activeLevel.nick_name})`}</h2>
-                        <span>
-                            {`${
-                                activeLevel.progress === 100
-                                    ? "COMPLETED 100%"
-                                    : activeLevel.progress
-                                    ? `${activeLevel.progress}%`
-                                    : " "
-                            }`}
-                        </span>
-                    </header>
-                    {page === "project" ? (
-                        <Project
-                            projectName={activeLevel.project.name}
-                            projectDescription={activeLevel.project.description}
-                        />
-                    ) : (
-                        <FieldPath
-                            activeLevel={activeLevel}
-                            field={field}
-                            closeOverlay={closeOverlay}
-                            openOverlay={() => setCloseOverlay(false)}
-                        />
-                    )}
-                </section>
-            </section>
-        </Layout>
-    );
+export const projectData: Props.ProjectProps = {
+    projectName: "Entery level project",
+    projectDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
-    return {
-        props: { data, page: ctx.query.page || "" },
-    };
+export const quizzesData: Props.quizzesProps = {
+    progress: 30,
+    quizzes: [
+        {
+            name: "What is the HTML?",
+            status: true,
+            progress: 100,
+        },
+        {
+            name: "Main tags",
+            status: true,
+            progress: 50,
+        },
+        {
+            name: "HTML attributes",
+            status: false,
+        },
+        {
+            name: "Open & closed tags",
+            status: false,
+        },
+        {
+            name: "Topic",
+            status: false
+        },
+    ],
 };
-
-export default FieldLearningPath;

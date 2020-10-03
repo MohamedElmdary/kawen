@@ -1,0 +1,40 @@
+.progression {
+    margin-top: 16px;
+    color: var(--it-1-opacity-7);
+
+    p {
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    div {
+        position: relative;
+        height: 2px;
+        width: 100%;
+        border-radius: 5px 0 0 5px;
+        background-color: #c4c4c4;
+        margin-top: 3px;
+
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+            background-color: var(--feedback);
+        }
+
+        &::after {
+            height: 4px;
+            border-radius: 5px 0 0 5px;
+            top: -1px;
+            left: 0;
+        }
+
+        &::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            top: -3px;
+        }
+    }
+}
