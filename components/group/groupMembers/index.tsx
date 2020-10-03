@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { User } from '../../../store/auth';
 import classes from './groupMembers.module.scss';
-import { spawn } from 'child_process';
 
 interface Props {
     members: User[];
