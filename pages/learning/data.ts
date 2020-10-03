@@ -288,7 +288,324 @@ export const quizzesData: Props.quizzesProps = {
         },
         {
             name: "Topic",
-            status: false
+            status: false,
         },
     ],
 };
+
+export const quizData: Props.quizProps = {
+    name: "What is the HTML?",
+    progress: 70,
+    questions: [
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            status: true,
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            status: true,
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            status: false,
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            status: false,
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            status: false,
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+    ],
+};
+
+export const finalTestData: Props.finalTestProps = {
+    questions: [
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+        {
+            qs:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magnaaliq ua. Ut enim ad minim veniam?",
+            ans: [
+                {
+                    text: "Answer 1",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 2",
+                    correct: true,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 3",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+                {
+                    text: "Answer 4",
+                    correct: false,
+                    reason:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+                },
+            ],
+        },
+    ]
+}

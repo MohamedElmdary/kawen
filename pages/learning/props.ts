@@ -7,8 +7,8 @@ export interface DefaultProps {
         [key: string]: {
             nick_name: string;
             progress: number;
-        }
-    }
+        };
+    };
 }
 
 export interface LearningProps {
@@ -37,6 +37,42 @@ export interface quizzesProps {
     quizzes: {
         name: string;
         status: boolean;
-        progress?: number
+        progress?: number;
+    }[];
+}
+
+interface FixedLengthArray<T extends any, L extends number> extends Array<T> {
+    0: T;
+    length: L;
+}
+
+export interface quizProps {
+    name: string;
+    progress: number;
+    questions: {
+        qs: string;
+        status: boolean;
+        ans: FixedLengthArray<
+            {
+                text: string;
+                correct: boolean;
+                reason: string;
+            },
+            4
+        >;
+    }[];
+}
+
+export interface finalTestProps {
+    questions: {
+        qs: string;
+        ans: FixedLengthArray<
+            {
+                text: string;
+                correct: boolean;
+                reason: string;
+            },
+            4
+        >;
     }[];
 }
