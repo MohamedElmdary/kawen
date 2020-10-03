@@ -1,0 +1,11 @@
+.prog {
+    padding: 0 20px;
+
+    @media (max-width: 768px) {
+        padding: 0;
+    }
+
+    &__title {
+        margin-bottom: 34px;
+    }
+}
