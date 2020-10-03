@@ -5,9 +5,10 @@ interface Props {
     cover: string;
     title: string;
     subTitle: string;
+    isMobile: boolean;
 }
 
-const GroupHeader: React.FC<Props> = ({ cover, title, subTitle }) => {
+const GroupHeader: React.FC<Props> = ({ cover, title, subTitle, isMobile }) => {
     return (
         <>
             <header className={classes.group__header}>
@@ -24,7 +25,7 @@ const GroupHeader: React.FC<Props> = ({ cover, title, subTitle }) => {
                 <div className={classes.group__details__action}>
                     <button className="btn">
                         <img src="/images/icons/edit.svg" alt="edit icon" />
-                        <span>Edit group settings</span>
+                        {!isMobile && <span>Edit group settings</span>}
                     </button>
                 </div>
             </div>

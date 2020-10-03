@@ -34,12 +34,19 @@ const ProgressionItem: React.FC<Props> = ({ progression }) => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.item__prog}>
-                    <div className={classes.item__prog__header}>
-                        <p>Progression</p>
-                        <p>{productivity * 100}%</p>
-                    </div>
+                <div className={classes.item__productivity}>
                     <UserProgressBar progress={productivity} />
+                    <div className={classes.item__productivity__info}>
+                        <div>
+                            <p>
+                                <span>{quizzes}</span> quizzes
+                            </p>
+                            <p>
+                                <span>{finalTest}</span> final test
+                            </p>
+                        </div>
+                        <p>Productivity</p>
+                    </div>
                 </div>
             </div>
             <div className={classes.item__exp}>

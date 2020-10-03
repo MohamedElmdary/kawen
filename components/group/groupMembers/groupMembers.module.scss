@@ -12,6 +12,13 @@
 
             button {
                 height: 32px;
+
+                @media (max-width: 768px) {
+                    height: 40px;
+                    min-width: auto;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
             }
         }
     }

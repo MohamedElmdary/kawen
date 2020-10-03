@@ -7,9 +7,31 @@
     margin-bottom: 24px;
     position: relative;
 
+    @media (max-width: 991px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
     &__details {
         display: flex;
         justify-content: space-between;
+
+        @media (max-width: 991px) {
+            display: block;
+            flex-grow: 1;
+            margin-right: 30px;
+        }
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
 
     &__user {
@@ -72,21 +94,63 @@
         }
     }
 
+    &__productivity {
+        flex-basis: 300px;
+
+        @media (max-width: 991px) {
+            width: 100%;
+            margin-top: 20px;
+            flex-basis: initial;
+        }
+
+        &__info {
+            margin-top: -10px;
+            display: flex;
+            justify-content: space-between;
+
+            > div span {
+                font-weight: 600;
+            }
+
+            > p {
+                color: var(--highlight);
+            }
+        }
+    }
+
     &__exp {
         @extend %center-position;
+
+        @media (max-width: 991px) {
+            position: static;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            align-self: center;
+        }
 
         &__circle {
             width: 65px;
             position: relative;
 
+            @media (max-width: 768px) {
+                width: 120px;
+            }
+
             img {
                 width: 32px;
                 @extend %center-position;
+
+                @media (max-width: 768px) {
+                    width: 60px;
+                }
             }
         }
 
         p {
             color: var(--it-1-opacity-7);
+            text-align: center;
         }
     }
 }

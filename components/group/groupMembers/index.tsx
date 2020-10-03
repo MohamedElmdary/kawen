@@ -1,12 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { User } from '../../../store/auth';
 import classes from './groupMembers.module.scss';
+import { spawn } from 'child_process';
 
 interface Props {
     members: User[];
+    isMobile: boolean;
 }
 
-const GroupMembers: React.FC<Props> = ({ members }) => {
+const GroupMembers: React.FC<Props> = ({ members, isMobile }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [n, setN] = useState(members.length);
 
@@ -45,7 +47,9 @@ const GroupMembers: React.FC<Props> = ({ members }) => {
         <section className={classes.group__members}>
             <div className={classes.group__members__header}>
                 <h5>Members</h5>
-                <button className="btn">+ Add members</button>
+                <button className="btn">
+                    {isMobile ? '+' : '+ Add members'}
+                </button>
             </div>
             <div className={classes.group__container} ref={containerRef}>
                 {/* \n */}
