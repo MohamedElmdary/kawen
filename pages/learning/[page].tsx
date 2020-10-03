@@ -9,7 +9,7 @@ import Project from "../../components/learningField/project";
 import Quizzes from "../../components/learningField/quizzes";
 import * as props from "./props";
 import * as data from "./data";
-import FinalTest from "../../components/learningField/final-test/final-test";
+import FinalTest from "../../components/learningField/final-test";
 
 type Props = props.DefaultProps & any;
 // (props.ProjectProps | props.LearningProps | props.quizzesProps);
@@ -100,7 +100,7 @@ const FieldLearningPath: React.FC<{ data: Props; page?: string }> = ({
                             openOverlay={() => setCloseOverlay(false)}
                         />
                     ) : page === "final-test" ? (
-                        <FinalTest />
+                        <FinalTest questions={data.questions} />
                     ) : null}
                 </section>
             </section>

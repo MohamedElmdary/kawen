@@ -1,19 +1,13 @@
 import Link from "next/link";
 import React from "react";
-import Progression from "../progression";
 import classes from "./quizzes.module.scss";
 import { quizzesProps } from "../../../pages/learning/props";
+import TestsLayout from "../testsLayout";
 
 const Quizzes: React.FC<quizzesProps> = ({ progress, quizzes }) => {
     return (
-        <section className={classes.quizzes}>
-            <header>
-                <h2 className="h5">
-                    Introduction to HTML course <span>quizzes</span>
-                </h2>
-                <Progression progress={progress} />
-            </header>
-            <ul>
+        <TestsLayout progress={progress} page="quizzes">
+            <ul className={classes.quizzes}>
                 {quizzes.map((quiz) => (
                     <li key={quiz.name}>
                         <span>{quiz.name}</span>
@@ -35,17 +29,7 @@ const Quizzes: React.FC<quizzesProps> = ({ progress, quizzes }) => {
                     </li>
                 ))}
             </ul>
-            <footer>
-                <Link href={`/learning/final-test`}>
-                    <button className="btn">Take the final test</button>
-                </Link>
-                <Link href={`/learning/field`}>
-                    <button className="btn btn-outline">
-                        Back to the learning path
-                    </button>
-                </Link>
-            </footer>
-        </section>
+        </TestsLayout>
     );
 };
 

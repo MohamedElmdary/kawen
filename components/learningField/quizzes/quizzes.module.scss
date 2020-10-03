@@ -1,59 +1,22 @@
 .quizzes {
-    header {
-        background-color: var(--it-2);
-        min-height: 80px;
+    margin: 32px 40px 0;
+    list-style: none;
+
+    li {
+        min-height: 64px;
+        box-shadow: 0px 1px 5px 1px rgba(74, 74, 74, 0.09);
+        padding: 20px;
+        margin-bottom: 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 24px;
 
-        h2 span {
-            color: var(--primary)
+        .full_mark {
+            color: var(--feedback);
         }
 
-        > div {
-            width: 308px;
-            margin: 0;
-        }
-    }
-
-    ul {
-        margin: 32px 40px 0;
-        list-style: none;
-
-        li {
-            min-height: 64px;
-            box-shadow: 0px 1px 5px 1px rgba(74,74,74,0.09);
-            padding: 20px;
-            margin-bottom: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .full_mark {
-                color: var(--feedback);
-            }
-
-            .undone {
-                color: var(--highlight);
-            }
-        }
-    }
-
-    footer {
-        margin: 4px 40px 16px;
-        display: flex;
-        flex-direction: column;
-
-        button {
-            width: 200px;
-            margin-left: auto;
-            padding: 0;
-
-            &:last-of-type {
-                margin-top: 16px;
-                border: 1px solid var(--primary);
-            }
+        .undone {
+            color: var(--highlight);
         }
     }
 }
