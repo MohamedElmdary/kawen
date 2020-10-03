@@ -1,7 +1,7 @@
 import { User } from '../store/auth';
 import users from './users';
 
-interface Progression {
+export interface Progression {
     user: User;
     productivity: number;
     quizzes: number;
@@ -24,7 +24,7 @@ const members = Array.from({ length: 100 }, (_, id) => {
     };
 });
 
-const progressions = members.map((user) => {
+const progressions = members.slice(0, 10).map((user) => {
     return {
         user,
         finalTest: 1,
