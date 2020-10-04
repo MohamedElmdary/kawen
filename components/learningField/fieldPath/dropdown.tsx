@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import classes from "./fieldPath.module.scss";
+import React from 'react';
+import Link from 'next/link';
+import classes from './fieldPath.module.scss';
 
 export interface Icourse {
     name: string;
@@ -22,7 +22,7 @@ interface Props {
         project: {
             name: string;
             description: string;
-            status: "Done" | "not started";
+            status: 'Done' | 'not started';
         };
     };
     checkListRef: React.RefObject<HTMLUListElement>;
@@ -35,7 +35,7 @@ interface Props {
 const Dropdown: React.FC<Props> = ({
     checkListRef,
     courseQuizzesRef,
-    field,
+    // field,
     activeLevel,
     openOverlay,
     checkList,
