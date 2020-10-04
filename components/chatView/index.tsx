@@ -76,6 +76,7 @@ const ChatView: React.FC = () => {
             if (recorder.state === 'inactive') {
                 const blob = new Blob(chunks, { type: 'audio/webm' });
                 setB(blob);
+                scrollToEnd();
             }
         };
 

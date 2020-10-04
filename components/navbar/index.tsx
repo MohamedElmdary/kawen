@@ -9,16 +9,28 @@ import Dropdown, { DropDownItem, DropDownDivider } from '../dropDownMenu';
 import Notification from '../notification';
 import notifications from '../../data/notifications';
 import { AuthActions } from '../../store/auth';
+import { useRouter } from 'next/router';
+import Message from '../message';
 
 interface Props {
     logoOnly: boolean;
 }
 
 const Navbar: React.FC<Props> = ({ logoOnly }) => {
+    const router = useRouter();
     const [focus, setFocus] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
     const user = useSelector((state: AppState) => state.auth.currentUser);
     const dispatch: Dispatch<AuthActions> = useDispatch();
+    const contacts = useSelector((state: AppState) => state.chat.contacts);
+
+    const messagesCmp = contacts?.map((c) => {
+        return (
+            <DropDownItem key={c.id}>
+                <Message contact={c} />
+            </DropDownItem>
+        );
+    });
 
     const notificationsCmp = notifications.map((n) => {
         return (
@@ -55,13 +67,23 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
                         {user ? (
                             <div className={classes.auth__actions}>
                                 <Dropdown
+                                    dropdownClass={[
+                                        classes.auth__notification,
+                                        classes.auth__messages,
+                                    ].join(' ')}
                                     actionElement={
                                         <img
                                             src="/images/icons/message-icon.svg"
                                             alt="message icon"
                                         />
                                     }
-                                ></Dropdown>
+                                >
+                                    {/* prettier-ignore */}
+                                    <div className={classes.auth__notification__header}>
+                                        <h5>Messages</h5>
+                                    </div>
+                                    {messagesCmp}
+                                </Dropdown>
                                 <Dropdown
                                     dropdownClass={classes.auth__notification}
                                     actionElement={
@@ -86,9 +108,27 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
                                         />
                                     }
                                 >
-                                    <DropDownItem>Profile</DropDownItem>
-                                    <DropDownItem>Notes</DropDownItem>
-                                    <DropDownItem>Tasks</DropDownItem>
+                                    <DropDownItem
+                                        onClick={() => {
+                                            router.push('/user/' + user.id);
+                                        }}
+                                    >
+                                        Profile
+                                    </DropDownItem>
+                                    <DropDownItem
+                                        onClick={() => {
+                                            router.push('/notes');
+                                        }}
+                                    >
+                                        Notes
+                                    </DropDownItem>
+                                    <DropDownItem
+                                        onClick={() => {
+                                            router.push('/todo-list');
+                                        }}
+                                    >
+                                        Tasks
+                                    </DropDownItem>
                                     <DropDownDivider />
                                     <DropDownItem>Settings</DropDownItem>
                                     <DropDownDivider />
