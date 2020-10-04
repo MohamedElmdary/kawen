@@ -1,0 +1,77 @@
+@import '../../../shared/global';
+
+.box {
+    background-color: var(--white);
+    width: 350px;
+    height: 480px;
+    max-height: calc(100vh - 64px);
+    margin-right: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    box-shadow: 0px 1px 5px 1px rgba(74, 74, 74, 0.09);
+
+    &.min {
+        height: 48px;
+    }
+
+    &__header {
+        height: 48px;
+        background-color: var(--it-1);
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+
+        &__container {
+            display: flex;
+            align-items: center;
+            height: 48px;
+        }
+
+        &__img {
+            margin-right: 8px;
+            padding-top: 4px;
+
+            img {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        p {
+            color: var(--white);
+            font-weight: 600;
+            @extend %clip-text;
+            -webkit-line-clamp: 1;
+        }
+
+        &__actions {
+            display: flex;
+
+            > button {
+                @extend %reset-btn;
+                @extend %center;
+
+                &:first-of-type {
+                    margin-right: 10px;
+
+                    span {
+                        height: 2px;
+                        width: 25px;
+                        background-color: var(--white);
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    &__container {
+        height: calc(100% - 48px);
+    }
+}

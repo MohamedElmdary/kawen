@@ -79,14 +79,20 @@
 
     &__notification {
         width: 500px;
-        max-width: calc(100vw - 90px);
+        max-width: calc(100vw - 40px);
         max-height: 80vh;
         overflow-x: hidden;
         overflow-y: auto;
         @include nice-scroll();
+        right: -55px !important;
+        top: -8px !important;
 
         &__header {
             padding: 20px;
         }
+    }
+
+    &__messages {
+        right: -94px !important;
     }
 }

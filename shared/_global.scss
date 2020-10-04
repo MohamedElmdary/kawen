@@ -29,6 +29,13 @@
     transform: translate(-50%, -50%);
 }
 
+%reset-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 @mixin nice-scroll {
     &::-webkit-scrollbar {
         width: 6px;

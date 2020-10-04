@@ -1,0 +1,43 @@
+@import '../../shared/global';
+
+.msg {
+    display: flex;
+
+    &__img {
+        margin-right: 8px;
+
+        img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    &__details {
+        margin-right: 8px;
+        flex-grow: 1;
+
+        p {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        span {
+            @extend %clip-text;
+            -webkit-line-clamp: 1;
+            color: var(--it-1-opacity-7);
+        }
+    }
+
+    &__time {
+        height: 100%;
+        align-self: flex-end;
+
+        span {
+            white-space: nowrap;
+            font-size: 12px;
+            color: var(--it-1-opacity-7);
+        }
+    }
+}

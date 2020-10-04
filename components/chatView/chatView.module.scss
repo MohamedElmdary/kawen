@@ -1,0 +1,20 @@
+@import '../../shared/global';
+
+$action: 60px;
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    padding-bottom: $action;
+
+    &__container {
+        flex-grow: 1;
+        padding: 10px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        will-change: transform;
+        @include nice-scroll();
+    }
+}
