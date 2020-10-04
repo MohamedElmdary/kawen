@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import useStore from '../../store';
 import './_app.scss';
 import { User } from '../../store/auth';
-
 import users from '../../data/users';
 import { ContactModel } from '../../store/chat';
 import contacts from '../../data/contacts';
@@ -20,7 +19,11 @@ const App: React.FC<Props> = (props) => {
     const { Component, pageProps, currentUser, contacts } = props;
     const store = useStore({
         auth: { currentUser },
-        chat: { contacts, activeChats: [0], miniChat: true },
+        chat: {
+            contacts,
+            activeChats: [{ id: 0, active: false }],
+            miniChat: true,
+        },
     });
 
     return (

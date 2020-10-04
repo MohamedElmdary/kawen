@@ -1,34 +1,42 @@
-import React, { useState, Dispatch } from 'react';
+import React, { Dispatch } from 'react';
 import classes from './chatBox.module.scss';
 import { createSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../../store';
 import ChatView from '../../chatView';
 import { User } from '../../../store/auth';
-import { ChatActions } from '../../../store/chat';
+import { ChatActions, ChatState } from '../../../store/chat';
 
 interface Props {
-    chatId: string | number;
+    chatInfo: ChatState['activeChats'][0];
     user: User;
 }
 
-const ChatBox: React.FC<Props> = ({ chatId, user }) => {
+const ChatBox: React.FC<Props> = ({ chatInfo, user }) => {
+    const { id, active } = chatInfo;
+    const min = !active;
     const dispatch: Dispatch<ChatActions> = useDispatch();
-    const [min, setMin] = useState(true);
     const chat = useSelector(
         createSelector(
             ({ chat }: AppState) => chat.contacts ?? [],
-            (contacts) => contacts.filter((c) => c.id === chatId)[0]
+            (contacts) => contacts.filter((c) => c.id === id)[0]
         )
     );
     const chatUser = chat.users.find(({ id }) => id !== user.id) as User;
     const { image, name } = chatUser;
 
+    const toggleActive = () => {
+        dispatch({
+            type: '[Chat] TOGGLE_MINI_CHAT_ACTIVE',
+            payload: id,
+        });
+    };
+
     return (
         <section className={[classes.box, min ? classes.min : ''].join(' ')}>
             <div
                 className={classes.box__header}
-                onClick={min ? () => setMin(false) : undefined}
+                onClick={min ? toggleActive : undefined}
             >
                 <div className={classes.box__header__container}>
                     <div className={classes.box__header__img}>
@@ -38,7 +46,7 @@ const ChatBox: React.FC<Props> = ({ chatId, user }) => {
                 </div>
                 <div className={classes.box__header__actions}>
                     {!min && (
-                        <button onClick={() => setMin(true)}>
+                        <button onClick={toggleActive}>
                             <span />
                         </button>
                     )}

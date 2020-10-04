@@ -44,17 +44,31 @@ function chatReducer(state = initState, action: ChatActions): ChatState {
             const id = action.payload;
             return {
                 ...state,
-                activeChats: state.activeChats.filter((c) => c !== id),
+                activeChats: state.activeChats.filter((c) => c.id !== id),
             };
         }
 
         case '[Chat] ADD_MINI_CHAT': {
             const id = action.payload;
-            const exists = state.activeChats.some((c) => c === id);
+            const exists = state.activeChats.some((c) => c.id === id);
             if (exists) return state;
             return {
                 ...state,
-                activeChats: [id, ...state.activeChats],
+                activeChats: [{ id, active: true }, ...state.activeChats],
+            };
+        }
+
+        case '[Chat] TOGGLE_MINI_CHAT_ACTIVE': {
+            const id = action.payload;
+            return {
+                ...state,
+                activeChats: state.activeChats.map((chat) => {
+                    if (chat.id !== id) return chat;
+                    return {
+                        ...chat,
+                        active: !chat.active,
+                    };
+                }),
             };
         }
 

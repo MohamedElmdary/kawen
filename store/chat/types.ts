@@ -16,7 +16,10 @@ export interface ContactModel {
 
 export interface ChatState {
     contacts: ContactModel[] | null;
-    activeChats: ContactModel['id'][];
+    activeChats: {
+        id: number | string;
+        active: boolean;
+    }[];
     miniChat: boolean;
 }
 
@@ -44,8 +47,14 @@ interface RemoveMiniChat {
     payload: string | number;
 }
 
+interface ToggleMiniChatActive {
+    type: '[Chat] TOGGLE_MINI_CHAT_ACTIVE';
+    payload: string | number;
+}
+
 export type ChatActions =
     | SendMessage
     | SetMiniChat
     | AddMiniChat
-    | RemoveMiniChat;
+    | RemoveMiniChat
+    | ToggleMiniChatActive;

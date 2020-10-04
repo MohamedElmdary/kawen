@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 import classes from './chatBar.module.scss';
@@ -30,7 +30,7 @@ const ChatBar: React.FC = () => {
     if (!user) return null;
 
     const chatsCmp = chats.slice(0, n).map((chat) => {
-        return <ChatBox {...{ user }} chatId={chat} key={chat} />;
+        return <ChatBox {...{ user }} chatInfo={chat} key={chat.id} />;
     });
 
     return (
