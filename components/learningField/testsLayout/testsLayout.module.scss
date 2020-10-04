@@ -1,0 +1,35 @@
+.tests_layout {
+    header {
+        background-color: var(--it-2);
+        min-height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 24px;
+
+        h2 span {
+            color: var(--primary)
+        }
+
+        > div {
+            width: 308px;
+            margin: 0;
+        }
+    }
+    footer {
+        margin: 4px 40px 16px;
+        display: flex;
+        flex-direction: column;
+
+        button {
+            width: 200px;
+            margin-left: auto;
+            padding: 0;
+
+            &:last-of-type {
+                margin-top: 16px;
+                border: 1px solid var(--primary);
+            }
+        }
+    }
+}

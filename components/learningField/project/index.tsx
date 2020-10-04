@@ -1,12 +1,11 @@
 import React from "react";
 import classes from "./project.module.scss";
+import { ProjectProps } from "../../../data/learning-fieldProps";
 
-interface Props {
-    projectName: string;
-    projectDescription: string;
-}
-
-const Project: React.FC<Props> = ({ projectDescription, projectName }) => {
+const Project: React.FC<ProjectProps> = ({
+    projectDescription,
+    projectName,
+}) => {
     return (
         <section className={classes.project}>
             <h2 className="h5">{projectName}</h2>

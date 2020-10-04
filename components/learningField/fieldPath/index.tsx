@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import classes from "./fieldPath.module.scss";
 import Link from "next/link";
 import Dropdown, { Icourse } from "./dropdown";
+import Progression from "../progression";
 
 interface Props {
     activeLevel: {
@@ -99,7 +100,7 @@ const FieldPath: React.FC<Props> = ({
     return (
         <React.Fragment>
             <section className={classes.level_content}>
-                {activeLevel.courses.map((course, i) => (
+                {activeLevel.courses?.map((course, i) => (
                     <section key={i}>
                         <img
                             src="/images/learning_path__logo.svg"
@@ -124,21 +125,7 @@ const FieldPath: React.FC<Props> = ({
                                 <img src="/images/three-dots.svg" alt="More" />
                             </button>
                         </div>
-                        <div className={classes.progression}>
-                            <p>
-                                Progrseeion <span>{course.progress}%</span>
-                            </p>
-                            <div>
-                                <style jsx>{`
-                                    div::before {
-                                        left: ${course.progress}%;
-                                    }
-                                    div::after {
-                                        width: ${course.progress}%;
-                                    }
-                                `}</style>
-                            </div>
-                        </div>
+                        <Progression progress={course.progress} />
                     </section>
                 ))}
                 <section>
@@ -146,11 +133,11 @@ const FieldPath: React.FC<Props> = ({
                         src="/images/learning_path__logo.svg"
                         alt="Lerning path logo"
                     />
-                    <h3 className="h5">{activeLevel.project.name}</h3>
-                    <p>{activeLevel.project.description}</p>
-                    {activeLevel.project.status === "not started" ? (
+                    <h3 className="h5">{activeLevel.project?.name}</h3>
+                    <p>{activeLevel.project?.description}</p>
+                    {activeLevel.project?.status === "not started" ? (
                         <div className={classes.course_controls}>
-                            <Link href={`/learning/${field}?page=project`}>
+                            <Link href={`/learning/project`}>
                                 <button className="btn">Start project</button>
                             </Link>
                         </div>
