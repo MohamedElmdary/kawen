@@ -1,0 +1,67 @@
+@import '../../../shared/global';
+
+$action: 60px;
+
+.chat {
+    &__action {
+        height: $action;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid rgba(#0b1726, 0.1);
+
+        > button {
+            @extend %center;
+            @extend %reset-btn;
+
+            &:first-of-type {
+                margin-right: 10px;
+            }
+
+            &:last-of-type[disabled] {
+                filter: invert(75%);
+            }
+        }
+
+        > div {
+            flex-grow: 1;
+            margin: 0 10px;
+            position: relative;
+
+            input {
+                display: block;
+                height: 100%;
+                width: 100%;
+                border: none;
+                background: none;
+                border-radius: var(--border-r-1);
+                border: 1px solid rgba(#0b1726, 0.1);
+                outline: none;
+                padding-left: 15px;
+                padding-right: 45px;
+            }
+
+            button {
+                @extend %reset-btn;
+                @extend %center;
+            }
+        }
+    }
+
+    &__emoji {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+
+        > div {
+            position: absolute;
+            bottom: 25px;
+            right: 0;
+        }
+    }
+}
