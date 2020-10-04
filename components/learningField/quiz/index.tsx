@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import classes from "./quiz.module.scss";
 import { quizProps } from "../../../data/learning-fieldProps";
 import TestsLayout from "../testsLayout";
 import Progression from "../progression";
 import PopupModal from "../../popupModal";
+import { useRouter } from "next/router";
 
 const Quiz: React.FC<quizProps> = ({
     name,
@@ -29,8 +29,13 @@ const Quiz: React.FC<quizProps> = ({
     };
 
     const nextQuestion = () => {
-        if (questionIndex + 1 === totalQuestionsNum)
-            router.push("/learning/quizzes");
+        if (questionIndex + 1 === totalQuestionsNum) {
+            router.push({
+                path: "/learning/[page]",
+                pathname: "/learning/quizzes",
+            });
+            return;
+        }
         setQuestionIndex(questionIndex + 1);
         setOpenCorrect(false);
         setAnswerIndex(-1);

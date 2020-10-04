@@ -137,7 +137,7 @@ const FieldPath: React.FC<Props> = ({
                     <p>{activeLevel.project?.description}</p>
                     {activeLevel.project?.status === "not started" ? (
                         <div className={classes.course_controls}>
-                            <Link href={`/learning/project`}>
+                            <Link href="/learning/[page]" as="/learning/project">
                                 <button className="btn">Start project</button>
                             </Link>
                         </div>

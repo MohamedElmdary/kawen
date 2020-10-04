@@ -60,7 +60,7 @@ const Home: React.FC<Props> = ({ data }) => {
 						<img src={field.image} alt={`${field.title} image`} />
 						<h2>{field.title}</h2>
 						<p>{field.description}</p>
-						<Link href={`/${field.title.split(" ").join("-")}`}>
+						<Link href="/[fieldName]" as={`/${field.title.split(" ").join("-")}`}>
 							<button className="btn btn-round btn-outline">Explore</button>
 						</Link>
 					</section>

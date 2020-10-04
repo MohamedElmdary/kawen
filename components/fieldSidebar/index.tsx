@@ -22,9 +22,12 @@ const FieldSidebar: React.FC<{
     const { field, image, learning_path } = data;
 
     return (
-        <section className={`${classes.field_sidebar} ${showSidebar && classes.active}`}>
+        <section
+            className={`${classes.field_sidebar} ${
+                showSidebar && classes.active
+            }`}
+        >
             <div>
-
                 <header>
                     <h1
                         style={{ backgroundImage: `url(${image})` }}
@@ -32,7 +35,7 @@ const FieldSidebar: React.FC<{
                     >
                         {field}
                     </h1>
-                    <Link href={`/learning/field`}>
+                    <Link href="learing/[page]" as="/learning/field">
                         <a>FIELD OVERVIEW</a>
                     </Link>
                 </header>
@@ -41,12 +44,17 @@ const FieldSidebar: React.FC<{
                         <button
                             key={level}
                             onClick={() => changeLevel(level)}
-                            className={currentLevel === level ? classes.active : ""}
+                            className={
+                                currentLevel === level ? classes.active : ""
+                            }
                         >
                             {`${level} level (${learning_path[level].nick_name})`}
                             <span>
                                 {learning_path[level].progress === 100 ? (
-                                    <img src="/images/correct.svg" alt="End path" />
+                                    <img
+                                        src="/images/correct.svg"
+                                        alt="End path"
+                                    />
                                 ) : learning_path[level].progress ? (
                                     `${learning_path[level].progress}%`
                                 ) : null}
@@ -55,13 +63,13 @@ const FieldSidebar: React.FC<{
                     ))}
                 </div>
                 <footer>
-                    <Link href={`/challenge`}>
+                    <Link href="/challenge-group">
                         <a>Create challenge group</a>
                     </Link>
-                    <Link href={`/learning/chat`}>
+                    <Link href="learing/[page]" as="/learning/chat">
                         <a>Classroom chat</a>
                     </Link>
-                    <Link href={`/learning/faq`}>
+                    <Link href="learing/[page]" as="/learning/faq">
                         <a>FAQ section</a>
                     </Link>
                 </footer>

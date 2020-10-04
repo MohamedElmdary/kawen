@@ -45,7 +45,11 @@ const FieldLearningPath: React.FC<{
             ...learning_path[level],
             level,
         });
-        if (page) router.push(`/learning/field`);
+        if (page)
+            router.push({
+                path: "/learning/[page]",
+                pathname: "/learning/field",
+            });
     };
 
     return (

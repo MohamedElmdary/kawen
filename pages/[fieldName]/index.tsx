@@ -43,7 +43,7 @@ const FieldOverview: React.FC<Props> = ({
             <header className={`${classes.field_header}`}>
                 <h1 className="h2">{field}</h1>
                 <p>{description}</p>
-                <Link href="/">
+                <Link href="/learning/[page]" as="/learning/field">
                     <button className="btn">Enroll for learning path</button>
                 </Link>
             </header>
@@ -74,7 +74,7 @@ const FieldOverview: React.FC<Props> = ({
                             <li>Follow your progress</li>
                             <li>Challenge your friends</li>
                         </ul>
-                        <Link href="/">
+                        <Link href="/learning/[page]" as="/learning/field">
                             <button className="btn">Enroll now</button>
                         </Link>
                     </section>

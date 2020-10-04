@@ -78,12 +78,12 @@ const Dropdown: React.FC<Props> = ({
                 onClick={(e) => stopPropagation(e)}
             >
                 <li>
-                    <Link href={`/learning/quizzes`}>
+                    <Link href="/learning/[page]" as="/learning/quizzes">
                         <a>Quizzes</a>
                     </Link>
                 </li>
                 <li>
-                    <Link href={`/learning/final-test`}>
+                    <Link href="/learning/[page]" as="/learning/final-test">
                         <a>Final test</a>
                     </Link>
                 </li>
