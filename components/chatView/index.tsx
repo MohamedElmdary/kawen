@@ -41,7 +41,7 @@ const ChatView: React.FC = () => {
         (e: ScrollEvent) => {
             const s = e.target as HTMLDivElement;
             const { scrollHeight, offsetHeight, scrollTop } = s;
-            const shouldScroll = scrollHeight <= offsetHeight + scrollTop + 50;
+            const shouldScroll = scrollHeight <= offsetHeight + scrollTop + 100;
             if (scroll !== shouldScroll) {
                 setScroll(shouldScroll);
             }
