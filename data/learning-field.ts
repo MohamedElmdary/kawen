@@ -609,3 +609,77 @@ export const finalTestData: Props.finalTestProps = {
         },
     ],
 };
+
+export const faqData: Props.faqProps = {
+    posts: [
+        {
+            author: "Nahla Galal",
+            author_img: "https://via.placeholder.com/40",
+            date: new Date().toISOString(),
+            question:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit",
+            comments: [
+                {
+                    author: "Maghfera Sherif",
+                    author_img: "https://via.placeholder.com/40",
+                    comment:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.",
+                    votes_up: {
+                        number: 200,
+                        isVoted: true,
+                    },
+                    votes_down: {
+                        number: 30,
+                        isVoted: false,
+                    },
+                    images: [],
+                },
+            ],
+        },
+        {
+            author: "Nahla Galal",
+            author_img: "https://via.placeholder.com/40",
+            date: new Date().toISOString(),
+            question:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit",
+            comments: [
+                {
+                    author: "Maghfera Sherif",
+                    author_img: "https://via.placeholder.com/40",
+                    comment:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.",
+                    votes_up: {
+                        number: 200,
+                        isVoted: true,
+                    },
+                    votes_down: {
+                        number: 30,
+                        isVoted: false,
+                    },
+                    images: [
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                        "https://via.placeholder.com/150",
+                    ],
+                },
+                {
+                    author: "Maghfera Sherif",
+                    author_img: "https://via.placeholder.com/40",
+                    comment:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.",
+                    votes_up: {
+                        number: 200,
+                        isVoted: true,
+                    },
+                    votes_down: {
+                        number: 30,
+                        isVoted: false,
+                    },
+                    images: [],
+                },
+            ],
+        },
+    ],
+};

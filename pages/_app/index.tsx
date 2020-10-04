@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import "emoji-mart/css/emoji-mart.css"; 
 import useStore from '../../store';
 import './_app.scss';
 import { User } from '../../store/auth';

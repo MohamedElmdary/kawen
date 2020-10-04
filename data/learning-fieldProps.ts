@@ -66,3 +66,26 @@ export interface finalTestProps {
         }[];
     }[];
 }
+
+export interface faqProps {
+    posts: {
+        author: string;
+        author_img: string;
+        date: string;
+        question: string;
+        comments: {
+                author: string;
+                author_img: string;
+                comment: string;
+                images: string[];
+                votes_up: {
+                    number: number;
+                    isVoted: boolean;
+                }
+                votes_down: {
+                    number: number;
+                    isVoted: boolean;
+                }
+            }[]
+    }[]
+}

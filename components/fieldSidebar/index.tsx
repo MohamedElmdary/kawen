@@ -35,7 +35,7 @@ const FieldSidebar: React.FC<{
                     >
                         {field}
                     </h1>
-                    <Link href="learing/[page]" as="/learning/field">
+                    <Link href={`/[fieldName]`} as={`/front`}>
                         <a>FIELD OVERVIEW</a>
                     </Link>
                 </header>
@@ -63,13 +63,13 @@ const FieldSidebar: React.FC<{
                     ))}
                 </div>
                 <footer>
-                    <Link href="/challenge-group">
+                    <Link href={`/challenge-group/[id]`} as="/challenge-group/0">
                         <a>Create challenge group</a>
                     </Link>
-                    <Link href="learing/[page]" as="/learning/chat">
+                    <Link href="/learning/[page]" as={`/learning/chat`}>
                         <a>Classroom chat</a>
                     </Link>
-                    <Link href="learing/[page]" as="/learning/faq">
+                    <Link href="/learning/[page]" as={`/learning/faq`}>
                         <a>FAQ section</a>
                     </Link>
                 </footer>
