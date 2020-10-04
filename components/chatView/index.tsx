@@ -10,11 +10,16 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 import ChatMessage from './chatMessage';
 import { User } from '../../store/auth';
+import { ContactModel } from '../../store/chat';
+
 declare var MediaRecorder: any;
 
-const ChatView: React.FC = () => {
+interface Props {
+    chat: ContactModel;
+}
+
+const ChatView: React.FC<Props> = ({ chat }) => {
     const user = useSelector(({ auth }: AppState) => auth.currentUser) as User;
-    const chat = useSelector(({ chat }: AppState) => (chat.contacts ?? [])[0]);
     const { messages } = chat;
     const [message, setMessage] = useState('');
     const imgRef = useRef<HTMLInputElement>(null);

@@ -11,6 +11,7 @@ import notifications from '../../data/notifications';
 import { AuthActions } from '../../store/auth';
 import { useRouter } from 'next/router';
 import Message from '../message';
+import { ChatActions } from '../../store/chat';
 
 interface Props {
     logoOnly: boolean;
@@ -21,12 +22,20 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
     const [focus, setFocus] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
     const user = useSelector((state: AppState) => state.auth.currentUser);
-    const dispatch: Dispatch<AuthActions> = useDispatch();
+    const dispatch: Dispatch<AuthActions | ChatActions> = useDispatch();
     const contacts = useSelector((state: AppState) => state.chat.contacts);
 
     const messagesCmp = contacts?.map((c) => {
         return (
-            <DropDownItem key={c.id}>
+            <DropDownItem
+                key={c.id}
+                onClick={() => {
+                    dispatch({
+                        type: '[Chat] ADD_MINI_CHAT',
+                        payload: c.id,
+                    });
+                }}
+            >
                 <Message contact={c} />
             </DropDownItem>
         );

@@ -7,6 +7,7 @@ import { User } from '../../store/auth';
 import users from '../../data/users';
 import { ContactModel } from '../../store/chat';
 import contacts from '../../data/contacts';
+import ChatBar from '../../components/chatBar';
 
 interface Props {
     Component: React.FC<any>;
@@ -19,12 +20,13 @@ const App: React.FC<Props> = (props) => {
     const { Component, pageProps, currentUser, contacts } = props;
     const store = useStore({
         auth: { currentUser },
-        chat: { contacts, activeChats: [] },
+        chat: { contacts, activeChats: [0], miniChat: true },
     });
 
     return (
         <Provider store={store}>
             <Component {...pageProps} />
+            <ChatBar />
         </Provider>
     );
 };

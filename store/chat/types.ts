@@ -17,6 +17,7 @@ export interface ContactModel {
 export interface ChatState {
     contacts: ContactModel[] | null;
     activeChats: ContactModel['id'][];
+    miniChat: boolean;
 }
 
 interface SendMessage {
@@ -28,4 +29,23 @@ interface SendMessage {
     };
 }
 
-export type ChatAction = SendMessage;
+interface SetMiniChat {
+    type: '[Chat] SET_MINI_CHAT';
+    payload: boolean;
+}
+
+interface AddMiniChat {
+    type: '[Chat] ADD_MINI_CHAT';
+    payload: string | number;
+}
+
+interface RemoveMiniChat {
+    type: '[Chat] REMOVE_MINI_CHAT';
+    payload: string | number;
+}
+
+export type ChatActions =
+    | SendMessage
+    | SetMiniChat
+    | AddMiniChat
+    | RemoveMiniChat;
