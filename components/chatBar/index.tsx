@@ -14,6 +14,10 @@ const ChatBar: React.FC = () => {
         const _onResize = () => {
             const w = window.innerWidth - 40;
             if (w < 0) return;
+            if (w <= 500) {
+                if (n !== 0) setN(0);
+                return;
+            }
             const newN = Math.floor(w / 370);
             if (newN !== n) {
                 setN(newN);
