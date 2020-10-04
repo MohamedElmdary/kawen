@@ -2,6 +2,7 @@
     width: 100%;
     @media screen and (min-width: 1093px) {
         margin-left: 344px;
+        width: calc(100% - 344px);
     }
 
     > header {

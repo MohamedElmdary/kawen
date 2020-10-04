@@ -11,6 +11,7 @@ import * as props from "../../data/learning-fieldProps";
 import * as data from "../../data/learning-field";
 import FinalTest from "../../components/learningField/final-test";
 import Quiz from "../../components/learningField/quiz";
+import FAQ from "../../components/learningField/faq";
 
 type Props = props.DefaultProps & any;
 // (props.ProjectProps | props.LearningProps | props.quizzesProps);
@@ -76,16 +77,24 @@ const FieldLearningPath: React.FC<{
                             <span></span>
                             <span></span>
                         </button>
-                        <h2 className="h5-regular">{`${activeLevel.level} level (${activeLevel.nick_name})`}</h2>
-                        <span>
-                            {`${
-                                activeLevel.progress === 100
-                                    ? "COMPLETED 100%"
-                                    : activeLevel.progress
-                                    ? `${activeLevel.progress}%`
-                                    : " "
-                            }`}
-                        </span>
+                        {page === "faq" ? (
+                            <h2 className="h5-regular">FAQ section</h2>
+                        ) : page === "chat" ? (
+                            <h2 className="h5-regular">Classroom chat</h2>
+                        ) : (
+                            <React.Fragment>
+                                <h2 className="h5-regular">{`${activeLevel.level} level (${activeLevel.nick_name})`}</h2>
+                                <span>
+                                    {`${
+                                        activeLevel.progress === 100
+                                            ? "COMPLETED 100%"
+                                            : activeLevel.progress
+                                            ? `${activeLevel.progress}%`
+                                            : " "
+                                    }`}
+                                </span>
+                            </React.Fragment>
+                        )}
                     </header>
                     {page === "project" ? (
                         <Project
@@ -113,6 +122,8 @@ const FieldLearningPath: React.FC<{
                         />
                     ) : page === "final-test" ? (
                         <FinalTest questions={data.questions} />
+                    ) : page === "faq" ? (
+                        <FAQ posts={data.posts} />
                     ) : null}
                 </section>
             </section>
@@ -137,6 +148,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
             },
             {
                 params: { page: "quiz" },
+            },
+            {
+                params: { page: "faq" },
             },
         ],
         fallback: false,
@@ -182,6 +196,13 @@ export const getStaticProps: GetStaticProps<any, any> = async ({
         return {
             props: {
                 data: { ...data.defaultData, ...data.finalTestData },
+                page,
+            },
+        };
+    } else if (page === "faq") {
+        return {
+            props: {
+                data: { ...data.defaultData, ...data.faqData },
                 page,
             },
         };
