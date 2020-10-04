@@ -5,15 +5,22 @@ import './_app.scss';
 import { User } from '../../store/auth';
 
 import users from '../../data/users';
+import { ContactModel } from '../../store/chat';
+import contacts from '../../data/contacts';
 
 interface Props {
     Component: React.FC<any>;
     pageProps: { [key: string]: any };
     currentUser: User | null;
+    contacts: ContactModel[] | null;
 }
 
-const App: React.FC<Props> = ({ Component, pageProps, currentUser }) => {
-    const store = useStore({ auth: { currentUser } });
+const App: React.FC<Props> = (props) => {
+    const { Component, pageProps, currentUser, contacts } = props;
+    const store = useStore({
+        auth: { currentUser },
+        chat: { contacts, activeChats: [] },
+    });
 
     return (
         <Provider store={store}>
@@ -27,7 +34,7 @@ const App: React.FC<Props> = ({ Component, pageProps, currentUser }) => {
     // id = ctx.query.id
     const currentUser: User = users[0];
 
-    return { currentUser };
+    return { currentUser, contacts };
 };
 
 export default App;
