@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 import ChatMessage from './chatMessage';
 import { User } from '../../store/auth';
+declare var MediaRecorder: any;
 
 const ChatView: React.FC = () => {
     const user = useSelector(({ auth }: AppState) => auth.currentUser) as User;
@@ -60,10 +61,44 @@ const ChatView: React.FC = () => {
         scrollToEnd();
     };
 
+    /* recorded */
+    const [b, setB] = useState<any>(undefined);
+    const onRecordAudio = async () => {
+        const chunks: any[] = [];
+        let stream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+        });
+
+        const recorder = new MediaRecorder(stream);
+        recorder.ondataavailable = (e: any) => {
+            console.log(e.data);
+            chunks.push(e.data);
+            if (recorder.state === 'inactive') {
+                const blob = new Blob(chunks, { type: 'audio/webm' });
+                setB(blob);
+            }
+        };
+
+        recorder.start();
+
+        setTimeout(() => {
+            console.log('done');
+            recorder.stop();
+        }, 5000);
+    };
+
     return (
         <section className={classes.chat}>
             <div className={classes.chat__container} {...{ onScroll }}>
                 {messagesCmp}
+                {b && (
+                    <audio controls>
+                        <source
+                            src={URL.createObjectURL(b)}
+                            type="video/webm"
+                        />
+                    </audio>
+                )}
                 <span
                     ref={scrollRef}
                     className={classes.chat__container__scroll}
@@ -71,7 +106,7 @@ const ChatView: React.FC = () => {
             </div>
             <form onSubmit={onSendMessage}>
                 <div className={classes.chat__action}>
-                    <button type="button">
+                    <button type="button" onClick={onRecordAudio}>
                         <img src="/images/icons/mic-icon.svg" alt="mic icon" />
                     </button>
                     <input type="file" hidden ref={imgRef} />
