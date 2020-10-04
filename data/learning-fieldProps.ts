@@ -1,4 +1,4 @@
-import { Icourse } from "../../components/learningField/fieldPath/dropdown";
+import { Icourse } from "../components/learningField/fieldPath/dropdown";
 
 export interface DefaultProps {
     field: string;
@@ -41,39 +41,28 @@ export interface quizzesProps {
     }[];
 }
 
-interface FixedLengthArray<T extends any, L extends number> extends Array<T> {
-    0: T;
-    length: L;
-}
-
 export interface quizProps {
     name: string;
-    quizzes_progress: number,
+    quizzes_progress: number;
     progress: number;
     questions: {
         qs: string;
         status: boolean;
-        ans: FixedLengthArray<
-            {
-                text: string;
-                correct: boolean;
-                reason: string;
-            },
-            4
-        >;
+        ans: {
+            text: string;
+            correct: boolean;
+            reason: string;
+        }[];
     }[];
 }
 
 export interface finalTestProps {
     questions: {
         qs: string;
-        ans: FixedLengthArray<
-            {
-                text: string;
-                correct: boolean;
-                reason: string;
-            },
-            4
-        >;
+        ans: {
+            text: string;
+            correct: boolean;
+            reason: string;
+        }[];
     }[];
 }

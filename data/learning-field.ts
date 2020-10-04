@@ -1,4 +1,4 @@
-import * as Props from "./props";
+import * as Props from "./learning-fieldProps";
 
 export const defaultData: Props.DefaultProps = {
     field: "Front end development",
@@ -330,8 +330,7 @@ export const quizData: Props.quizProps = {
             ],
         },
         {
-            qs:
-                "Lorem ipsum ",
+            qs: "Lorem ipsum ",
             status: true,
             ans: [
                 {
@@ -608,5 +607,5 @@ export const finalTestData: Props.finalTestProps = {
                 },
             ],
         },
-    ]
-}
+    ],
+};

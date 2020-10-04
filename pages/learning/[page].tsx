@@ -7,8 +7,8 @@ import classes from "./learningPath.module.scss";
 import FieldPath from "../../components/learningField/fieldPath";
 import Project from "../../components/learningField/project";
 import Quizzes from "../../components/learningField/quizzes";
-import * as props from "./props";
-import * as data from "./data";
+import * as props from "../../data/learning-fieldProps";
+import * as data from "../../data/learning-field";
 import FinalTest from "../../components/learningField/final-test";
 import Quiz from "../../components/learningField/quiz";
 

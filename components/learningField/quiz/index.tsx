@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import classes from "./quiz.module.scss";
-import { quizProps } from "../../../pages/learning/props";
+import { quizProps } from "../../../data/learning-fieldProps";
 import TestsLayout from "../testsLayout";
 import Progression from "../progression";
 import PopupModal from "../../popupModal";

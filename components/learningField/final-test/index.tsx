@@ -1,6 +1,5 @@
-import Link from "next/link";
 import React from "react";
-import { finalTestProps as Props } from "../../../pages/learning/props";
+import { finalTestProps as Props } from "../../../data/learning-fieldProps";
 import TestsLayout from "../testsLayout";
 import classes from "./finalTest.module.scss";
 

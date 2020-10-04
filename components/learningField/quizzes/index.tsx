@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import classes from "./quizzes.module.scss";
-import { quizzesProps } from "../../../pages/learning/props";
+import { quizzesProps } from "../../../data/learning-fieldProps";
 import TestsLayout from "../testsLayout";
 
 const Quizzes: React.FC<quizzesProps> = ({ progress, quizzes }) => {
