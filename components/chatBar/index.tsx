@@ -7,13 +7,13 @@ import ChatBox from './chatBox';
 const ChatBar: React.FC = () => {
     const user = useSelector(({ auth }: AppState) => auth.currentUser);
     const chats = useSelector(({ chat }: AppState) => chat.activeChats);
+    const miniChat = useSelector(({ chat }: AppState) => chat.miniChat);
     const [n, setN] = useState(3);
 
     useEffect(() => {
         const _onResize = () => {
             const w = window.innerWidth - 40;
             if (w < 0) return;
-            console.log({ w });
             const newN = Math.floor(w / 370);
             if (newN !== n) {
                 setN(newN);
@@ -27,7 +27,7 @@ const ChatBar: React.FC = () => {
         };
     }, [n, setN]);
 
-    if (!user) return null;
+    if (!user || !miniChat) return null;
 
     const chatsCmp = chats.slice(0, n).map((chat) => {
         return <ChatBox {...{ user }} chatInfo={chat} key={chat.id} />;

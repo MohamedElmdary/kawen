@@ -148,3 +148,8 @@ input,
     padding-left: 7.5%;
     padding-right: 7.5%;
 }
+
+/* emoji mart */
+.emoji-mart-scroll + .emoji-mart-bar {
+    display: none;
+}

@@ -11,6 +11,7 @@ import { AppState } from '../../store';
 import ChatMessage from './chatMessage';
 import { User } from '../../store/auth';
 import { ContactModel } from '../../store/chat';
+import { Picker } from 'emoji-mart';
 
 declare var MediaRecorder: any;
 
@@ -25,6 +26,7 @@ const ChatView: React.FC<Props> = ({ chat }) => {
     const imgRef = useRef<HTMLInputElement>(null);
     const scrollRef = useRef<HTMLSpanElement>(null);
     const [scroll, setScroll] = useState(true);
+    const [emoji, setEmoji] = useState(false);
 
     const messagesCmp = messages.map((msg) => {
         return (
@@ -76,7 +78,6 @@ const ChatView: React.FC<Props> = ({ chat }) => {
 
         const recorder = new MediaRecorder(stream);
         recorder.ondataavailable = (e: any) => {
-            console.log(e.data);
             chunks.push(e.data);
             if (recorder.state === 'inactive') {
                 const blob = new Blob(chunks, { type: 'audio/webm' });
@@ -92,6 +93,16 @@ const ChatView: React.FC<Props> = ({ chat }) => {
             recorder.stop();
         }, 5000);
     };
+
+    useEffect(() => {
+        if (emoji) {
+            const _onClick = () => setEmoji(false);
+            window.addEventListener('click', _onClick);
+            return () => {
+                window.removeEventListener('click', _onClick);
+            };
+        }
+    }, [emoji]);
 
     return (
         <section className={classes.chat}>
@@ -135,12 +146,29 @@ const ChatView: React.FC<Props> = ({ chat }) => {
                             autoComplete="off"
                             spellCheck={true}
                         />
-                        <button type="button">
-                            <img
-                                src="/images/icons/emoji-icon.svg"
-                                alt="emoji icon"
-                            />
-                        </button>
+                        <div className={classes.chat__emoji}>
+                            {emoji && (
+                                <div onClick={(e) => e.stopPropagation()}>
+                                    <Picker
+                                        set="facebook"
+                                        onSelect={(e) => {
+                                            setMessage(message + e.name);
+                                        }}
+                                    />
+                                </div>
+                            )}
+                            <button
+                                type="button"
+                                onClick={
+                                    emoji ? undefined : () => setEmoji(true)
+                                }
+                            >
+                                <img
+                                    src="/images/icons/emoji-icon.svg"
+                                    alt="emoji icon"
+                                />
+                            </button>
+                        </div>
                     </div>
                     <button
                         type="submit"

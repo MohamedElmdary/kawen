@@ -63,11 +63,20 @@ $action: 60px;
             button {
                 @extend %reset-btn;
                 @extend %center;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 15px;
             }
+        }
+    }
+
+    &__emoji {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+
+        > div {
+            position: absolute;
+            bottom: 25px;
+            right: 0;
         }
     }
 }

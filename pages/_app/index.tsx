@@ -7,6 +7,7 @@ import users from '../../data/users';
 import { ContactModel } from '../../store/chat';
 import contacts from '../../data/contacts';
 import ChatBar from '../../components/chatBar';
+import 'emoji-mart/css/emoji-mart.css';
 
 interface Props {
     Component: React.FC<any>;
