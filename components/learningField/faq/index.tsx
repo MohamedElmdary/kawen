@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
-import { Picker } from "emoji-mart";
-import { faqProps } from "../../../pages/learning/props";
-import classes from "./faq.module.scss";
+import React, { useRef, useState } from 'react';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import { Picker } from 'emoji-mart';
+import { faqProps } from '../../../data/learning-fieldProps';
+import classes from './faq.module.scss';
 
 TimeAgo.addLocale(en);
 
@@ -13,7 +13,7 @@ type Votes = {
 }[][];
 
 const FAQ: React.FC<faqProps> = ({ posts }) => {
-    const timeAgo = new TimeAgo("en-US");
+    const timeAgo = new TimeAgo('en-US');
     const [emojiPicker, setEmojiPicker] = useState<boolean[]>(
         new Array(posts.length).fill(false)
     );
@@ -25,7 +25,9 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
             }))
         )
     );
-    const [images, setImages] = useState<any[][]>(new Array(posts.length).fill([]));
+    const [images, setImages] = useState<any[][]>(
+        new Array(posts.length).fill([])
+    );
     const textBoxRef = useRef<HTMLTextAreaElement[] | null[]>(
         new Array(posts.length)
     );
@@ -53,7 +55,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
     };
 
     const changeVote = (
-        type: "votes_up" | "votes_down",
+        type: 'votes_up' | 'votes_down',
         i: number,
         ind: number
     ) => {
@@ -63,7 +65,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                 votes_down: { ...comment.votes_down },
             }))
         );
-        const notType = type === "votes_up" ? "votes_down" : "votes_up";
+        const notType = type === 'votes_up' ? 'votes_down' : 'votes_up';
 
         if (voteCopy[i][ind][type].isVoted) voteCopy[i][ind][type].number--;
         else {
@@ -83,7 +85,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
             ? e.currentTarget.files[0]
             : null;
         reader.onloadend = () => {
-            let imageCopy = images.map(post => [...post]);
+            let imageCopy = images.map((post) => [...post]);
             imageCopy[i].push(reader.result);
             setImages(imageCopy);
         };
@@ -91,10 +93,10 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
     };
 
     const removeImage = (i: number, imageIndex: number) => {
-        let imagesCopy = images.map(post => [...post]);
+        let imagesCopy = images.map((post) => [...post]);
         imagesCopy[i].splice(imageIndex, 1);
         setImages(imagesCopy);
-    }
+    };
 
     return (
         <section
@@ -138,7 +140,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                                 <div className={classes.votes}>
                                     <button
                                         onClick={() =>
-                                            changeVote("votes_up", i, ind)
+                                            changeVote('votes_up', i, ind)
                                         }
                                     >
                                         {votes[i][ind].votes_up.isVoted ? (
@@ -159,7 +161,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                                     </p>
                                     <button
                                         onClick={() =>
-                                            changeVote("votes_down", i, ind)
+                                            changeVote('votes_down', i, ind)
                                         }
                                     >
                                         {votes[i][ind].votes_down.isVoted ? (
@@ -183,18 +185,20 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                         <img src={post.author_img} alt="User image" />
                         <div className={classes.add_comment_form}>
                             <div className={classes.comment_images}>
-                                {images[i].map((image: string, imageIndex: number) => (
-                                    <div key={imageIndex}>
-                                        <img src={image} alt="User image" />
-                                        <button
-                                            onClick={() =>
-                                                removeImage(i, imageIndex)
-                                            }
-                                        >
-                                            &times;
-                                        </button>
-                                    </div>
-                                ))}
+                                {images[i].map(
+                                    (image: string, imageIndex: number) => (
+                                        <div key={imageIndex}>
+                                            <img src={image} alt="User image" />
+                                            <button
+                                                onClick={() =>
+                                                    removeImage(i, imageIndex)
+                                                }
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>
+                                    )
+                                )}
                             </div>
                             <textarea
                                 name="comment"
@@ -202,7 +206,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                                 placeholder="Type a replay"
                                 ref={(el) => (textBoxRef.current[i] = el)}
                                 onKeyPress={(e) =>
-                                    e.key === "Enter" &&
+                                    e.key === 'Enter' &&
                                     e.currentTarget.value.trim() &&
                                     !e.shiftKey
                                         ? sendComment(
