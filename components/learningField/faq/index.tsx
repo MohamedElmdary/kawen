@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en';
-import { Picker } from 'emoji-mart';
-import { faqProps } from '../../../data/learning-fieldProps';
-import classes from './faq.module.scss';
+import React, { useRef, useState } from "react";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+import { Picker } from "emoji-mart";
+import { faqProps } from "../../../data/learning-fieldProps";
+import classes from "./faq.module.scss";
 
 TimeAgo.addLocale(en);
 
@@ -13,7 +13,7 @@ type Votes = {
 }[][];
 
 const FAQ: React.FC<faqProps> = ({ posts }) => {
-    const timeAgo = new TimeAgo('en-US');
+    const timeAgo = new TimeAgo("en-US");
     const [emojiPicker, setEmojiPicker] = useState<boolean[]>(
         new Array(posts.length).fill(false)
     );
@@ -55,7 +55,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
     };
 
     const changeVote = (
-        type: 'votes_up' | 'votes_down',
+        type: "votes_up" | "votes_down",
         i: number,
         ind: number
     ) => {
@@ -65,7 +65,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                 votes_down: { ...comment.votes_down },
             }))
         );
-        const notType = type === 'votes_up' ? 'votes_down' : 'votes_up';
+        const notType = type === "votes_up" ? "votes_down" : "votes_up";
 
         if (voteCopy[i][ind][type].isVoted) voteCopy[i][ind][type].number--;
         else {
@@ -96,6 +96,13 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
         let imagesCopy = images.map((post) => [...post]);
         imagesCopy[i].splice(imageIndex, 1);
         setImages(imagesCopy);
+    };
+
+    const writeComment = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        e.currentTarget.rows = e.currentTarget.value.split("\n").length;
+        e.key === "Enter" && e.currentTarget.value.trim() && !e.shiftKey
+            ? sendComment(e, e.currentTarget.value.trim())
+            : null;
     };
 
     return (
@@ -140,7 +147,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                                 <div className={classes.votes}>
                                     <button
                                         onClick={() =>
-                                            changeVote('votes_up', i, ind)
+                                            changeVote("votes_up", i, ind)
                                         }
                                     >
                                         {votes[i][ind].votes_up.isVoted ? (
@@ -161,7 +168,7 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                                     </p>
                                     <button
                                         onClick={() =>
-                                            changeVote('votes_down', i, ind)
+                                            changeVote("votes_down", i, ind)
                                         }
                                     >
                                         {votes[i][ind].votes_down.isVoted ? (
@@ -205,16 +212,8 @@ const FAQ: React.FC<faqProps> = ({ posts }) => {
                                 id="comment"
                                 placeholder="Type a replay"
                                 ref={(el) => (textBoxRef.current[i] = el)}
-                                onKeyPress={(e) =>
-                                    e.key === 'Enter' &&
-                                    e.currentTarget.value.trim() &&
-                                    !e.shiftKey
-                                        ? sendComment(
-                                              e,
-                                              e.currentTarget.value.trim()
-                                          )
-                                        : null
-                                }
+                                rows={1}
+                                onKeyDown={(e) => writeComment(e)}
                             ></textarea>
                             <input
                                 type="file"
