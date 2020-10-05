@@ -12,6 +12,7 @@ import * as data from "../../data/learning-field";
 import FinalTest from "../../components/learningField/final-test";
 import Quiz from "../../components/learningField/quiz";
 import FAQ from "../../components/learningField/faq";
+import ChatPage from "../../components/learningField/chat";
 
 type Props = props.DefaultProps & any;
 // (props.ProjectProps | props.LearningProps | props.quizzesProps);
@@ -124,6 +125,8 @@ const FieldLearningPath: React.FC<{
                         <FinalTest questions={data.questions} />
                     ) : page === "faq" ? (
                         <FAQ posts={data.posts} />
+                    ) : page === "chat" ? (
+                        <ChatPage users={data.users} />
                     ) : null}
                 </section>
             </section>
@@ -151,6 +154,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
             },
             {
                 params: { page: "faq" },
+            },
+            {
+                params: { page: "chat" },
             },
         ],
         fallback: false,
@@ -203,6 +209,13 @@ export const getStaticProps: GetStaticProps<any, any> = async ({
         return {
             props: {
                 data: { ...data.defaultData, ...data.faqData },
+                page,
+            },
+        };
+    } else if (page === "chat") {
+        return {
+            props: {
+                data: { ...data.defaultData, ...data.ChatUsersData },
                 page,
             },
         };

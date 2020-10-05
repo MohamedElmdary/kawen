@@ -1,0 +1,54 @@
+@import "../../../shared/global";
+
+.chat {
+    display: flex;
+
+    > section {
+        padding-right: 10px;
+        height: calc(100vh - 109px);
+        flex: 2;
+    }
+
+    aside {
+        height: calc(100vh - 109px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        // flex: 1;
+        width: 344px;
+        padding: 20px;
+        background-color: var(--it-1-opacity-8);
+        box-shadow: 0px 1px 5px 1px rgba(74,74,74,0.09);
+        @include nice-scroll();
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--it-1);
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-of-type) {
+                margin-bottom: 10px;
+            }
+
+            img {
+                width: 32px;
+                height: 32px;
+                margin-right: 8px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            a {
+                color: var(--white);
+                text-decoration: none;
+            }
+        }
+    }
+}

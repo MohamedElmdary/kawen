@@ -683,3 +683,72 @@ export const faqData: Props.faqProps = {
         },
     ],
 };
+
+export const ChatUsersData: Props.ChatUsersProps = {
+    users: [
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+        {
+            name: "Nahla Galal",
+            img: "https://via.placeholder.com/32"
+        },
+    ]
+}

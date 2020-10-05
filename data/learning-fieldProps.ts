@@ -89,3 +89,10 @@ export interface faqProps {
             }[]
     }[]
 }
+
+export interface ChatUsersProps {
+    users: {
+        name: string,
+        img: string
+    }[]
+}
