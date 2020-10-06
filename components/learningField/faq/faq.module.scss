@@ -130,7 +130,7 @@
                 width: calc(100% - 48px);
 
                 textarea {
-                    height: 40px;
+                    max-height: 100px;
                     width: 100%;
                     padding: 10px 72px 10px 16px;
                     resize: none;
