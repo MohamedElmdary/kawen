@@ -26,6 +26,7 @@ interface UseFormReturn {
     ref: RefObject<HTMLInputElement>;
     value: string;
     touch: boolean;
+    update(value?: string, error?: string): RefObject<HTMLInputElement>;
 }
 
 function useForm(inputs: UseFormOptions[]): UseFormReturn[] {
@@ -74,6 +75,11 @@ function useForm(inputs: UseFormOptions[]): UseFormReturn[] {
             touch: touch.current,
             error,
             value,
+            update(value: string = values[i][0], error: string = errors[i][0]) {
+                if (values[i][0] !== value) setValue(value);
+                if (errors[i][0] !== error) setError(error);
+                return refs[i];
+            },
         };
     });
 }
@@ -98,7 +104,7 @@ interface GetFormValueReturn {
 
 export const getFormValue = (form: UseFormReturn[]): GetFormValueReturn => {
     const firstInvalidInput = form.find(
-        (input) => !input.touch || input.error !== ''
+        (input) => (!input.value && !input.touch) || input.error !== ''
     );
     const values = form.reduce((result: ValuesType, input) => {
         const { name, value } = input;
@@ -110,6 +116,13 @@ export const getFormValue = (form: UseFormReturn[]): GetFormValueReturn => {
         values,
         input: firstInvalidInput ? firstInvalidInput.ref.current : null,
     };
+};
+
+export const updateInput = (
+    form: UseFormReturn[],
+    name: string
+): UseFormReturn['update'] => {
+    return (form.find((input) => input.name === name) as UseFormReturn).update;
 };
 
 export default useForm;

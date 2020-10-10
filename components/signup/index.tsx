@@ -1,10 +1,19 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useEffect } from 'react';
 import classes from './signup.module.scss';
 import InputControl from '../inputControl';
-import useForm, { requiredValidate, getFormValue } from '../../hooks/useForm';
+import useForm, {
+    requiredValidate,
+    getFormValue,
+    updateInput,
+} from '../../hooks/useForm';
 import { EMAIL_REGEX } from '../../constants/regex';
+import graphQLClient from '../../graphql';
+import { registerGql } from '../../graphql/auth';
+import { useRouter } from 'next/router';
 
 const SignUp: React.FC = () => {
+    const router = useRouter();
+
     const signUpForm = useForm([
         {
             name: 'username',
@@ -81,15 +90,40 @@ const SignUp: React.FC = () => {
         );
     });
 
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    useEffect(() => {
+        // focus first item on load
+        signUpForm[0].ref.current?.focus();
+    }, []);
+
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { valid, values, input } = getFormValue(signUpForm);
-        if (valid) {
-            // submit form
-            console.log(values);
-            return;
+        if (!valid) return input?.focus();
+
+        if (values.password !== values.confirm_password) {
+            return updateInput(signUpForm, 'confirm_password')(
+                '',
+                'Passwords does not match.'
+            ).current?.focus();
         }
-        input?.focus();
+
+        try {
+            await graphQLClient.request(registerGql, {
+                name: values.username,
+                email: values.email,
+                password: values.password,
+            });
+            router.push(`/auth/login?email=${values.email}`);
+        } catch (err) {
+            for (const error of err.response.errors || []) {
+                const msg = error.message;
+                if (msg.includes('email') && msg.includes('already exists')) {
+                    const updateEmail = updateInput(signUpForm, 'email');
+                    const input = updateEmail('', 'Email already exists.');
+                    input.current?.focus();
+                }
+            }
+        }
     };
 
     return (
