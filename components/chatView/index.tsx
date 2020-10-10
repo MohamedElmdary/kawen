@@ -3,7 +3,6 @@ import classes from './chatView.module.scss';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store';
 import ChatMessage from './chatMessage';
-import { User } from '../../store/auth';
 import { ContactModel } from '../../store/chat';
 import ChatInput from './chatInput';
 
@@ -12,7 +11,11 @@ interface Props {
 }
 
 const ChatView: React.FC<Props> = ({ chat }) => {
-    const user = useSelector(({ auth }: AppState) => auth.currentUser) as User;
+    const user = useSelector(({ auth }: AppState) => auth.currentUser);
+
+    /* this line should do nothing in production */
+    if (!user) return null;
+
     const { messages } = chat;
     const scrollRef = useRef<HTMLSpanElement>(null);
     const [scroll, setScroll] = useState(true);
