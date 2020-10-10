@@ -12,6 +12,7 @@ import { AuthActions } from '../../store/auth';
 import { useRouter } from 'next/router';
 import Message from '../message';
 import { ChatActions } from '../../store/chat';
+import cookies from 'js-cookie';
 
 interface Props {
     logoOnly: boolean;
@@ -147,6 +148,9 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
                                                 type: '[Auth] SET_CURRENT_USER',
                                                 payload: null,
                                             });
+                                            cookies.remove('token');
+                                            cookies.remove('refreshExpiresIn');
+                                            router.push('/');
                                         }}
                                     >
                                         Logout
