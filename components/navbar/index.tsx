@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import Message from '../message';
 import { ChatActions } from '../../store/chat';
 import cookies from 'js-cookie';
+import { URL } from '../../constants/data';
 
 interface Props {
     logoOnly: boolean;
@@ -23,6 +24,7 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
     const [focus, setFocus] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
     const user = useSelector((state: AppState) => state.auth.currentUser);
+
     const dispatch: Dispatch<AuthActions | ChatActions> = useDispatch();
     const contacts = useSelector((state: AppState) => state.chat.contacts);
 
@@ -113,8 +115,8 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
                                     actionElement={
                                         <img
                                             className={classes.auth__img}
-                                            src={user.image}
-                                            alt={`${user.name} profile image`}
+                                            src={URL + '/' + user.image}
+                                            alt={`${user.fullName} profile image`}
                                         />
                                     }
                                 >

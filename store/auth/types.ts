@@ -37,6 +37,12 @@ interface Challenge extends Contact {
     subTitle: string;
 }
 
+export interface CurrentUser {
+    id: string;
+    fullName: string;
+    image: string;
+}
+
 export interface User {
     id: number;
     name: string;
@@ -53,7 +59,7 @@ export interface User {
 }
 
 export interface AuthState {
-    currentUser: User | null;
+    currentUser: CurrentUser | null;
 }
 
 interface SetCurrentUser {
