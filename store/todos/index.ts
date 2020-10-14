@@ -115,14 +115,7 @@ function todosReducer(state = initState, action: TodosActions): TodosState {
         case '[Todos] ADD_TODO': {
             return {
                 ...state,
-                todos: [
-                    ..._todos,
-                    {
-                        id: new Date().getTime(),
-                        name: action.payload,
-                        task: [],
-                    },
-                ],
+                todos: [..._todos, action.payload],
             };
         }
 

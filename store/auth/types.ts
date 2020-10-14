@@ -41,6 +41,7 @@ export interface CurrentUser {
     id: string;
     fullName: string;
     image: string;
+    token: string;
 }
 
 export interface User {

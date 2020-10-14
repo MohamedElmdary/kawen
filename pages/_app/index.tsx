@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import 'emoji-mart/css/emoji-mart.css';
 import useStore from '../../store';
@@ -31,6 +31,13 @@ const App: React.FC<Props> = (props) => {
         },
     });
 
+    useEffect(() => {
+        graphQLClient.setHeader(
+            'Authorization',
+            `JWT ${currentUser?.token ?? ''}`
+        );
+    }, [currentUser]);
+
     return (
         <Provider store={store}>
             <Component {...pageProps} />
@@ -62,6 +69,7 @@ const App: React.FC<Props> = (props) => {
         getCurrentUserGql
     );
 
+    currentUser.token = token;
     return { currentUser, contacts };
 };
 

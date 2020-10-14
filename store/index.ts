@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import authReducer, { AuthState } from './auth';
 import todosReducer, { TodosState } from './todos';
 import notesReducer, { NotesState } from './notes';
@@ -12,7 +13,8 @@ function useStore(initAppState: Partial<AppState>) {
             notes: notesReducer,
             chat: chatReducer,
         }),
-        initAppState
+        initAppState,
+        applyMiddleware(ReduxThunk)
     );
 }
 

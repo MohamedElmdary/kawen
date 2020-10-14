@@ -67,7 +67,7 @@ interface RemoveTodo {
 
 interface AddTodo {
     type: '[Todos] ADD_TODO';
-    payload: string;
+    payload: TodoListModel;
 }
 
 export type TodosActions =

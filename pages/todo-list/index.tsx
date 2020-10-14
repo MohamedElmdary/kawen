@@ -11,13 +11,14 @@ import classes from './todo-list.module.scss';
 import InputControl from '../../components/inputControl';
 import graphQLClient from '../../graphql';
 import { getTodosGql } from '../../graphql/todos';
+import { createTask } from '../../store/todos/actions';
 
 interface Props {
     todos: TodoListModel[];
 }
 
 const TodoList: React.FC<Props> = ({ todos }) => {
-    const dispatch: Dispatch<TodosActions> = useDispatch();
+    const dispatch: Dispatch<TodosActions | Function> = useDispatch();
     const data = useSelector((state: AppState) => state.todos.todos);
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
@@ -56,10 +57,7 @@ const TodoList: React.FC<Props> = ({ todos }) => {
                             onClick={() => {
                                 const val = value.trim();
                                 if (val) {
-                                    dispatch({
-                                        type: '[Todos] ADD_TODO',
-                                        payload: val,
-                                    });
+                                    dispatch(createTask(val));
                                 }
                                 setValue('');
                                 setOpen(false);

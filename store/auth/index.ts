@@ -6,11 +6,11 @@ const initState: AuthState = {
 
 function authReducer(state = initState, action: AuthActions): AuthState {
     switch (action.type) {
-        case '[Auth] SET_CURRENT_USER':
-            return {
-                ...state,
-                currentUser: action.payload,
-            };
+        // case '[Auth] SET_CURRENT_USER':
+        //     return {
+        //         ...state,
+        //         currentUser: action.payload,
+        //     };
         default:
             return state;
     }
