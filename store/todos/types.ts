@@ -1,15 +1,15 @@
 export interface Task {
-    id: number | string;
-    title: string;
-    date: Date | number;
-    completed: boolean;
+    id: number;
+    name: string;
+    created: Date | number;
+    done: boolean;
     edit?: boolean;
 }
 
 export interface TodoListModel {
-    id: number | string;
-    title: string;
-    tasks: Task[];
+    id: number;
+    name: string;
+    task: Task[];
 }
 
 export interface TodosState {
@@ -24,45 +24,45 @@ interface InitTodos {
 interface UpdateTaskTitle {
     type: '[Todos] UPDATE_TASK_TITLE';
     payload: {
-        todoId: string | number;
-        taskId: string | number;
-        title: string;
+        todoId: number;
+        taskId: number;
+        name: string;
     };
 }
 
 interface UpdateTaskCompleted {
     type: '[Todos] UPDATE_TASK_COMPLETED';
     payload: {
-        todoId: string | number;
-        taskId: string | number;
-        completed: boolean;
+        todoId: number;
+        taskId: number;
+        done: boolean;
     };
 }
 
 interface DeleteTask {
     type: '[Todos] DELETE_TASK';
     payload: {
-        todoId: string | number;
-        taskId: string | number;
+        todoId: number;
+        taskId: number;
     };
 }
 
 interface AddTask {
     type: '[Todos] ADD_TASK';
-    payload: string | number;
+    payload: number;
 }
 
 interface UpdateTodoTitle {
     type: '[Todos] UPDATE_TODO_TITLE';
     payload: {
-        id: string | number;
-        title: string;
+        id: number;
+        name: string;
     };
 }
 
 interface RemoveTodo {
     type: '[Todos] REMOVE_TODO';
-    payload: string | number;
+    payload: number;
 }
 
 interface AddTodo {

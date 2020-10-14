@@ -1,7 +1,6 @@
 import React, { useEffect, Dispatch, useState } from 'react';
 import Layout from '../../components/layout';
 import { GetServerSideProps } from 'next';
-import todos from '../../data/todos';
 import GridLayout from '../../components/gridLayout';
 import TodoListItem from '../../components/todoListItem';
 import { TodoListModel, TodosActions } from '../../store/todos';
@@ -10,6 +9,8 @@ import { AppState } from '../../store';
 import PopupModal from '../../components/popupModal';
 import classes from './todo-list.module.scss';
 import InputControl from '../../components/inputControl';
+import graphQLClient from '../../graphql';
+import { getTodosGql } from '../../graphql/todos';
 
 interface Props {
     todos: TodoListModel[];
@@ -83,6 +84,11 @@ const TodoList: React.FC<Props> = ({ todos }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
+    /* if we reached this page this means we are logged in */
+    /* so due to that we can use graphqlClient directly as the header was set at _app */
+
+    const { todo: todos } = await graphQLClient.request(getTodosGql);
+
     return {
         props: { todos },
     };

@@ -22,13 +22,13 @@ function todosReducer(state = initState, action: TodosActions): TodosState {
                     const id = new Date().getTime(); /* temp for now */
                     return {
                         ...todo,
-                        tasks: [
-                            ...todo.tasks,
+                        task: [
+                            ...todo.task,
                             {
                                 id,
-                                date: id,
-                                title: '',
-                                completed: false,
+                                created: id,
+                                name: '',
+                                done: false,
                                 edit: true,
                             },
                         ],
@@ -45,25 +45,25 @@ function todosReducer(state = initState, action: TodosActions): TodosState {
                     if (todo.id !== todoId) return todo;
                     return {
                         ...todo,
-                        tasks: todo.tasks.filter((task) => task.id !== taskId),
+                        task: todo.task.filter((t) => t.id !== taskId),
                     };
                 }),
             };
         }
 
         case '[Todos] UPDATE_TASK_TITLE': {
-            const { todoId, taskId, title } = action.payload;
+            const { todoId, taskId, name } = action.payload;
             return {
                 ...state,
                 todos: _todos.map((todo) => {
                     if (todo.id !== todoId) return todo;
                     return {
                         ...todo,
-                        tasks: todo.tasks.map((task) => {
-                            if (task.id !== taskId) return task;
+                        task: todo.task.map((t) => {
+                            if (t.id !== taskId) return t;
                             return {
-                                ...task,
-                                title,
+                                ...t,
+                                name,
                             };
                         }),
                     };
@@ -72,18 +72,18 @@ function todosReducer(state = initState, action: TodosActions): TodosState {
         }
 
         case '[Todos] UPDATE_TASK_COMPLETED': {
-            const { todoId, taskId, completed } = action.payload;
+            const { todoId, taskId, done } = action.payload;
             return {
                 ...state,
                 todos: _todos.map((todo) => {
                     if (todo.id !== todoId) return todo;
                     return {
                         ...todo,
-                        tasks: todo.tasks.map((task) => {
-                            if (task.id !== taskId) return task;
+                        task: todo.task.map((t) => {
+                            if (t.id !== taskId) return t;
                             return {
-                                ...task,
-                                completed,
+                                ...t,
+                                done,
                             };
                         }),
                     };
@@ -92,14 +92,14 @@ function todosReducer(state = initState, action: TodosActions): TodosState {
         }
 
         case '[Todos] UPDATE_TODO_TITLE': {
-            const { id, title } = action.payload;
+            const { id, name } = action.payload;
             return {
                 ...state,
                 todos: _todos.map((todo) => {
                     if (todo.id !== id) return todo;
                     return {
                         ...todo,
-                        title,
+                        name,
                     };
                 }),
             };
@@ -119,8 +119,8 @@ function todosReducer(state = initState, action: TodosActions): TodosState {
                     ..._todos,
                     {
                         id: new Date().getTime(),
-                        title: action.payload,
-                        tasks: [],
+                        name: action.payload,
+                        task: [],
                     },
                 ],
             };

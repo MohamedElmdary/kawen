@@ -9,7 +9,7 @@ import contacts from '../../data/contacts';
 import ChatBar from '../../components/chatBar';
 import 'emoji-mart/css/emoji-mart.css';
 import graphQLClient from '../../graphql';
-import { getCurrentUser } from '../../graphql/profile';
+import { getCurrentUserGql } from '../../graphql/profile';
 
 interface Props {
     Component: React.FC<any>;
@@ -59,7 +59,7 @@ const App: React.FC<Props> = (props) => {
 
     graphQLClient.setHeader('Authorization', `JWT ${token}`);
     const { profile: currentUser } = await graphQLClient.request(
-        getCurrentUser
+        getCurrentUserGql
     );
 
     return { currentUser, contacts };

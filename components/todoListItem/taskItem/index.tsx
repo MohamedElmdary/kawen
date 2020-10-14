@@ -6,7 +6,7 @@ import { TodoListModel, Task } from '../../../store/todos';
 
 interface Props {
     task: Task;
-    updateTitle(id: TodoListModel['id'], title: TodoListModel['title']): void;
+    updateTitle(id: TodoListModel['id'], title: TodoListModel['name']): void;
     updateCompleted(id: TodoListModel['id'], completed: boolean): void;
     deleteTask(id: TodoListModel['id']): void;
 }
@@ -14,9 +14,9 @@ interface Props {
 const TaskItem: React.FC<Props> = (props) => {
     const { task, updateTitle, updateCompleted, deleteTask } = props;
     const [edit, setEdit] = useState(task.edit ?? false);
-    const [value, setValue] = useState(task.title);
+    const [value, setValue] = useState(task.name);
 
-    const date = getDateDetails(new Date(task.date));
+    const date = getDateDetails(new Date(task.created));
 
     const onBlur = () => {
         const val = value.trim();
@@ -32,7 +32,7 @@ const TaskItem: React.FC<Props> = (props) => {
             <div className={classes.task__container}>
                 <div className={classes.task__complete}>
                     <CheckInput
-                        checked={task.completed}
+                        checked={task.done}
                         onChange={(e) => {
                             updateCompleted(task.id, e.target.checked);
                         }}
@@ -48,7 +48,7 @@ const TaskItem: React.FC<Props> = (props) => {
                             {...{ value, onBlur }}
                         />
                     ) : (
-                        <p>{task.title}</p>
+                        <p>{task.name}</p>
                     )}
                     <span>
                         {date.monthNameShort} {date.day}, {date.year}

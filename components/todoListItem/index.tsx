@@ -11,14 +11,14 @@ interface props {
 
 const TodoListItem: React.FC<props> = ({ item }) => {
     const dispatch: Dispatch<TodosActions> = useDispatch();
-    const { id, title, tasks } = item;
+    const { id, name, task } = item;
     const [update, setUpdate] = useState(false);
-    const [value, setValue] = useState(item.title);
+    const [value, setValue] = useState(item.name);
 
-    const updateTodoTitle = (title: string) => {
+    const updateTodoTitle = (name: string) => {
         dispatch({
             type: '[Todos] UPDATE_TODO_TITLE',
-            payload: { id, title },
+            payload: { id, name },
         });
     };
 
@@ -30,30 +30,30 @@ const TodoListItem: React.FC<props> = ({ item }) => {
     };
 
     const updateTitle = useCallback(
-        (id: TodoListModel['id'], title: TodoListModel['title']) => {
+        (id: TodoListModel['id'], name: TodoListModel['name']) => {
             dispatch({
                 type: '[Todos] UPDATE_TASK_TITLE',
                 payload: {
                     todoId: item.id,
                     taskId: id,
-                    title,
+                    name,
                 },
             });
         },
-        [tasks]
+        [task]
     );
     const updateCompleted = useCallback(
-        (id: TodoListModel['id'], completed: boolean) => {
+        (id: TodoListModel['id'], done: boolean) => {
             dispatch({
                 type: '[Todos] UPDATE_TASK_COMPLETED',
                 payload: {
                     todoId: item.id,
                     taskId: id,
-                    completed,
+                    done,
                 },
             });
         },
-        [tasks]
+        [task]
     );
 
     const deleteTask = useCallback(
@@ -66,7 +66,7 @@ const TodoListItem: React.FC<props> = ({ item }) => {
                 },
             });
         },
-        [tasks]
+        [task]
     );
 
     const addTask = useCallback(() => {
@@ -74,13 +74,13 @@ const TodoListItem: React.FC<props> = ({ item }) => {
             type: '[Todos] ADD_TASK',
             payload: id,
         });
-    }, [tasks]);
+    }, [task]);
 
-    const tasksCmp = tasks.map((task) => {
-        const key = task.id;
+    const tasksCmp = task.map((t) => {
+        const key = t.id;
         return (
             <TaskItem
-                {...{ task, key, updateTitle, updateCompleted, deleteTask }}
+                {...{ task: t, key, updateTitle, updateCompleted, deleteTask }}
             />
         );
     });
@@ -94,7 +94,7 @@ const TodoListItem: React.FC<props> = ({ item }) => {
         const val = value.trim();
         setUpdate(false);
         if (!val) {
-            return setValue(item.title);
+            return setValue(item.name);
         }
         updateTodoTitle(val);
     };
@@ -110,9 +110,9 @@ const TodoListItem: React.FC<props> = ({ item }) => {
                             {...{ value, onBlur }}
                         />
                     ) : (
-                        <h3>{title}</h3>
+                        <h3>{name}</h3>
                     )}
-                    <p>{tasks.length} Tasks</p>
+                    <p>{task.length} Tasks</p>
                 </div>
                 <DropDown {...{ actionElement, actionClass }}>
                     <DropDownItem onClick={() => setUpdate(true)}>

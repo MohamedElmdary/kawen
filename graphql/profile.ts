@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-const getCurrentUser = gql`
+const getCurrentUserGql = gql`
     query getCurrentUser {
         profile {
             id
@@ -10,4 +10,4 @@ const getCurrentUser = gql`
     }
 `;
 
-export { getCurrentUser };
+export { getCurrentUserGql };
