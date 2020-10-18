@@ -15,23 +15,14 @@ function todosReducer(state = initState, action: TodosActions): TodosState {
             };
 
         case '[Todos] ADD_TASK': {
+            const { id, task } = action.payload;
             return {
                 ...state,
                 todos: _todos.map((todo) => {
-                    if (todo.id !== action.payload) return todo;
-                    const id = new Date().getTime(); /* temp for now */
+                    if (todo.id !== id) return todo;
                     return {
                         ...todo,
-                        task: [
-                            ...todo.task,
-                            {
-                                id,
-                                created: id,
-                                name: '',
-                                done: false,
-                                edit: true,
-                            },
-                        ],
+                        task: [...todo.task, task],
                     };
                 }),
             };

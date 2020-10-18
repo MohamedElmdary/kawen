@@ -49,7 +49,10 @@ interface DeleteTask {
 
 interface AddTask {
     type: '[Todos] ADD_TASK';
-    payload: number;
+    payload: {
+        id: number;
+        task: Task;
+    };
 }
 
 interface UpdateTodoTitle {

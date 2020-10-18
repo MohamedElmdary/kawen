@@ -32,4 +32,28 @@ const createTodoGql = gql`
     }
 `;
 
-export { getTodosGql, createTodoGql };
+const createTaskGql = gql`
+    mutation createTask($id: Int!, $name: String!) {
+        CreateTask(taskcard: $id, name: $name) {
+            task {
+                id
+                name
+                created
+                done
+            }
+        }
+    }
+`;
+
+const updateTaskcardGql = gql`
+    mutation UpdateTaskcard($id: Int!, $name: String!) {
+        UpdateTaskcard(id: $id, name: $name) {
+            taskcard {
+                id
+                name
+            }
+        }
+    }
+`;
+
+export { getTodosGql, createTodoGql, createTaskGql, updateTaskcardGql };

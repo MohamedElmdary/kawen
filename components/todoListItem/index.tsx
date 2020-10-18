@@ -4,22 +4,22 @@ import TaskItem from './taskItem';
 import { TodoListModel, TodosActions } from '../../store/todos';
 import { useDispatch } from 'react-redux';
 import DropDown, { DropDownItem, DropDownDivider } from '../dropDownMenu';
+import { createTaskItem, updateTaskCard } from '../../store/todos/actions';
 
 interface props {
     item: TodoListModel;
 }
 
 const TodoListItem: React.FC<props> = ({ item }) => {
-    const dispatch: Dispatch<TodosActions> = useDispatch();
+    const dispatch: Dispatch<TodosActions | Function> = useDispatch();
     const { id, name, task } = item;
     const [update, setUpdate] = useState(false);
     const [value, setValue] = useState(item.name);
 
+    const [newItem, setNewItem] = useState<boolean>(false);
+
     const updateTodoTitle = (name: string) => {
-        dispatch({
-            type: '[Todos] UPDATE_TODO_TITLE',
-            payload: { id, name },
-        });
+        dispatch(updateTaskCard(id, name));
     };
 
     const removeTodo = () => {
@@ -69,13 +69,6 @@ const TodoListItem: React.FC<props> = ({ item }) => {
         [task]
     );
 
-    const addTask = useCallback(() => {
-        dispatch({
-            type: '[Todos] ADD_TASK',
-            payload: id,
-        });
-    }, [task]);
-
     const tasksCmp = task.map((t) => {
         const key = t.id;
         return (
@@ -96,7 +89,10 @@ const TodoListItem: React.FC<props> = ({ item }) => {
         if (!val) {
             return setValue(item.name);
         }
-        updateTodoTitle(val);
+
+        if (item.name !== val) {
+            updateTodoTitle(val);
+        }
     };
 
     return (
@@ -106,6 +102,7 @@ const TodoListItem: React.FC<props> = ({ item }) => {
                     {update ? (
                         <input
                             type="text"
+                            autoFocus
                             onChange={(e) => setValue(e.target.value)}
                             {...{ value, onBlur }}
                         />
@@ -129,7 +126,9 @@ const TodoListItem: React.FC<props> = ({ item }) => {
                 </DropDown>
                 <div
                     className={classes.list__header__additem}
-                    onClick={addTask}
+                    onClick={() => {
+                        setNewItem(true);
+                    }}
                 >
                     <button>+</button>
                 </div>
@@ -137,6 +136,25 @@ const TodoListItem: React.FC<props> = ({ item }) => {
             <div className={classes.list__container}>
                 {/* prettier-ignore */}
                 {tasksCmp}
+                {newItem && (
+                    <TaskItem
+                        task={{
+                            id: -1,
+                            created: new Date(),
+                            done: false,
+                            name: '',
+                            edit: true,
+                        }}
+                        deleteTask={() => {
+                            setNewItem(false);
+                        }}
+                        updateTitle={(_, val) => {
+                            dispatch(createTaskItem(id, val));
+                            setNewItem(false);
+                        }}
+                        updateCompleted={() => null}
+                    />
+                )}
             </div>
         </section>
     );

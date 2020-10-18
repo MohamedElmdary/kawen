@@ -115,7 +115,7 @@ const Navbar: React.FC<Props> = ({ logoOnly }) => {
                                     actionElement={
                                         <img
                                             className={classes.auth__img}
-                                            src={URL + '/' + user.image}
+                                            src={URL + '/media/' + user.image}
                                             alt={`${user.fullName} profile image`}
                                         />
                                     }
