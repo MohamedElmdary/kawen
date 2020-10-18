@@ -6,6 +6,7 @@ import {
     deleteTaskcardGql,
     deleteTaskGql,
     updateTaskcardGql,
+    updateTaskDoneGql,
     updateTaskNameGql,
 } from '../../graphql/todos';
 import { TodosActions } from './types';
@@ -60,7 +61,7 @@ export function removeTodo(id: number) {
 
 export function updateTaskDone(cardId: number, id: number, done: boolean) {
     return async (dispatch: Dis) => {
-        await graphQLClient.request(updateTaskcardGql, { cardId, id, done });
+        await graphQLClient.request(updateTaskDoneGql, { cardId, id, done });
         dispatch({
             type: '[Todos] UPDATE_TASK_COMPLETED',
             payload: {
