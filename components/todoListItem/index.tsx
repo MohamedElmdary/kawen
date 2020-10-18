@@ -4,7 +4,12 @@ import TaskItem from './taskItem';
 import { TodoListModel, TodosActions } from '../../store/todos';
 import { useDispatch } from 'react-redux';
 import DropDown, { DropDownItem, DropDownDivider } from '../dropDownMenu';
-import { createTaskItem, updateTaskCard } from '../../store/todos/actions';
+import {
+    createTaskItem,
+    updateTaskCard,
+    removeTodo as removeTodoAction,
+    updateTaskDone,
+} from '../../store/todos/actions';
 
 interface props {
     item: TodoListModel;
@@ -23,10 +28,7 @@ const TodoListItem: React.FC<props> = ({ item }) => {
     };
 
     const removeTodo = () => {
-        dispatch({
-            type: '[Todos] REMOVE_TODO',
-            payload: id,
-        });
+        dispatch(removeTodoAction(id));
     };
 
     const updateTitle = useCallback(
@@ -44,14 +46,7 @@ const TodoListItem: React.FC<props> = ({ item }) => {
     );
     const updateCompleted = useCallback(
         (id: TodoListModel['id'], done: boolean) => {
-            dispatch({
-                type: '[Todos] UPDATE_TASK_COMPLETED',
-                payload: {
-                    todoId: item.id,
-                    taskId: id,
-                    done,
-                },
-            });
+            dispatch(updateTaskDone(item.id, id, done));
         },
         [task]
     );

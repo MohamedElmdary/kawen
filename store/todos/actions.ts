@@ -3,6 +3,7 @@ import graphQLClient from '../../graphql';
 import {
     createTaskGql,
     createTodoGql,
+    deleteTaskcardGql,
     updateTaskcardGql,
 } from '../../graphql/todos';
 import { TodosActions } from './types';
@@ -41,6 +42,30 @@ export function updateTaskCard(id: number, name: string) {
         dispatch({
             type: '[Todos] UPDATE_TODO_TITLE',
             payload: { id, name },
+        });
+    };
+}
+
+export function removeTodo(id: number) {
+    return async (dispatch: Dis) => {
+        await graphQLClient.request(deleteTaskcardGql, { id });
+        dispatch({
+            type: '[Todos] REMOVE_TODO',
+            payload: id,
+        });
+    };
+}
+
+export function updateTaskDone(cardId: number, id: number, done: boolean) {
+    return async (dispatch: Dis) => {
+        await graphQLClient.request(updateTaskcardGql, { cardId, id, done });
+        dispatch({
+            type: '[Todos] UPDATE_TASK_COMPLETED',
+            payload: {
+                todoId: cardId,
+                taskId: id,
+                done,
+            },
         });
     };
 }
