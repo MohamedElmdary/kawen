@@ -24,7 +24,9 @@ const TaskItem: React.FC<Props> = (props) => {
             return deleteTask(task.id);
         }
         setEdit(false);
-        return updateTitle(task.id, val);
+        if (value !== task.name) {
+            return updateTitle(task.id, val);
+        }
     };
 
     return (

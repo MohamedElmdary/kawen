@@ -9,6 +9,8 @@ import {
     updateTaskCard,
     removeTodo as removeTodoAction,
     updateTaskDone,
+    updateTaskName,
+    deleteTask as deleteTaskAction,
 } from '../../store/todos/actions';
 
 interface props {
@@ -33,14 +35,7 @@ const TodoListItem: React.FC<props> = ({ item }) => {
 
     const updateTitle = useCallback(
         (id: TodoListModel['id'], name: TodoListModel['name']) => {
-            dispatch({
-                type: '[Todos] UPDATE_TASK_TITLE',
-                payload: {
-                    todoId: item.id,
-                    taskId: id,
-                    name,
-                },
-            });
+            dispatch(updateTaskName(item.id, id, name));
         },
         [task]
     );
@@ -53,13 +48,7 @@ const TodoListItem: React.FC<props> = ({ item }) => {
 
     const deleteTask = useCallback(
         (id: TodoListModel['id']) => {
-            dispatch({
-                type: '[Todos] DELETE_TASK',
-                payload: {
-                    todoId: item.id,
-                    taskId: id,
-                },
-            });
+            dispatch(deleteTaskAction(item.id, id));
         },
         [task]
     );

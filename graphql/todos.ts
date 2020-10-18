@@ -74,6 +74,24 @@ const updateTaskDoneGql = gql`
     }
 `;
 
+const updateTaskNameGql = gql`
+    mutation updateTaskName($cardId: Int!, $id: Int!, $name: String!) {
+        UpdateTask(cardId: $cardId, id: $id, name: $name) {
+            task {
+                id
+            }
+        }
+    }
+`;
+
+const deleteTaskGql = gql`
+    mutation DeleteTask($cardId: Int!, $id: Int!) {
+        DeleteTask(cardId: $cardId, id: $id) {
+            message
+        }
+    }
+`;
+
 export {
     getTodosGql,
     createTodoGql,
@@ -81,4 +99,6 @@ export {
     updateTaskcardGql,
     deleteTaskcardGql,
     updateTaskDoneGql,
+    updateTaskNameGql,
+    deleteTaskGql,
 };
